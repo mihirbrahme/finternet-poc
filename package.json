@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test:schema": "tsx tests/schema/validate-samples.test.ts"
+    "test:schema": "tsx tests/schema/validate-samples.test.ts",
+    "test:identity": "tsx tests/identity/participant-credential.test.ts"
   },
   "devDependencies": {
     "ajv": "^8.17.1",

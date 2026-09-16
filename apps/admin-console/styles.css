@@ -1,0 +1,184 @@
+:root {
+  color-scheme: light;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f7f8;
+  color: #15211f;
+}
+
+body {
+  margin: 0;
+}
+
+.topbar {
+  align-items: center;
+  background: #ffffff;
+  border-bottom: 1px solid #d9e0df;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 28px;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+.topbar p,
+small,
+.note,
+.section-title span,
+dd {
+  color: #5c6b68;
+}
+
+main {
+  display: grid;
+  gap: 20px;
+  margin: 0 auto;
+  max-width: 1180px;
+  padding: 24px;
+}
+
+.grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.panel {
+  background: #ffffff;
+  border: 1px solid #d9e0df;
+  border-radius: 8px;
+  padding: 18px;
+}
+
+.section-title {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.mode,
+.ok {
+  background: #e5f4ec;
+  border: 1px solid #a9d8bf;
+  border-radius: 999px;
+  color: #155c38;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 9px;
+}
+
+table {
+  border-collapse: collapse;
+  font-size: 14px;
+  width: 100%;
+}
+
+th,
+td {
+  border-bottom: 1px solid #e7eceb;
+  padding: 11px 8px;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  color: #40504d;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.selected {
+  background: #f0f7f3;
+}
+
+dl {
+  display: grid;
+  gap: 8px;
+}
+
+dt {
+  font-weight: 700;
+}
+
+dd {
+  margin: 0 0 8px;
+}
+
+.action-list {
+  display: grid;
+  gap: 10px;
+}
+
+button {
+  background: #18453b;
+  border: 1px solid #18453b;
+  border-radius: 6px;
+  color: #ffffff;
+  cursor: default;
+  font-size: 14px;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+button.danger {
+  background: #7a1f1f;
+  border-color: #7a1f1f;
+}
+
+.note {
+  font-size: 13px;
+  line-height: 1.5;
+  margin-top: 14px;
+}
+
+.modes {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.modes li {
+  align-items: center;
+  border-bottom: 1px solid #e7eceb;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 9px;
+}
+
+.modes strong {
+  color: #18453b;
+  font-size: 12px;
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar {
+    align-items: flex-start;
+    gap: 12px;
+    flex-direction: column;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+}

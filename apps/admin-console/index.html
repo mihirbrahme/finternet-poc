@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Finternet Admin Console</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>Finternet Admin Console</h1>
+        <p>Trusted participant setup for the Aamhi rural SWM PoC</p>
+      </div>
+      <span class="mode">Packet 3</span>
+    </header>
+
+    <main>
+      <section class="panel">
+        <div class="section-title">
+          <h2>Participants</h2>
+          <span>6 demo records</span>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Participant</th>
+              <th>Role</th>
+              <th>DID</th>
+              <th>Account</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ORG-SUMA-001<br /><small>Suma Network Admin</small></td>
+              <td>NETWORK_ADMIN</td>
+              <td>did:web:finternet-poc.local:participants:ORG-SUMA-001</td>
+              <td>0x1111...1111</td>
+              <td><span class="ok">ACTIVE</span></td>
+            </tr>
+            <tr class="selected">
+              <td>ORG-AAMHI-001<br /><small>Project Aamhi</small></td>
+              <td>RECOVERY_ORIGINATOR</td>
+              <td>did:web:finternet-poc.local:participants:ORG-AAMHI-001</td>
+              <td>0x2222...2222</td>
+              <td><span class="ok">ACTIVE</span></td>
+            </tr>
+            <tr>
+              <td>ORG-BUYER-001<br /><small>Demo Buyer</small></td>
+              <td>BUYER</td>
+              <td>did:web:finternet-poc.local:participants:ORG-BUYER-001</td>
+              <td>0x3333...3333</td>
+              <td><span class="ok">ACTIVE</span></td>
+            </tr>
+            <tr>
+              <td>ORG-PROCESSOR-001<br /><small>Demo Processor</small></td>
+              <td>PROCESSOR</td>
+              <td>did:web:finternet-poc.local:participants:ORG-PROCESSOR-001</td>
+              <td>0x4444...4444</td>
+              <td><span class="ok">ACTIVE</span></td>
+            </tr>
+            <tr>
+              <td>ORG-VERIFIER-001<br /><small>Demo Verifier</small></td>
+              <td>VERIFIER</td>
+              <td>did:web:finternet-poc.local:participants:ORG-VERIFIER-001</td>
+              <td>0x5555...5555</td>
+              <td><span class="ok">ACTIVE</span></td>
+            </tr>
+            <tr>
+              <td>ORG-AGENT-001<br /><small>Buyer Agent</small></td>
+              <td>AI_AGENT_SERVICE</td>
+              <td>did:web:finternet-poc.local:participants:ORG-AGENT-001</td>
+              <td>0x6666...6666</td>
+              <td><span class="ok">ACTIVE</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="grid">
+        <article class="panel">
+          <div class="section-title">
+            <h2>Trust Info</h2>
+            <span>ORG-AAMHI-001</span>
+          </div>
+          <dl>
+            <dt>Identity</dt>
+            <dd>Participant ID, did:web document, and wallet binding are separate records.</dd>
+            <dt>Primary Account</dt>
+            <dd>Controlled test wallet now; replaceable with ERC-4337 smart account later.</dd>
+            <dt>On-chain Projection</dt>
+            <dd>ParticipantRegistry stores active account state. CredentialRegistry stores minimal role eligibility.</dd>
+          </dl>
+        </article>
+
+        <article class="panel">
+          <div class="section-title">
+            <h2>Credentials</h2>
+            <span>Demo issuer</span>
+          </div>
+          <div class="action-list">
+            <button type="button">Issue Recovery Originator Credential</button>
+            <button type="button">Verify Credential</button>
+            <button type="button" class="danger">Revoke Credential</button>
+          </div>
+          <p class="note">
+            The Packet 3 issuer uses LOCAL_MOCK proof mode. Revocation must block role eligibility in both service checks and contract checks.
+          </p>
+        </article>
+
+        <article class="panel">
+          <div class="section-title">
+            <h2>Dependency Modes</h2>
+            <span>Local</span>
+          </div>
+          <ul class="modes">
+            <li><span>VC Issuer</span><strong>LOCAL_MOCK</strong></li>
+            <li><span>VC Proof Suite</span><strong>LOCAL_MOCK</strong></li>
+            <li><span>Participant Registry</span><strong>LOCAL_MOCK</strong></li>
+            <li><span>Credential Registry</span><strong>LOCAL_MOCK</strong></li>
+            <li><span>Smart Account Provider</span><strong>LOCAL_MOCK</strong></li>
+            <li><span>OBP Registry</span><strong>NOT_CONNECTED</strong></li>
+            <li><span>EPR Reference</span><strong>NOT_CONNECTED</strong></li>
+          </ul>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

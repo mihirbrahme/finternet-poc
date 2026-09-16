@@ -52,7 +52,7 @@ Rules:
 |---|---|---|---|
 | Packet 1 - Context Pack and Repository Harness | COMPLETE | 85545e9 | Reviewed; `docker compose config` and `git diff --check` passed. |
 | Packet 2 - Canonical Schemas and Golden Sample Data | COMPLETE | 694f8be | Reviewed; `npx pnpm@10.16.1 test:schema` and `git diff --check` passed. |
-| Packet 3 - Trusted Participant Slice | NOT_STARTED |  |  |
+| Packet 3 - Trusted Participant Slice | REVIEW |  | Implementation complete; TypeScript identity/schema tests passed; Foundry tests not run because `forge` is unavailable. |
 | Packet 4 - Recovery Asset, Evidence and Verification Slice | NOT_STARTED |  |  |
 | Packet 5 - Tokenisation Slice | NOT_STARTED |  |  |
 | Packet 6 - Beckn Discovery Slice | NOT_STARTED |  |  |
@@ -395,11 +395,11 @@ git commit -m "feat(schemas): add canonical aamhi demo schemas"
 - Consumes: participant schema and credential model.
 - Produces: participant trust APIs, on-chain eligibility state and Admin Console setup flow.
 
-- [ ] **Step 1: Write contract tests for participant registration**
+- [x] **Step 1: Write contract tests for participant registration**
 
 Test that admin can register `ORG-AAMHI-001` and bind an account.
 
-- [ ] **Step 2: Implement `ParticipantRegistry.sol`**
+- [x] **Step 2: Implement `ParticipantRegistry.sol`**
 
 Functions required:
 
@@ -409,11 +409,11 @@ setParticipantStatus(bytes32 participantIdHash, bool active)
 isActiveAccount(address account) returns (bool)
 ```
 
-- [ ] **Step 3: Write credential enforcement test**
+- [x] **Step 3: Write credential enforcement test**
 
 Test that a revoked processor credential returns inactive eligibility.
 
-- [ ] **Step 4: Implement `CredentialRegistry.sol`**
+- [x] **Step 4: Implement `CredentialRegistry.sol`**
 
 Functions required:
 
@@ -422,7 +422,7 @@ setEligibility(address account, uint8 role, bool active, uint64 validUntil)
 hasValidRole(address account, uint8 role) returns (bool)
 ```
 
-- [ ] **Step 5: Build participant and credential APIs**
+- [x] **Step 5: Build participant and credential APIs**
 
 Implement endpoints from `09_API_and_Service_Specification.md`:
 
@@ -435,7 +435,7 @@ POST /credentials/verify
 POST /credentials/{credentialId}/revoke
 ```
 
-- [ ] **Step 6: Build Admin Console screens**
+- [x] **Step 6: Build Admin Console screens**
 
 Screens:
 
