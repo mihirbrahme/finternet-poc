@@ -14,6 +14,8 @@ This workspace is currently a documentation-first project pack. The implementati
 - [Context availability and simulation strategy](docs/00_project/03_Context_Availability_and_Simulation_Strategy.md)
 - [Technical architecture](docs/01_architecture/02_Finternet_Technical_Architecture.md)
 - [Local toolchain setup](docs/04_security-operations/16_Local_Toolchain_Setup.md)
+- [Local environment harness](deployment/environments/local/README.md)
+- [Aamhi demo sample context](samples/aamhi-demo/README.md)
 - [Developer backlog](docs/05_delivery/19_Backlog_and_Implementation_Tasks.md)
 - [End-to-end PoC execution plan](docs/05_delivery/20_End_to_End_PoC_Execution_Plan.md)
 
@@ -28,6 +30,10 @@ docs/
   04_security-operations/  Security, access, DevOps, environments
   05_delivery/             Test plan, demo runbook, implementation backlog
   superpowers/plans/       Agent-ready implementation plans
+deployment/
+  environments/local/      Local dependency harness
+samples/
+  aamhi-demo/              Golden demo scenario and sample data
 ```
 
 ## PoC Baseline

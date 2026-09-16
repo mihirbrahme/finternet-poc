@@ -50,7 +50,7 @@ Rules:
 
 | Packet | Status | Commit | Notes |
 |---|---|---|---|
-| Packet 1 - Context Pack and Repository Harness | NOT_STARTED |  |  |
+| Packet 1 - Context Pack and Repository Harness | REVIEW |  | Packet 1 harness implemented locally for review; no commit yet by instruction. |
 | Packet 2 - Canonical Schemas and Golden Sample Data | NOT_STARTED |  |  |
 | Packet 3 - Trusted Participant Slice | NOT_STARTED |  |  |
 | Packet 4 - Recovery Asset, Evidence and Verification Slice | NOT_STARTED |  |  |
@@ -234,7 +234,7 @@ Create or modify these areas as implementation begins:
 - Consumes: current documentation pack.
 - Produces: local environment contract and context entrypoints for later tasks.
 
-- [ ] **Step 1: Add README links**
+- [x] **Step 1: Add README links**
 
 Update `README.md` so "Start Here" includes:
 
@@ -244,11 +244,11 @@ Update `README.md` so "Start Here" includes:
 - [End-to-end PoC execution plan](docs/05_delivery/20_End_to_End_PoC_Execution_Plan.md)
 ```
 
-- [ ] **Step 2: Add local dependency compose file**
+- [x] **Step 2: Add local dependency compose file**
 
 Create `docker-compose.yml` with services named `postgres`, `minio`, `anvil`, and `mock-ipfs`. Use stable ports from `.env.example`: Postgres `5432`, MinIO `9000`, EVM `8545`.
 
-- [ ] **Step 3: Document local environment**
+- [x] **Step 3: Document local environment**
 
 Create `deployment/environments/local/README.md` with commands:
 
@@ -268,7 +268,7 @@ Beckn: SANDBOX_ADAPTER
 OBP Registry: NOT_CONNECTED
 ```
 
-- [ ] **Step 4: Create sample context README**
+- [x] **Step 4: Create sample context README**
 
 Create `samples/aamhi-demo/README.md` describing the golden path:
 
@@ -279,7 +279,7 @@ Processor receipt attestation triggers settlement.
 OBP-ready recovery claim is recorded as evidence-backed but not official credit issuance.
 ```
 
-- [ ] **Step 5: Verify**
+- [x] **Step 5: Verify**
 
 Run:
 

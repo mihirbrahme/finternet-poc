@@ -324,5 +324,7 @@ Read these companion documents before implementation:
 - `../04_security-operations/16_Local_Toolchain_Setup.md`
 - `../05_delivery/20_End_to_End_PoC_Execution_Plan.md`
 - `../superpowers/plans/2026-09-16-finternet-poc-end-to-end.md`
+- `../../deployment/environments/local/README.md`
+- `../../samples/aamhi-demo/README.md`
 
 Important boundary: the PoC may create OBP-ready evidence claims, but it must not describe them as official OBP credits, EPR certificates or government-issued claims unless an authorised integration is added.
