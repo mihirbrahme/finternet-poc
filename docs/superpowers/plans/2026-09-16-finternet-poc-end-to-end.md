@@ -52,8 +52,8 @@ Rules:
 |---|---|---|---|
 | Packet 1 - Context Pack and Repository Harness | COMPLETE | 85545e9 | Reviewed; `docker compose config` and `git diff --check` passed. |
 | Packet 2 - Canonical Schemas and Golden Sample Data | COMPLETE | 694f8be | Reviewed; `npx pnpm@10.16.1 test:schema` and `git diff --check` passed. |
-| Packet 3 - Trusted Participant Slice | COMPLETE | 0dbaceb | Reviewed; `test:identity`, `test:schema`, and `git diff --check` passed. Foundry tests created but not run because `forge` is not installed/on PATH. |
-| Packet 4 - Recovery Asset, Evidence and Verification Slice | NOT_STARTED |  |  |
+| Packet 3 - Trusted Participant Slice | COMPLETE | 0dbaceb | Reviewed; `test:identity`, `test:schema`, `forge test`, and `git diff --check` passed after Foundry install. |
+| Packet 4 - Recovery Asset, Evidence and Verification Slice | COMPLETE | 5474a78 | Reviewed; `test:asset-evidence`, `test:identity`, `test:schema`, `forge test`, and `git diff --check` passed. |
 | Packet 5 - Tokenisation Slice | NOT_STARTED |  |  |
 | Packet 6 - Beckn Discovery Slice | NOT_STARTED |  |  |
 | Packet 7 - Programmable Settlement Slice | NOT_STARTED |  |  |
@@ -446,7 +446,7 @@ Credential Issue/Revoke
 Dependency Modes
 ```
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add contracts services/core-api apps/admin-console
@@ -469,19 +469,19 @@ git commit -m "feat(identity): add participant and credential baseline"
 - Consumes: schemas, participant trust APIs and object storage adapter.
 - Produces: verified asset record and evidence root ready for tokenisation.
 
-- [ ] **Step 1: Test evidence hash determinism**
+- [x] **Step 1: Test evidence hash determinism**
 
 Use two identical sample files and verify identical SHA-256 hashes; mutate one byte and verify hash mismatch.
 
-- [ ] **Step 2: Implement evidence upload metadata**
+- [x] **Step 2: Implement evidence upload metadata**
 
 Store object reference, hash, MIME type, classification and source participant.
 
-- [ ] **Step 3: Implement evidence manifest generation**
+- [x] **Step 3: Implement evidence manifest generation**
 
 Create deterministic JSON serialization and `manifestHash`.
 
-- [ ] **Step 4: Implement recovery asset API**
+- [x] **Step 4: Implement recovery asset API**
 
 Endpoints:
 
@@ -493,15 +493,15 @@ GET /assets/{assetId}
 GET /assets/{assetId}/provenance
 ```
 
-- [ ] **Step 5: Build Originator Console asset flow**
+- [x] **Step 5: Build Originator Console asset flow**
 
 Fields must include material, quantity, district, village/route, collection type, evidence upload and verification status.
 
-- [ ] **Step 6: Build Verifier screen**
+- [x] **Step 6: Build Verifier screen**
 
 Verifier can inspect manifest, confirm quantity, and sign `ASSET_VERIFIED` attestation.
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add services/core-api apps/originator-console apps/processor-console tests/end-to-end
