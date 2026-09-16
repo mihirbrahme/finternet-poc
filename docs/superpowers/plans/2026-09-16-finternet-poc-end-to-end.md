@@ -51,7 +51,7 @@ Rules:
 | Packet | Status | Commit | Notes |
 |---|---|---|---|
 | Packet 1 - Context Pack and Repository Harness | COMPLETE | 85545e9 | Reviewed; `docker compose config` and `git diff --check` passed. |
-| Packet 2 - Canonical Schemas and Golden Sample Data | REVIEW |  | Schemas, Aamhi samples and validation test added; commit pending main-agent review. |
+| Packet 2 - Canonical Schemas and Golden Sample Data | COMPLETE | 694f8be | Reviewed; `npx pnpm@10.16.1 test:schema` and `git diff --check` passed. |
 | Packet 3 - Trusted Participant Slice | NOT_STARTED |  |  |
 | Packet 4 - Recovery Asset, Evidence and Verification Slice | NOT_STARTED |  |  |
 | Packet 5 - Tokenisation Slice | NOT_STARTED |  |  |
@@ -372,7 +372,7 @@ Create sample JSON files for Aamhi, buyer, processor, verifier, LDPE material, 1
 
 Create a test that loads every sample and validates it against the matching schema. Use the repository's selected JS test runner when chosen; if the runner is not selected yet, document this test contract in `tests/schema/validate-samples.test.ts` with executable structure and add the runner in Packet 3.
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add schemas samples/aamhi-demo tests/schema
