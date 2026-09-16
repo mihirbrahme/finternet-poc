@@ -54,7 +54,7 @@ Rules:
 | Packet 2 - Canonical Schemas and Golden Sample Data | COMPLETE | 694f8be | Reviewed; `npx pnpm@10.16.1 test:schema` and `git diff --check` passed. |
 | Packet 3 - Trusted Participant Slice | COMPLETE | 0dbaceb | Reviewed; `test:identity`, `test:schema`, `forge test`, and `git diff --check` passed after Foundry install. |
 | Packet 4 - Recovery Asset, Evidence and Verification Slice | COMPLETE | 5474a78 | Reviewed; `test:asset-evidence`, `test:identity`, `test:schema`, `forge test`, and `git diff --check` passed. |
-| Packet 5 - Tokenisation Slice | NOT_STARTED |  |  |
+| Packet 5 - Tokenisation Slice | COMPLETE | 49afb48 | Reviewed; `forge test -vvv`, `test:asset-evidence`, `test:identity`, `test:schema`, `test:tokenisation`, and `git diff --check` passed. |
 | Packet 6 - Beckn Discovery Slice | NOT_STARTED |  |  |
 | Packet 7 - Programmable Settlement Slice | NOT_STARTED |  |  |
 | Packet 8 - Attestation and Claims Slice | NOT_STARTED |  |  |
@@ -523,11 +523,11 @@ git commit -m "feat(asset): add recovery evidence and verification flow"
 - Consumes: verified asset and credential registry.
 - Produces: ERC-1155 token state and indexed explorer read model.
 
-- [ ] **Step 1: Test verified-only mint**
+- [x] **Step 1: Test verified-only mint**
 
 Mint succeeds only when asset has verification attestation and caller has tokeniser role.
 
-- [ ] **Step 2: Implement `RecoveryAsset.sol`**
+- [x] **Step 2: Implement `RecoveryAsset.sol`**
 
 Support:
 
@@ -537,7 +537,7 @@ lock(address owner, uint256 tokenId, uint256 quantity, bytes32 settlementId)
 unlock(address owner, uint256 tokenId, uint256 quantity, bytes32 settlementId)
 ```
 
-- [ ] **Step 3: Implement tokenisation API**
+- [x] **Step 3: Implement tokenisation API**
 
 Endpoint:
 
@@ -547,15 +547,15 @@ POST /assets/{assetId}/tokenise
 
 It must generate metadata, publish through IPFS adapter and submit mint transaction.
 
-- [ ] **Step 4: Implement indexer baseline**
+- [x] **Step 4: Implement indexer baseline**
 
 Index ERC-1155 transfer events, mint events, lock events and transaction status.
 
-- [ ] **Step 5: Build Explorer asset/token view**
+- [x] **Step 5: Build Explorer asset/token view**
 
 Show canonical asset ID, token ID, supply, holder balances, metadata URI, evidence root and tx hash.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add contracts services/core-api services/blockchain-indexer apps/explorer
