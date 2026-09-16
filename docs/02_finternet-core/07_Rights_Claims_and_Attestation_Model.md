@@ -76,7 +76,22 @@ Links the PoC asset lifecycle to an authoritative regulatory-system reference or
 
 The PoC does **not** mint an official EPR certificate.
 
-### 3.6 Future finance claim
+### 3.6 OBP-ready recovery claim
+
+Represents that a defined quantity has an evidence package that may support later Ocean Bound Plastic certification, sponsor reporting or buyer diligence.
+
+This is an evidence-backed PoC claim, not an official OBP credit. It must not be presented as government recognition, EPR credit issuance or certified OBP credit issuance unless an authorised certification or registry integration is added.
+
+Minimum supporting facts:
+
+- coastal or waterway risk context;
+- collection site or route reference;
+- collection and segregation evidence;
+- weighment evidence;
+- custody or aggregation record;
+- downstream receipt or treatment evidence where available.
+
+### 3.7 Future finance claim
 
 Possible Phase 2 object:
 

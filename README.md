@@ -10,8 +10,11 @@ This workspace is currently a documentation-first project pack. The implementati
 
 - [Project index](docs/00_project/00_README_Project_Index.md)
 - [Project build plan](docs/00_project/01_Project_Build_Plan.md)
+- [Aamhi rural SWM and OBP context](docs/00_project/02_Aamhi_Rural_SWM_and_OBP_Context.md)
+- [Context availability and simulation strategy](docs/00_project/03_Context_Availability_and_Simulation_Strategy.md)
 - [Technical architecture](docs/01_architecture/02_Finternet_Technical_Architecture.md)
 - [Developer backlog](docs/05_delivery/19_Backlog_and_Implementation_Tasks.md)
+- [End-to-end PoC execution plan](docs/05_delivery/20_End_to_End_PoC_Execution_Plan.md)
 
 ## Documentation Map
 
@@ -23,6 +26,7 @@ docs/
   03_software-design/      APIs, data models, wallets, AI agent design
   04_security-operations/  Security, access, DevOps, environments
   05_delivery/             Test plan, demo runbook, implementation backlog
+  superpowers/plans/       Agent-ready implementation plans
 ```
 
 ## PoC Baseline

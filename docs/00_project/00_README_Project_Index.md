@@ -310,3 +310,18 @@ The PoC is technically successful when an independently operated buyer applicati
 ## 12. Next document
 
 See `01_Project_Build_Plan.md` for the practical build plan, environments, accounts, subscriptions, inputs and implementation sequence.
+
+---
+
+## 13. Current Context Addendum
+
+The project is now explicitly grounded in Project Aamhi's rural solid waste management context and the opportunity to create verifiable, quantity-bounded OBP-ready recovery claims.
+
+Read these companion documents before implementation:
+
+- `02_Aamhi_Rural_SWM_and_OBP_Context.md`
+- `03_Context_Availability_and_Simulation_Strategy.md`
+- `../05_delivery/20_End_to_End_PoC_Execution_Plan.md`
+- `../superpowers/plans/2026-09-16-finternet-poc-end-to-end.md`
+
+Important boundary: the PoC may create OBP-ready evidence claims, but it must not describe them as official OBP credits, EPR certificates or government-issued claims unless an authorised integration is added.

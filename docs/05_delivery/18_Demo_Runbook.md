@@ -23,6 +23,8 @@ Use one simple transaction throughout.
 
 1,000 kg verified LDPE recovery lot.
 
+For the Aamhi-grounded demo, describe this as a rural/coastal non-biodegradable waste recovery lot from Raigad, Maharashtra. If OBP is mentioned, describe the output as an **OBP-ready evidence claim**, not an official OBP credit, unless an authorised certification or registry integration is connected.
+
 ### Seller / Originator
 
 Aamhi.
@@ -410,6 +412,8 @@ Open Ethereum explorer and show settlement transaction/events.
 Show Claim Registry / explorer.
 
 Demonstrate a processing/recovery claim linked to the root asset.
+
+For the Aamhi scenario, also show an `OBP_READY_RECOVERY_CLAIM` where the evidence package supports later certification or sponsor reporting. The UI must make clear that this is evidence-backed and quantity-bounded, but not official government/EPR/OBP credit issuance.
 
 Explain:
 

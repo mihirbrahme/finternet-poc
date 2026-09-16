@@ -339,18 +339,27 @@ Canonical JSON should be deterministically serialised before hashing.
 ```json
 {
   "claimId": "CLM-000001",
-  "type": "PROCESSING_OUTCOME",
+  "type": "OBP_READY_RECOVERY_CLAIM",
   "assetId": "RWA-RAI-2026-000001",
   "tokenId": "10001",
   "sourceAttestationIds": ["ATT-000123"],
-  "issuerParticipantId": "ORG-RECYCLER-001",
-  "holderParticipantId": "ORG-BUYER-001",
+  "issuerParticipantId": "ORG-AAMHI-001",
+  "holderParticipantId": "ORG-SPONSOR-001",
   "quantity": 982,
   "unit": "kg",
+  "claimBasis": {
+    "obpRiskCategory": "POTENTIAL_OBP",
+    "originDistrict": "Raigad",
+    "originState": "Maharashtra",
+    "isOfficialCredit": false,
+    "certificationRegistry": null
+  },
   "status": "ACTIVE",
   "externalReference": null
 }
 ```
+
+For OBP and EPR-adjacent claims, `isOfficialCredit` must be `false` unless the PoC is integrated with an authorised certification, registry or regulatory system. The first PoC creates OBP-ready evidence claims, not official OBP credits.
 
 Allowed statuses:
 

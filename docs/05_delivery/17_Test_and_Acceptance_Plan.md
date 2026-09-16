@@ -302,6 +302,17 @@ Attempt to reuse a consumed claim.
 
 **Pass:** rejected.
 
+### ATT-07 - OBP-Ready Claim Boundary
+
+Create an `OBP_READY_RECOVERY_CLAIM` against the Aamhi recovery lot.
+
+**Pass:**
+
+- claim is linked to evidence and quantity;
+- claim quantity does not exceed eligible recovered quantity;
+- claim is marked as not an official OBP credit unless an authorised registry integration exists;
+- duplicate OBP-ready attribution over the same exclusive quantity is rejected.
+
 ---
 
 ## 9. Beckn Tests
