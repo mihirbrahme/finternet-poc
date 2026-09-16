@@ -55,7 +55,7 @@ Rules:
 | Packet 3 - Trusted Participant Slice | COMPLETE | 0dbaceb | Reviewed; `test:identity`, `test:schema`, `forge test`, and `git diff --check` passed after Foundry install. |
 | Packet 4 - Recovery Asset, Evidence and Verification Slice | COMPLETE | 5474a78 | Reviewed; `test:asset-evidence`, `test:identity`, `test:schema`, `forge test`, and `git diff --check` passed. |
 | Packet 5 - Tokenisation Slice | COMPLETE | 49afb48 | Reviewed; `forge test -vvv`, `test:asset-evidence`, `test:identity`, `test:schema`, `test:tokenisation`, and `git diff --check` passed. |
-| Packet 6 - Beckn Discovery Slice | NOT_STARTED |  |  |
+| Packet 6 - Beckn Discovery Slice | COMPLETE | 2805e3f | Reviewed; `test:beckn-discovery`, `test:tokenisation`, `test:asset-evidence`, `test:identity`, `test:schema`, `forge test`, and `git diff --check` passed. |
 | Packet 7 - Programmable Settlement Slice | NOT_STARTED |  |  |
 | Packet 8 - Attestation and Claims Slice | NOT_STARTED |  |  |
 | Packet 9 - Demo Harness and Acceptance Tests | NOT_STARTED |  |  |
@@ -577,27 +577,27 @@ git commit -m "feat(tokenisation): mint verified recovery assets"
 - Consumes: tokenised asset read model.
 - Produces: independent discovery and asset verification flow.
 
-- [ ] **Step 1: Define catalogue mapping test**
+- [x] **Step 1: Define catalogue mapping test**
 
 Verify `assetId`, `tokenId`, `sellerParticipantId`, material, quantity and credential references appear in Beckn-shaped resource payload.
 
-- [ ] **Step 2: Implement provider adapter**
+- [x] **Step 2: Implement provider adapter**
 
 Expose catalog resource for available tokenised Aamhi asset.
 
-- [ ] **Step 3: Implement discovery sandbox**
+- [x] **Step 3: Implement discovery sandbox**
 
 Accept discovery intent and return matching provider resources.
 
-- [ ] **Step 4: Implement consumer adapter**
+- [x] **Step 4: Implement consumer adapter**
 
 Buyer Console calls consumer adapter, not Aamhi's internal asset API.
 
-- [ ] **Step 5: Add chain-state verification before selection**
+- [x] **Step 5: Add chain-state verification before selection**
 
 Buyer Console must check token balance and lock state before allowing selection.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add beckn apps/buyer-console tests/end-to-end
