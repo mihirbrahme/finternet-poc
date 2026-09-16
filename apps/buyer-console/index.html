@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Finternet Buyer Console</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Independent Buyer Console</p>
+          <h1>Beckn asset discovery</h1>
+        </div>
+        <div class="mode">Beckn: SANDBOX_ADAPTER</div>
+      </header>
+
+      <section class="band">
+        <div class="intent">
+          <h2>Discovery Intent</h2>
+          <dl>
+            <div><dt>Material</dt><dd>PLASTIC-LDPE</dd></div>
+            <div><dt>Region</dt><dd>Raigad, Maharashtra</dd></div>
+            <div><dt>Minimum quantity</dt><dd>500 kg</dd></div>
+            <div><dt>Trust filter</dt><dd>Credentialled originator required</dd></div>
+          </dl>
+        </div>
+
+        <article class="result">
+          <div class="result-header">
+            <div>
+              <p class="eyebrow">BECKN-RWA-RAI-2026-000001</p>
+              <h2>Verified LDPE Recovery Lot</h2>
+            </div>
+            <span class="status">Available</span>
+          </div>
+
+          <div class="grid">
+            <div>
+              <h3>Catalogue Resource</h3>
+              <dl>
+                <div><dt>Asset ID</dt><dd>RWA-RAI-2026-000001</dd></div>
+                <div><dt>Token ID</dt><dd>13653181654073811839412956159143577174351971225610535796116340564408590798707</dd></div>
+                <div><dt>Seller</dt><dd>ORG-AAMHI-001</dd></div>
+                <div><dt>Material</dt><dd>PLASTIC-LDPE</dd></div>
+                <div><dt>Catalogue quantity</dt><dd>900 kg</dd></div>
+              </dl>
+            </div>
+
+            <div>
+              <h3>Originator Trust</h3>
+              <dl>
+                <div><dt>DID</dt><dd>did:web:finternet-poc.local:participants:ORG-AAMHI-001</dd></div>
+                <div><dt>Status</dt><dd>ACTIVE</dd></div>
+                <div><dt>Credential</dt><dd>VC-ORIGINATOR-000001</dd></div>
+                <div><dt>Verification</dt><dd>ATT-000001</dd></div>
+              </dl>
+            </div>
+
+            <div>
+              <h3>Indexed Token State</h3>
+              <dl>
+                <div><dt>Holder balance</dt><dd>1,000 kg</dd></div>
+                <div><dt>Locked</dt><dd>350 kg</dd></div>
+                <div><dt>Live availability</dt><dd>650 kg</dd></div>
+                <div><dt>State source</dt><dd>Ethereum/indexer wins over catalogue</dd></div>
+              </dl>
+            </div>
+
+            <div>
+              <h3>Selection</h3>
+              <p class="selection-copy">Selectable quantity is capped at 650 kg because live token availability is lower than the catalogue quantity.</p>
+              <button disabled>Select asset</button>
+              <p class="placeholder">Disabled until Packet 7 settlement exists.</p>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
