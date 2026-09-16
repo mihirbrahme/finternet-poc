@@ -50,7 +50,7 @@ Rules:
 
 | Packet | Status | Commit | Notes |
 |---|---|---|---|
-| Packet 1 - Context Pack and Repository Harness | REVIEW |  | Packet 1 harness implemented locally for review; no commit yet by instruction. |
+| Packet 1 - Context Pack and Repository Harness | COMPLETE | 85545e9 | Reviewed; `docker compose config` and `git diff --check` passed. |
 | Packet 2 - Canonical Schemas and Golden Sample Data | NOT_STARTED |  |  |
 | Packet 3 - Trusted Participant Slice | NOT_STARTED |  |  |
 | Packet 4 - Recovery Asset, Evidence and Verification Slice | NOT_STARTED |  |  |
@@ -289,7 +289,7 @@ git status --short
 
 Expected: only intended documentation and harness files are changed.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add README.md docs/00_project docs/05_delivery docs/superpowers docker-compose.yml deployment/environments/local samples/aamhi-demo
