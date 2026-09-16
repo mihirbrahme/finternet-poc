@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://finternet-poc.local/schemas/recovery-asset.schema.json",
+  "title": "Finternet Recovery Asset",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "assetId",
+    "originatorParticipantId",
+    "materialCode",
+    "quantity",
+    "origin",
+    "collectionContext",
+    "quality",
+    "custody",
+    "verificationStatus",
+    "lifecycleStatus",
+    "evidenceManifestId",
+    "createdAt"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "assetId": {
+      "type": "string",
+      "pattern": "^RWA-[A-Z0-9]{3}-[0-9]{4}-[0-9]{6}$"
+    },
+    "originatorParticipantId": {
+      "type": "string",
+      "pattern": "^ORG-[A-Z0-9-]+-[0-9]{3}$"
+    },
+    "materialCode": {
+      "type": "string",
+      "pattern": "^[A-Z]+-[A-Z0-9-]+$"
+    },
+    "quantity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["estimated", "verified", "unit"],
+      "properties": {
+        "estimated": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "verified": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "unit": {
+          "const": "kg"
+        }
+      }
+    },
+    "origin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["country", "state", "district"],
+      "properties": {
+        "country": {
+          "const": "IN"
+        },
+        "state": {
+          "const": "Maharashtra"
+        },
+        "district": {
+          "const": "Raigad"
+        },
+        "locationReference": {
+          "type": "string"
+        }
+      }
+    },
+    "collectionContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["villageOrRoute", "collectionType"],
+      "properties": {
+        "villageOrRoute": {
+          "type": "string",
+          "minLength": 1
+        },
+        "collectionType": {
+          "type": "string",
+          "enum": ["RURAL_SWM", "COASTAL_CLEANUP", "MANGROVE_CLEANUP", "AGGREGATION_CENTER"]
+        },
+        "obpRiskContext": {
+          "type": "string",
+          "enum": ["COASTAL_COMMUNITY", "WATERWAY_ADJACENT", "POTENTIAL_OBP", "NOT_ASSESSED"]
+        }
+      }
+    },
+    "quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["grade", "contaminationPercent"],
+      "properties": {
+        "grade": {
+          "type": "string",
+          "enum": ["UNSORTED", "SORTED", "BALED", "PROCESSOR_ACCEPTED"]
+        },
+        "contaminationPercent": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    },
+    "custody": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["currentParticipantId", "facilityReference"],
+      "properties": {
+        "currentParticipantId": {
+          "type": "string",
+          "pattern": "^ORG-[A-Z0-9-]+-[0-9]{3}$"
+        },
+        "facilityReference": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "verificationStatus": {
+      "type": "string",
+      "enum": ["DRAFT", "EVIDENCE_SUBMITTED", "VERIFIED", "REJECTED", "DISPUTED"]
+    },
+    "lifecycleStatus": {
+      "type": "string",
+      "enum": ["CREATED", "VERIFIED", "TOKENISED", "PARTIALLY_SETTLED", "SETTLED", "RETIRED"]
+    },
+    "evidenceManifestId": {
+      "type": "string",
+      "pattern": "^EVM-[0-9]{6}$"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

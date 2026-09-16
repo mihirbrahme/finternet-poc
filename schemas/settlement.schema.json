@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://finternet-poc.local/schemas/settlement.schema.json",
+  "title": "Finternet Settlement",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "settlementId",
+    "contractId",
+    "asset",
+    "payment",
+    "sellerParticipantId",
+    "buyerParticipantId",
+    "type",
+    "status",
+    "expiry"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "settlementId": {
+      "type": "string",
+      "pattern": "^STL-[0-9]{6}$"
+    },
+    "contractId": {
+      "type": "string",
+      "pattern": "^CTR-[0-9]{6}$"
+    },
+    "ethereumSettlementKey": {
+      "type": "string",
+      "pattern": "^0x[a-fA-F0-9]{64}$"
+    },
+    "asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assetId", "tokenId", "contractAddress", "quantity", "unit"],
+      "properties": {
+        "assetId": {
+          "type": "string",
+          "pattern": "^RWA-[A-Z0-9]{3}-[0-9]{4}-[0-9]{6}$"
+        },
+        "tokenId": {
+          "type": "string",
+          "pattern": "^[0-9]+$"
+        },
+        "contractAddress": {
+          "type": "string",
+          "pattern": "^0x[a-fA-F0-9]{40}$"
+        },
+        "quantity": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "unit": {
+          "const": "kg"
+        }
+      }
+    },
+    "payment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["token", "tokenAddress", "maximumAmount", "unitPrice"],
+      "properties": {
+        "token": {
+          "const": "dINR"
+        },
+        "tokenAddress": {
+          "type": "string",
+          "pattern": "^0x[a-fA-F0-9]{40}$"
+        },
+        "maximumAmount": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "unitPrice": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "sellerParticipantId": {
+      "type": "string",
+      "pattern": "^ORG-[A-Z0-9-]+-[0-9]{3}$"
+    },
+    "buyerParticipantId": {
+      "type": "string",
+      "pattern": "^ORG-[A-Z0-9-]+-[0-9]{3}$"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["FIXED_DVP", "QUANTITY_ADJUSTED_DVP"]
+    },
+    "requiredAttestationTypes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": ["RECEIPT_CONFIRMED", "QUALITY_ACCEPTED", "PROCESSING_CONFIRMED"]
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "CREATED",
+        "FUNDED",
+        "ASSET_LOCKED",
+        "ASSET_LOCKED_AND_FUNDED",
+        "READY",
+        "SETTLED",
+        "REFUNDED",
+        "EXPIRED",
+        "DISPUTED"
+      ]
+    },
+    "expiry": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "dependencyMode": {
+      "type": "string",
+      "enum": ["LOCAL_MOCK", "SANDBOX_ADAPTER", "TESTNET_REAL", "PRODUCTION_LIKE", "NOT_CONNECTED"]
+    }
+  }
+}

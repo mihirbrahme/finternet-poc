@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "1.0",
+  "assetId": "RWA-RAI-2026-000001",
+  "originatorParticipantId": "ORG-AAMHI-001",
+  "materialCode": "PLASTIC-LDPE",
+  "quantity": {
+    "estimated": 1025,
+    "verified": 1000,
+    "unit": "kg"
+  },
+  "origin": {
+    "country": "IN",
+    "state": "Maharashtra",
+    "district": "Raigad",
+    "locationReference": "RAI-NANDGAON-COASTAL-ROUTE"
+  },
+  "collectionContext": {
+    "villageOrRoute": "Nandgaon coastal route",
+    "collectionType": "RURAL_SWM",
+    "obpRiskContext": "COASTAL_COMMUNITY"
+  },
+  "quality": {
+    "grade": "SORTED",
+    "contaminationPercent": 4.2
+  },
+  "custody": {
+    "currentParticipantId": "ORG-AAMHI-001",
+    "facilityReference": "AAMHI-RAIGAD-AGGREGATION-01"
+  },
+  "verificationStatus": "VERIFIED",
+  "lifecycleStatus": "VERIFIED",
+  "evidenceManifestId": "EVM-000001",
+  "createdAt": "2026-10-01T09:00:00Z"
+}

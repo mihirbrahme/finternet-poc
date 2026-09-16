@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://finternet-poc.local/schemas/claim.schema.json",
+  "title": "Finternet Claim",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "claimId",
+    "type",
+    "assetId",
+    "sourceAttestationIds",
+    "issuerParticipantId",
+    "holderParticipantId",
+    "quantity",
+    "unit",
+    "claimBasis",
+    "status",
+    "issuedAt"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "claimId": {
+      "type": "string",
+      "pattern": "^CLM-[0-9]{6}$"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "RECOVERY_COLLECTED",
+        "ASSET_VERIFIED",
+        "RECEIPT_CONFIRMED",
+        "PROCESSING_CONFIRMED",
+        "OBP_READY_RECOVERY_CLAIM",
+        "SPONSOR_ATTRIBUTION",
+        "EPR_REFERENCE"
+      ]
+    },
+    "assetId": {
+      "type": "string",
+      "pattern": "^RWA-[A-Z0-9]{3}-[0-9]{4}-[0-9]{6}$"
+    },
+    "tokenId": {
+      "type": "string",
+      "pattern": "^[0-9]+$"
+    },
+    "sourceAttestationIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^ATT-[0-9]{6}$"
+      }
+    },
+    "issuerParticipantId": {
+      "type": "string",
+      "pattern": "^ORG-[A-Z0-9-]+-[0-9]{3}$"
+    },
+    "holderParticipantId": {
+      "type": "string",
+      "pattern": "^ORG-[A-Z0-9-]+-[0-9]{3}$"
+    },
+    "quantity": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "unit": {
+      "const": "kg"
+    },
+    "claimBasis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["isOfficialCredit"],
+      "properties": {
+        "obpRiskCategory": {
+          "type": "string",
+          "enum": ["COASTAL_COMMUNITY", "WATERWAY_ADJACENT", "POTENTIAL_OBP", "NOT_ASSESSED"]
+        },
+        "originDistrict": {
+          "type": "string"
+        },
+        "originState": {
+          "type": "string"
+        },
+        "isOfficialCredit": {
+          "type": "boolean"
+        },
+        "certificationRegistry": {
+          "type": ["string", "null"]
+        },
+        "eprReference": {
+          "type": ["string", "null"]
+        },
+        "boundaryStatement": {
+          "type": "string"
+        }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["PROPOSED", "ACTIVE", "CONSUMED", "CLOSED", "REVOKED", "DISPUTED", "REJECTED"]
+    },
+    "externalReference": {
+      "type": ["string", "null"]
+    },
+    "issuedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "enum": ["OBP_READY_RECOVERY_CLAIM", "EPR_REFERENCE"]
+          }
+        },
+        "required": ["type"]
+      },
+      "then": {
+        "properties": {
+          "claimBasis": {
+            "type": "object",
+            "properties": {
+              "obpRiskCategory": true,
+              "originDistrict": true,
+              "originState": true,
+              "isOfficialCredit": true,
+              "certificationRegistry": true,
+              "eprReference": true,
+              "boundaryStatement": true
+            },
+            "required": ["isOfficialCredit", "boundaryStatement"]
+          }
+        }
+      }
+    }
+  ]
+}

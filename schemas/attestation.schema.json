@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://finternet-poc.local/schemas/attestation.schema.json",
+  "title": "Finternet Attestation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "attestationId",
+    "type",
+    "assetId",
+    "attestorParticipantId",
+    "attestorDid",
+    "attestorAccount",
+    "quantity",
+    "unit",
+    "eventTime",
+    "evidenceManifestId",
+    "evidenceHash",
+    "status"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "attestationId": {
+      "type": "string",
+      "pattern": "^ATT-[0-9]{6}$"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "RECOVERY_VERIFIED",
+        "WEIGHT_VERIFIED",
+        "DISPATCH_CONFIRMED",
+        "RECEIPT_CONFIRMED",
+        "QUALITY_ACCEPTED",
+        "PROCESSING_CONFIRMED",
+        "REGULATORY_REFERENCE_CONFIRMED",
+        "SPONSOR_OUTCOME_CONFIRMED"
+      ]
+    },
+    "assetId": {
+      "type": "string",
+      "pattern": "^RWA-[A-Z0-9]{3}-[0-9]{4}-[0-9]{6}$"
+    },
+    "tokenId": {
+      "type": "string",
+      "pattern": "^[0-9]+$"
+    },
+    "settlementId": {
+      "type": "string",
+      "pattern": "^STL-[0-9]{6}$"
+    },
+    "attestorParticipantId": {
+      "type": "string",
+      "pattern": "^ORG-[A-Z0-9-]+-[0-9]{3}$"
+    },
+    "attestorDid": {
+      "type": "string",
+      "pattern": "^did:web:.+"
+    },
+    "attestorAccount": {
+      "type": "string",
+      "pattern": "^0x[a-fA-F0-9]{40}$"
+    },
+    "quantity": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "unit": {
+      "const": "kg"
+    },
+    "eventTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "evidenceManifestId": {
+      "type": "string",
+      "pattern": "^EVM-[0-9]{6}$"
+    },
+    "evidenceHash": {
+      "type": "string",
+      "pattern": "^0x[a-fA-F0-9]{64}$"
+    },
+    "credentialId": {
+      "type": "string",
+      "pattern": "^VC-[A-Z0-9-]+-[0-9]{6}$"
+    },
+    "signature": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["ACTIVE", "REVOKED", "DISPUTED"]
+    },
+    "chain": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dependencyMode"],
+      "properties": {
+        "dependencyMode": {
+          "type": "string",
+          "enum": ["LOCAL_MOCK", "SANDBOX_ADAPTER", "TESTNET_REAL", "PRODUCTION_LIKE", "NOT_CONNECTED"]
+        },
+        "txHash": {
+          "type": "string",
+          "pattern": "^0x[a-fA-F0-9]{64}$"
+        },
+        "blockNumber": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

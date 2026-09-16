@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://finternet-poc.local/schemas/participant.schema.json",
+  "title": "Finternet Participant",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "participantId",
+    "legalName",
+    "displayName",
+    "organisationType",
+    "jurisdiction",
+    "did",
+    "status"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "participantId": {
+      "type": "string",
+      "pattern": "^ORG-[A-Z0-9-]+-[0-9]{3}$"
+    },
+    "legalName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "displayName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "organisationType": {
+      "type": "string",
+      "enum": [
+        "NETWORK_ADMIN",
+        "RECOVERY_ORIGINATOR",
+        "BUYER",
+        "PROCESSOR",
+        "VERIFIER",
+        "SPONSOR",
+        "AI_AGENT_SERVICE"
+      ]
+    },
+    "registrationReference": {
+      "type": "string"
+    },
+    "jurisdiction": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$"
+    },
+    "did": {
+      "type": "string",
+      "pattern": "^did:web:.+"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["ACTIVE", "SUSPENDED", "REVOKED"]
+    },
+    "roles": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "NETWORK_ADMIN",
+          "RECOVERY_ORIGINATOR",
+          "BUYER",
+          "PROCESSOR",
+          "VERIFIER",
+          "SPONSOR",
+          "AI_AGENT_SERVICE"
+        ]
+      }
+    },
+    "smartAccounts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["chainId", "accountAddress", "accountType", "purpose", "status"],
+        "properties": {
+          "chainId": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "accountAddress": {
+            "type": "string",
+            "pattern": "^0x[a-fA-F0-9]{40}$"
+          },
+          "accountType": {
+            "type": "string",
+            "enum": ["CONTROLLED_TEST_WALLET", "ERC4337_SMART_ACCOUNT"]
+          },
+          "purpose": {
+            "type": "string",
+            "enum": ["PRIMARY_TRANSACTION_ACCOUNT", "ATTESTATION_ACCOUNT", "SERVICE_ACCOUNT"]
+          },
+          "status": {
+            "type": "string",
+            "enum": ["ACTIVE", "INACTIVE", "REVOKED"]
+          }
+        }
+      }
+    },
+    "credentialIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^VC-[A-Z0-9-]+-[0-9]{6}$"
+      }
+    },
+    "dependencyMode": {
+      "type": "string",
+      "enum": ["LOCAL_MOCK", "SANDBOX_ADAPTER", "TESTNET_REAL", "PRODUCTION_LIKE", "NOT_CONNECTED"]
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

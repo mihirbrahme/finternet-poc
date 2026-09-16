@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "1.0",
+  "manifestId": "EVM-000001",
+  "assetId": "RWA-RAI-2026-000001",
+  "evidence": [
+    {
+      "schemaVersion": "1.0",
+      "evidenceId": "EVD-000001",
+      "assetId": "RWA-RAI-2026-000001",
+      "type": "COLLECTION_PHOTO",
+      "description": "Sample photo record for material collected on the Nandgaon coastal route.",
+      "contentHashAlgorithm": "SHA-256",
+      "contentHash": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "mimeType": "image/jpeg",
+      "storageClass": "LOCAL_SAMPLE",
+      "storageReference": "samples/aamhi-demo/evidence/collection-photo-001.jpg",
+      "sourceParticipantId": "ORG-AAMHI-001",
+      "capturedAt": "2026-10-01T06:30:00Z",
+      "classification": "CONFIDENTIAL"
+    },
+    {
+      "schemaVersion": "1.0",
+      "evidenceId": "EVD-000002",
+      "assetId": "RWA-RAI-2026-000001",
+      "type": "SEGREGATION_PHOTO",
+      "description": "Sample segregation-stage evidence for sorted LDPE.",
+      "contentHashAlgorithm": "SHA-256",
+      "contentHash": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "mimeType": "image/jpeg",
+      "storageClass": "LOCAL_SAMPLE",
+      "storageReference": "samples/aamhi-demo/evidence/segregation-photo-001.jpg",
+      "sourceParticipantId": "ORG-AAMHI-001",
+      "capturedAt": "2026-10-01T07:45:00Z",
+      "classification": "CONFIDENTIAL"
+    },
+    {
+      "schemaVersion": "1.0",
+      "evidenceId": "EVD-000003",
+      "assetId": "RWA-RAI-2026-000001",
+      "type": "WEIGHMENT_SLIP",
+      "description": "Sample weighment record showing verified quantity of 1,000 kg.",
+      "contentHashAlgorithm": "SHA-256",
+      "contentHash": "0xcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "mimeType": "application/pdf",
+      "storageClass": "LOCAL_SAMPLE",
+      "storageReference": "samples/aamhi-demo/evidence/weighment-slip-001.pdf",
+      "sourceParticipantId": "ORG-AAMHI-001",
+      "capturedAt": "2026-10-01T08:15:00Z",
+      "classification": "CONFIDENTIAL"
+    },
+    {
+      "schemaVersion": "1.0",
+      "evidenceId": "EVD-000004",
+      "assetId": "RWA-RAI-2026-000001",
+      "type": "OBP_ELIGIBILITY_EVIDENCE",
+      "description": "Sample coastal context evidence supporting OBP-ready eligibility review.",
+      "contentHashAlgorithm": "SHA-256",
+      "contentHash": "0xdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "mimeType": "application/json",
+      "storageClass": "LOCAL_SAMPLE",
+      "storageReference": "samples/aamhi-demo/evidence/obp-context-001.json",
+      "sourceParticipantId": "ORG-AAMHI-001",
+      "capturedAt": "2026-10-01T08:30:00Z",
+      "classification": "RESTRICTED"
+    }
+  ],
+  "createdAt": "2026-10-01T09:05:00Z",
+  "manifestHashAlgorithm": "SHA-256-CANONICAL-JSON",
+  "manifestHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+  "dependencyMode": "LOCAL_MOCK"
+}

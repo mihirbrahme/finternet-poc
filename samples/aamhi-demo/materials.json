@@ -1,0 +1,31 @@
+[
+  {
+    "schemaVersion": "1.0",
+    "materialCode": "PLASTIC-LDPE",
+    "materialName": "Low-density polyethylene",
+    "category": "PLASTIC",
+    "description": "Sorted LDPE recovered through Project Aamhi rural/coastal solid waste management operations.",
+    "defaultUnit": "kg",
+    "tokenUnit": "kg",
+    "active": true,
+    "obpEligible": true,
+    "regulatoryReferences": [
+      {
+        "type": "INTERNAL_GUIDANCE",
+        "reference": "Aamhi demo material stream for OBP-ready evidence claim validation"
+      }
+    ]
+  },
+  {
+    "schemaVersion": "1.0",
+    "materialCode": "PLASTIC-PET",
+    "materialName": "Polyethylene terephthalate",
+    "category": "PLASTIC",
+    "description": "PET bottle stream reserved for later Aamhi demo variants.",
+    "defaultUnit": "kg",
+    "tokenUnit": "kg",
+    "active": true,
+    "obpEligible": true,
+    "regulatoryReferences": []
+  }
+]

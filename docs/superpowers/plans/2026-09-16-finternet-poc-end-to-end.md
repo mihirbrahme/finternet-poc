@@ -51,7 +51,7 @@ Rules:
 | Packet | Status | Commit | Notes |
 |---|---|---|---|
 | Packet 1 - Context Pack and Repository Harness | COMPLETE | 85545e9 | Reviewed; `docker compose config` and `git diff --check` passed. |
-| Packet 2 - Canonical Schemas and Golden Sample Data | NOT_STARTED |  |  |
+| Packet 2 - Canonical Schemas and Golden Sample Data | REVIEW |  | Schemas, Aamhi samples and validation test added; commit pending main-agent review. |
 | Packet 3 - Trusted Participant Slice | NOT_STARTED |  |  |
 | Packet 4 - Recovery Asset, Evidence and Verification Slice | NOT_STARTED |  |  |
 | Packet 5 - Tokenisation Slice | NOT_STARTED |  |  |
@@ -320,7 +320,7 @@ git commit -m "docs: add aamhi context and poc execution plan"
 - Consumes: identifier rules from `docs/03_software-design/10_Data_Model_and_Schemas.md`.
 - Produces: schema contracts used by APIs, apps, contracts metadata and AI tools.
 
-- [ ] **Step 1: Define participant schema**
+- [x] **Step 1: Define participant schema**
 
 Include required fields:
 
@@ -334,11 +334,11 @@ Allow `organisationType` values:
 ["NETWORK_ADMIN", "RECOVERY_ORIGINATOR", "BUYER", "PROCESSOR", "VERIFIER", "SPONSOR", "AI_AGENT_SERVICE"]
 ```
 
-- [ ] **Step 2: Define material schema**
+- [x] **Step 2: Define material schema**
 
 Require `materialCode`, `materialName`, `category`, `defaultUnit`, `tokenUnit`, `active`.
 
-- [ ] **Step 3: Define recovery asset schema**
+- [x] **Step 3: Define recovery asset schema**
 
 Require Aamhi-relevant fields:
 
@@ -354,7 +354,7 @@ Require Aamhi-relevant fields:
 }
 ```
 
-- [ ] **Step 4: Define claim schema**
+- [x] **Step 4: Define claim schema**
 
 Include claim types:
 
@@ -364,11 +364,11 @@ Include claim types:
 
 Require `isOfficialCredit` for OBP/EPR-related claims, with sample value `false`.
 
-- [ ] **Step 5: Add golden samples**
+- [x] **Step 5: Add golden samples**
 
 Create sample JSON files for Aamhi, buyer, processor, verifier, LDPE material, 1,000 kg recovery asset, evidence manifest and OBP-ready claim.
 
-- [ ] **Step 6: Add schema validation test**
+- [x] **Step 6: Add schema validation test**
 
 Create a test that loads every sample and validates it against the matching schema. Use the repository's selected JS test runner when chosen; if the runner is not selected yet, document this test contract in `tests/schema/validate-samples.test.ts` with executable structure and add the runner in Packet 3.
 

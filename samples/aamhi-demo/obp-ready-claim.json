@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1.0",
+  "claimId": "CLM-000001",
+  "type": "OBP_READY_RECOVERY_CLAIM",
+  "assetId": "RWA-RAI-2026-000001",
+  "tokenId": "10001",
+  "sourceAttestationIds": ["ATT-000001"],
+  "issuerParticipantId": "ORG-AAMHI-001",
+  "holderParticipantId": "ORG-BUYER-001",
+  "quantity": 1000,
+  "unit": "kg",
+  "claimBasis": {
+    "obpRiskCategory": "COASTAL_COMMUNITY",
+    "originDistrict": "Raigad",
+    "originState": "Maharashtra",
+    "isOfficialCredit": false,
+    "certificationRegistry": null,
+    "eprReference": null,
+    "boundaryStatement": "This is an OBP-ready evidence claim for PoC diligence and impact reporting. It is not an official OBP credit, EPR certificate or government-issued claim."
+  },
+  "status": "ACTIVE",
+  "externalReference": null,
+  "issuedAt": "2026-10-01T10:00:00Z"
+}

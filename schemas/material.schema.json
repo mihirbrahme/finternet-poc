@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://finternet-poc.local/schemas/material.schema.json",
+  "title": "Finternet Material Master",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "materialCode",
+    "materialName",
+    "category",
+    "defaultUnit",
+    "tokenUnit",
+    "active"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "materialCode": {
+      "type": "string",
+      "pattern": "^[A-Z]+-[A-Z0-9-]+$"
+    },
+    "materialName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "category": {
+      "type": "string",
+      "enum": ["PLASTIC", "TEXTILE", "GLASS", "METAL", "RUBBER", "MIXED_NON_BIODEGRADABLE"]
+    },
+    "description": {
+      "type": "string"
+    },
+    "defaultUnit": {
+      "type": "string",
+      "enum": ["kg"]
+    },
+    "tokenUnit": {
+      "type": "string",
+      "enum": ["kg"]
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "obpEligible": {
+      "type": "boolean"
+    },
+    "regulatoryReferences": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["type", "reference"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["EPR_REFERENCE", "OBP_REFERENCE", "INTERNAL_GUIDANCE"]
+          },
+          "reference": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,146 @@
+[
+  {
+    "schemaVersion": "1.0",
+    "participantId": "ORG-SUMA-001",
+    "legalName": "Suma Soft Private Limited",
+    "displayName": "Suma Network Admin",
+    "organisationType": "NETWORK_ADMIN",
+    "registrationReference": "LOCAL-DEMO-SUMA",
+    "jurisdiction": "IN",
+    "did": "did:web:finternet-poc.local:participants:ORG-SUMA-001",
+    "status": "ACTIVE",
+    "roles": ["NETWORK_ADMIN"],
+    "smartAccounts": [
+      {
+        "chainId": 31337,
+        "accountAddress": "0x1111111111111111111111111111111111111111",
+        "accountType": "CONTROLLED_TEST_WALLET",
+        "purpose": "PRIMARY_TRANSACTION_ACCOUNT",
+        "status": "ACTIVE"
+      }
+    ],
+    "credentialIds": ["VC-NETWORK-ADMIN-000001"],
+    "dependencyMode": "LOCAL_MOCK",
+    "createdAt": "2026-10-01T00:00:00Z"
+  },
+  {
+    "schemaVersion": "1.0",
+    "participantId": "ORG-AAMHI-001",
+    "legalName": "Aamhi Swaach Charitable Foundation",
+    "displayName": "Project Aamhi",
+    "organisationType": "RECOVERY_ORIGINATOR",
+    "registrationReference": "LOCAL-DEMO-AAMHI",
+    "jurisdiction": "IN",
+    "did": "did:web:finternet-poc.local:participants:ORG-AAMHI-001",
+    "status": "ACTIVE",
+    "roles": ["RECOVERY_ORIGINATOR"],
+    "smartAccounts": [
+      {
+        "chainId": 31337,
+        "accountAddress": "0x2222222222222222222222222222222222222222",
+        "accountType": "CONTROLLED_TEST_WALLET",
+        "purpose": "PRIMARY_TRANSACTION_ACCOUNT",
+        "status": "ACTIVE"
+      }
+    ],
+    "credentialIds": ["VC-ORIGINATOR-000001"],
+    "dependencyMode": "LOCAL_MOCK",
+    "createdAt": "2026-10-01T00:00:00Z"
+  },
+  {
+    "schemaVersion": "1.0",
+    "participantId": "ORG-BUYER-001",
+    "legalName": "Demo Circular Materials Buyer Private Limited",
+    "displayName": "Demo Buyer",
+    "organisationType": "BUYER",
+    "registrationReference": "LOCAL-DEMO-BUYER",
+    "jurisdiction": "IN",
+    "did": "did:web:finternet-poc.local:participants:ORG-BUYER-001",
+    "status": "ACTIVE",
+    "roles": ["BUYER"],
+    "smartAccounts": [
+      {
+        "chainId": 31337,
+        "accountAddress": "0x3333333333333333333333333333333333333333",
+        "accountType": "CONTROLLED_TEST_WALLET",
+        "purpose": "PRIMARY_TRANSACTION_ACCOUNT",
+        "status": "ACTIVE"
+      }
+    ],
+    "credentialIds": ["VC-BUYER-000001"],
+    "dependencyMode": "LOCAL_MOCK",
+    "createdAt": "2026-10-01T00:00:00Z"
+  },
+  {
+    "schemaVersion": "1.0",
+    "participantId": "ORG-PROCESSOR-001",
+    "legalName": "Demo Plastics Processor Private Limited",
+    "displayName": "Demo Processor",
+    "organisationType": "PROCESSOR",
+    "registrationReference": "LOCAL-DEMO-PROCESSOR",
+    "jurisdiction": "IN",
+    "did": "did:web:finternet-poc.local:participants:ORG-PROCESSOR-001",
+    "status": "ACTIVE",
+    "roles": ["PROCESSOR"],
+    "smartAccounts": [
+      {
+        "chainId": 31337,
+        "accountAddress": "0x4444444444444444444444444444444444444444",
+        "accountType": "CONTROLLED_TEST_WALLET",
+        "purpose": "ATTESTATION_ACCOUNT",
+        "status": "ACTIVE"
+      }
+    ],
+    "credentialIds": ["VC-PROCESSOR-000001"],
+    "dependencyMode": "LOCAL_MOCK",
+    "createdAt": "2026-10-01T00:00:00Z"
+  },
+  {
+    "schemaVersion": "1.0",
+    "participantId": "ORG-VERIFIER-001",
+    "legalName": "Demo Recovery Verification Partner",
+    "displayName": "Demo Verifier",
+    "organisationType": "VERIFIER",
+    "registrationReference": "LOCAL-DEMO-VERIFIER",
+    "jurisdiction": "IN",
+    "did": "did:web:finternet-poc.local:participants:ORG-VERIFIER-001",
+    "status": "ACTIVE",
+    "roles": ["VERIFIER"],
+    "smartAccounts": [
+      {
+        "chainId": 31337,
+        "accountAddress": "0x5555555555555555555555555555555555555555",
+        "accountType": "CONTROLLED_TEST_WALLET",
+        "purpose": "ATTESTATION_ACCOUNT",
+        "status": "ACTIVE"
+      }
+    ],
+    "credentialIds": ["VC-VERIFIER-000001"],
+    "dependencyMode": "LOCAL_MOCK",
+    "createdAt": "2026-10-01T00:00:00Z"
+  },
+  {
+    "schemaVersion": "1.0",
+    "participantId": "ORG-AGENT-001",
+    "legalName": "Demo Buyer Agent Service",
+    "displayName": "Buyer Agent",
+    "organisationType": "AI_AGENT_SERVICE",
+    "registrationReference": "LOCAL-DEMO-AGENT",
+    "jurisdiction": "IN",
+    "did": "did:web:finternet-poc.local:participants:ORG-AGENT-001",
+    "status": "ACTIVE",
+    "roles": ["AI_AGENT_SERVICE"],
+    "smartAccounts": [
+      {
+        "chainId": 31337,
+        "accountAddress": "0x6666666666666666666666666666666666666666",
+        "accountType": "CONTROLLED_TEST_WALLET",
+        "purpose": "SERVICE_ACCOUNT",
+        "status": "ACTIVE"
+      }
+    ],
+    "credentialIds": ["VC-AI-AGENT-000001"],
+    "dependencyMode": "LOCAL_MOCK",
+    "createdAt": "2026-10-01T00:00:00Z"
+  }
+]

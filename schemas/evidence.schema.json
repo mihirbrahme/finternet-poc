@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://finternet-poc.local/schemas/evidence.schema.json",
+  "title": "Finternet Evidence Item",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "evidenceId",
+    "assetId",
+    "type",
+    "contentHashAlgorithm",
+    "contentHash",
+    "mimeType",
+    "storageClass",
+    "storageReference",
+    "sourceParticipantId",
+    "capturedAt",
+    "classification"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "evidenceId": {
+      "type": "string",
+      "pattern": "^EVD-[0-9]{6}$"
+    },
+    "assetId": {
+      "type": "string",
+      "pattern": "^RWA-[A-Z0-9]{3}-[0-9]{4}-[0-9]{6}$"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "COLLECTION_PHOTO",
+        "SEGREGATION_PHOTO",
+        "WEIGHMENT_SLIP",
+        "STORAGE_RECORD",
+        "DISPATCH_RECORD",
+        "PROCESSOR_RECEIPT",
+        "OBP_ELIGIBILITY_EVIDENCE"
+      ]
+    },
+    "description": {
+      "type": "string"
+    },
+    "contentHashAlgorithm": {
+      "const": "SHA-256"
+    },
+    "contentHash": {
+      "type": "string",
+      "pattern": "^0x[a-fA-F0-9]{64}$"
+    },
+    "mimeType": {
+      "type": "string",
+      "minLength": 1
+    },
+    "storageClass": {
+      "type": "string",
+      "enum": ["PRIVATE_OBJECT_STORE", "PUBLIC_IPFS_METADATA", "LOCAL_SAMPLE"]
+    },
+    "storageReference": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sourceParticipantId": {
+      "type": "string",
+      "pattern": "^ORG-[A-Z0-9-]+-[0-9]{3}$"
+    },
+    "capturedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "classification": {
+      "type": "string",
+      "enum": ["PUBLIC_SAFE", "CONFIDENTIAL", "RESTRICTED"]
+    }
+  }
+}
