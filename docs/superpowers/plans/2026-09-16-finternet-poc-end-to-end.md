@@ -56,7 +56,7 @@ Rules:
 | Packet 4 - Recovery Asset, Evidence and Verification Slice | COMPLETE | 5474a78 | Reviewed; `test:asset-evidence`, `test:identity`, `test:schema`, `forge test`, and `git diff --check` passed. |
 | Packet 5 - Tokenisation Slice | COMPLETE | 49afb48 | Reviewed; `forge test -vvv`, `test:asset-evidence`, `test:identity`, `test:schema`, `test:tokenisation`, and `git diff --check` passed. |
 | Packet 6 - Beckn Discovery Slice | COMPLETE | 2805e3f | Reviewed; `test:beckn-discovery`, `test:tokenisation`, `test:asset-evidence`, `test:identity`, `test:schema`, `forge test`, and `git diff --check` passed. |
-| Packet 7 - Programmable Settlement Slice | NOT_STARTED |  |  |
+| Packet 7 - Programmable Settlement Slice | COMPLETE | 8ea6956 | Reviewed; `test:settlement`, `test:beckn-discovery`, `test:tokenisation`, `test:asset-evidence`, `test:identity`, `test:schema`, `forge test`, and `git diff --check` passed. |
 | Packet 8 - Attestation and Claims Slice | NOT_STARTED |  |  |
 | Packet 9 - Demo Harness and Acceptance Tests | NOT_STARTED |  |  |
 | Packet 10 - Bounded AI Agent Slice | NOT_STARTED |  |  |
@@ -621,19 +621,19 @@ git commit -m "feat(beckn): add independent asset discovery"
 - Consumes: ERC-1155 asset, dINR balance, participant eligibility and Beckn contract mapping.
 - Produces: funded and locked settlement with atomic finalisation.
 
-- [ ] **Step 1: Test dINR controlled mint**
+- [x] **Step 1: Test dINR controlled mint**
 
 Only treasury role can mint dINR to buyer.
 
-- [ ] **Step 2: Implement `DemoINR.sol`**
+- [x] **Step 2: Implement `DemoINR.sol`**
 
 Use ERC-20 style functions plus holder eligibility if configured.
 
-- [ ] **Step 3: Test atomic DvP**
+- [x] **Step 3: Test atomic DvP**
 
 Buyer funds 10,000 dINR, Aamhi locks 500 ERC-1155 units, settlement finalises both legs.
 
-- [ ] **Step 4: Implement `SettlementEngine.sol`**
+- [x] **Step 4: Implement `SettlementEngine.sol`**
 
 States:
 
@@ -647,7 +647,7 @@ REFUNDED
 EXPIRED
 ```
 
-- [ ] **Step 5: Implement settlement APIs**
+- [x] **Step 5: Implement settlement APIs**
 
 Endpoints:
 
@@ -661,11 +661,11 @@ POST /settlements/{settlementId}/refund
 GET /settlements/{settlementId}
 ```
 
-- [ ] **Step 6: Add UI flows**
+- [x] **Step 6: Add UI flows**
 
 Buyer funds dINR. Aamhi locks asset. Explorer shows lock and funding state.
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add contracts services/core-api apps/buyer-console apps/originator-console apps/explorer
