@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aamhi Originator Console</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Project Aamhi</p>
+          <h1>Originator Console</h1>
+        </div>
+        <div class="mode-grid" aria-label="Dependency modes">
+          <span>Evidence: LOCAL_MOCK</span>
+          <span>Tokenisation: NOT_CONNECTED</span>
+        </div>
+      </header>
+
+      <section class="workspace">
+        <form class="panel" aria-label="Create recovery lot">
+          <h2>Create Recovery Lot</h2>
+          <label>
+            Material
+            <select>
+              <option>PLASTIC-LDPE</option>
+              <option>PLASTIC-PET</option>
+            </select>
+          </label>
+          <label>
+            Estimated quantity
+            <input value="1000 kg" />
+          </label>
+          <label>
+            Village / route
+            <input value="Nandgaon coastal route" />
+          </label>
+          <label>
+            Collection type
+            <select>
+              <option>RURAL_SWM</option>
+              <option>COASTAL_CLEANUP</option>
+              <option>MANGROVE_CLEANUP</option>
+            </select>
+          </label>
+          <button type="button">Save Draft</button>
+        </form>
+
+        <section class="panel" aria-label="Selected lot status">
+          <h2>Selected Lot</h2>
+          <dl class="details">
+            <div><dt>Asset ID</dt><dd>RWA-RAI-2026-000001</dd></div>
+            <div><dt>Origin</dt><dd>Raigad, Maharashtra</dd></div>
+            <div><dt>Custody</dt><dd>ORG-AAMHI-001 / FAC-AAMHI-RAI-001</dd></div>
+            <div><dt>Evidence root</dt><dd>Pending manifest</dd></div>
+            <div><dt>Status</dt><dd><span class="status pending">EVIDENCE_SUBMITTED</span></dd></div>
+          </dl>
+        </section>
+
+        <section class="panel wide" aria-label="Evidence package">
+          <h2>Evidence Package</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Evidence</th>
+                <th>Type</th>
+                <th>Access</th>
+                <th>Hash</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>EVD-000001</td>
+                <td>COLLECTION_PHOTO</td>
+                <td>HASH_ONLY</td>
+                <td>0x...</td>
+              </tr>
+              <tr>
+                <td>EVD-000002</td>
+                <td>WEIGHMENT_SLIP</td>
+                <td>HASH_ONLY</td>
+                <td>0x...</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

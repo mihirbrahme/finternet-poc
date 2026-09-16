@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Verifier Console</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Verifier Workflow</p>
+          <h1>Processor / Verifier Console</h1>
+        </div>
+        <div class="mode-grid" aria-label="Dependency modes">
+          <span>VC proof: LOCAL_MOCK</span>
+          <span>Attestation registry: NOT_CONNECTED</span>
+        </div>
+      </header>
+
+      <section class="review-layout">
+        <section class="panel" aria-label="Evidence review">
+          <h2>Evidence Review</h2>
+          <dl class="details">
+            <div><dt>Asset ID</dt><dd>RWA-RAI-2026-000001</dd></div>
+            <div><dt>Manifest</dt><dd>EVM-000001</dd></div>
+            <div><dt>Evidence root</dt><dd>0x...</dd></div>
+            <div><dt>Quantity</dt><dd>1,000 kg</dd></div>
+            <div><dt>Context</dt><dd>Nandgaon coastal route, Raigad</dd></div>
+          </dl>
+        </section>
+
+        <form class="panel" aria-label="Create asset verification attestation">
+          <h2>ASSET_VERIFIED Attestation</h2>
+          <label>
+            Verifier participant
+            <input value="ORG-VERIFIER-001" />
+          </label>
+          <label>
+            Credential
+            <input value="VC-VERIFIER-000001" />
+          </label>
+          <label>
+            Verified quantity
+            <input value="1000 kg" />
+          </label>
+          <button type="button">Create Attestation</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

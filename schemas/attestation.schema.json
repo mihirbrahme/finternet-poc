@@ -30,6 +30,7 @@
     "type": {
       "type": "string",
       "enum": [
+        "ASSET_VERIFIED",
         "RECOVERY_VERIFIED",
         "WEIGHT_VERIFIED",
         "DISPATCH_CONFIRMED",
@@ -89,6 +90,10 @@
     },
     "signature": {
       "type": "string"
+    },
+    "signatureMode": {
+      "type": "string",
+      "enum": ["DEMO_UNSIGNED_ATTESTATION"]
     },
     "status": {
       "type": "string",
