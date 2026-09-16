@@ -59,6 +59,26 @@
           </table>
         </div>
       </section>
+
+      <section class="settlement-band" aria-label="Settlement timeline">
+        <div>
+          <h2>Settlement STL-000001</h2>
+          <dl>
+            <dt>Commercial contract</dt>
+            <dd id="contractId"></dd>
+            <dt>State</dt>
+            <dd id="settlementState"></dd>
+            <dt>dINR leg</dt>
+            <dd id="dinrLeg"></dd>
+            <dt>Asset leg</dt>
+            <dd id="assetLeg"></dd>
+          </dl>
+        </div>
+        <div>
+          <h2>Timeline</h2>
+          <ol id="timeline"></ol>
+        </div>
+      </section>
     </main>
 
     <script src="./sample-read-model.js"></script>
@@ -76,6 +96,19 @@
         const row = document.createElement("tr");
         row.innerHTML = `<td>${holder}</td><td>${balance.toLocaleString()} kg</td><td>${(token.lockedBalances[holder] ?? 0).toLocaleString()} kg</td>`;
         balances.appendChild(row);
+      });
+
+      const settlement = token.settlement;
+      document.getElementById("contractId").textContent = settlement.contractId;
+      document.getElementById("settlementState").textContent = settlement.state;
+      document.getElementById("dinrLeg").textContent = `${settlement.dinr.amount.toLocaleString()} dINR ${settlement.dinr.status.toLowerCase()} from ${settlement.dinr.buyerParticipantId} to ${settlement.dinr.sellerParticipantId}`;
+      document.getElementById("assetLeg").textContent = `${settlement.asset.quantity.toLocaleString()} kg ${settlement.asset.status.toLowerCase()} from ${settlement.asset.sellerParticipantId} to ${settlement.asset.buyerParticipantId}`;
+
+      const timeline = document.getElementById("timeline");
+      settlement.timeline.forEach((event) => {
+        const item = document.createElement("li");
+        item.innerHTML = `<strong>${event.state}</strong><span>${event.summary}</span><code>${event.txHash}</code>`;
+        timeline.appendChild(item);
       });
     </script>
   </body>

@@ -15,7 +15,8 @@
         </div>
         <div class="mode-grid" aria-label="Dependency modes">
           <span>Evidence: LOCAL_MOCK</span>
-          <span>Tokenisation: NOT_CONNECTED</span>
+          <span>Tokenisation: LOCAL_MOCK</span>
+          <span>Settlement: LOCAL_MOCK</span>
         </div>
       </header>
 
@@ -55,8 +56,21 @@
             <div><dt>Origin</dt><dd>Raigad, Maharashtra</dd></div>
             <div><dt>Custody</dt><dd>ORG-AAMHI-001 / FAC-AAMHI-RAI-001</dd></div>
             <div><dt>Evidence root</dt><dd>Pending manifest</dd></div>
-            <div><dt>Status</dt><dd><span class="status pending">EVIDENCE_SUBMITTED</span></dd></div>
+            <div><dt>Status</dt><dd><span class="status pending">TOKENISED</span></dd></div>
           </dl>
+        </section>
+
+        <section class="panel" aria-label="Asset lock action">
+          <h2>Settlement Lock</h2>
+          <dl class="details">
+            <div><dt>Settlement</dt><dd>STL-000001</dd></div>
+            <div><dt>Contract</dt><dd>CTR-000123</dd></div>
+            <div><dt>Buyer</dt><dd>ORG-BUYER-001</dd></div>
+            <div><dt>Quantity</dt><dd>500 kg</dd></div>
+            <div><dt>dINR leg</dt><dd><span class="status ready">FUNDED</span></dd></div>
+            <div><dt>Asset leg</dt><dd><span class="status ready">LOCKED</span></dd></div>
+          </dl>
+          <button type="button">Lock 500 units</button>
         </section>
 
         <section class="panel wide" aria-label="Evidence package">

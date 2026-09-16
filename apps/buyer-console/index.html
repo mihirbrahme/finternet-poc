@@ -33,7 +33,7 @@
               <p class="eyebrow">BECKN-RWA-RAI-2026-000001</p>
               <h2>Verified LDPE Recovery Lot</h2>
             </div>
-            <span class="status">Available</span>
+            <span class="status">Selected</span>
           </div>
 
           <div class="grid">
@@ -70,9 +70,29 @@
 
             <div>
               <h3>Selection</h3>
-              <p class="selection-copy">Selectable quantity is capped at 650 kg because live token availability is lower than the catalogue quantity.</p>
-              <button disabled>Select asset</button>
-              <p class="placeholder">Disabled until Packet 7 settlement exists.</p>
+              <p class="selection-copy">Selected quantity is 500 kg against commercial contract CTR-000123.</p>
+              <button type="button">Create settlement</button>
+              <p class="placeholder">Settlement ID STL-000001 created through LOCAL_MOCK chain adapter.</p>
+            </div>
+
+            <div class="settlement-panel">
+              <h3>dINR Funding</h3>
+              <dl>
+                <div><dt>Buyer</dt><dd>ORG-BUYER-001</dd></div>
+                <div><dt>Amount</dt><dd>10,000 dINR</dd></div>
+                <div><dt>Funding status</dt><dd><span class="status">FUNDED</span></dd></div>
+                <div><dt>Escrow tx</dt><dd>0x7be4...d007</dd></div>
+              </dl>
+            </div>
+
+            <div class="settlement-panel">
+              <h3>Settlement State</h3>
+              <dl>
+                <div><dt>Settlement</dt><dd>STL-000001</dd></div>
+                <div><dt>Asset lock</dt><dd>Waiting for Aamhi lock</dd></div>
+                <div><dt>Readiness</dt><dd>FUNDED</dd></div>
+                <div><dt>Boundary</dt><dd>dINR is sandbox settlement value only</dd></div>
+              </dl>
             </div>
           </div>
         </article>

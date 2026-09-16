@@ -139,10 +139,10 @@ dd {
 }
 
 button {
-  background: #cfd6dc;
+  background: #1d6f5f;
   border: 0;
   border-radius: 6px;
-  color: #58636d;
+  color: #ffffff;
   font-size: 14px;
   font-weight: 760;
   margin: 18px 0 8px;
@@ -151,7 +151,12 @@ button {
 }
 
 .placeholder {
-  color: var(--warning);
+  color: var(--muted);
+}
+
+.settlement-panel {
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
 }
 
 @media (max-width: 820px) {

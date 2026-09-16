@@ -127,6 +127,11 @@ dd {
   background: #fff2c6;
 }
 
+.ready {
+  color: #174f3f;
+  background: #dff3eb;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
