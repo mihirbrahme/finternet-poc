@@ -6,7 +6,8 @@
   "scripts": {
     "test:schema": "tsx tests/schema/validate-samples.test.ts",
     "test:identity": "tsx tests/identity/participant-credential.test.ts",
-    "test:asset-evidence": "tsx tests/end-to-end/asset-evidence.spec.ts"
+    "test:asset-evidence": "tsx tests/end-to-end/asset-evidence.spec.ts",
+    "test:tokenisation": "tsx tests/end-to-end/tokenisation.spec.ts"
   },
   "devDependencies": {
     "ajv": "^8.17.1",

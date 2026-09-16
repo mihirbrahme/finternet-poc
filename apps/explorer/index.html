@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Finternet Explorer</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="page-header">
+        <div>
+          <p class="eyebrow">Finternet Explorer</p>
+          <h1>Tokenised Recovery Asset</h1>
+        </div>
+        <span class="mode">LOCAL_MOCK</span>
+      </header>
+
+      <section class="summary-grid" aria-label="Token summary">
+        <article>
+          <span>Canonical asset ID</span>
+          <strong id="assetId"></strong>
+        </article>
+        <article>
+          <span>Token ID</span>
+          <strong id="tokenId"></strong>
+        </article>
+        <article>
+          <span>Total supply</span>
+          <strong id="totalSupply"></strong>
+        </article>
+        <article>
+          <span>Mint tx</span>
+          <strong id="txHash"></strong>
+        </article>
+      </section>
+
+      <section class="detail-band">
+        <div>
+          <h2>Metadata</h2>
+          <dl>
+            <dt>URI</dt>
+            <dd id="metadataUri"></dd>
+            <dt>Evidence root</dt>
+            <dd id="evidenceRoot"></dd>
+          </dl>
+        </div>
+        <div>
+          <h2>Holder Balances</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Holder</th>
+                <th>Balance</th>
+                <th>Locked</th>
+              </tr>
+            </thead>
+            <tbody id="balances"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="./sample-read-model.js"></script>
+    <script>
+      const token = window.finternetExplorerSample;
+      document.getElementById("assetId").textContent = token.assetId;
+      document.getElementById("tokenId").textContent = token.tokenId;
+      document.getElementById("totalSupply").textContent = `${token.totalSupply.toLocaleString()} kg`;
+      document.getElementById("txHash").textContent = token.mintTxHash;
+      document.getElementById("metadataUri").textContent = token.metadataUri;
+      document.getElementById("evidenceRoot").textContent = token.evidenceRoot;
+
+      const balances = document.getElementById("balances");
+      Object.entries(token.balances).forEach(([holder, balance]) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `<td>${holder}</td><td>${balance.toLocaleString()} kg</td><td>${(token.lockedBalances[holder] ?? 0).toLocaleString()} kg</td>`;
+        balances.appendChild(row);
+      });
+    </script>
+  </body>
+</html>
