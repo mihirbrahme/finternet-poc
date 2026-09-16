@@ -96,8 +96,9 @@ Every subagent must read these files before touching code:
 2. `docs/00_project/00_README_Project_Index.md`
 3. `docs/00_project/02_Aamhi_Rural_SWM_and_OBP_Context.md`
 4. `docs/00_project/03_Context_Availability_and_Simulation_Strategy.md`
-5. `docs/05_delivery/20_End_to_End_PoC_Execution_Plan.md`
-6. the specific Pack 2/3/4/5 document named in its task packet
+5. `docs/04_security-operations/16_Local_Toolchain_Setup.md`
+6. `docs/05_delivery/20_End_to_End_PoC_Execution_Plan.md`
+7. the specific Pack 2/3/4/5 document named in its task packet
 
 ### Review Gates
 

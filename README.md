@@ -13,6 +13,7 @@ This workspace is currently a documentation-first project pack. The implementati
 - [Aamhi rural SWM and OBP context](docs/00_project/02_Aamhi_Rural_SWM_and_OBP_Context.md)
 - [Context availability and simulation strategy](docs/00_project/03_Context_Availability_and_Simulation_Strategy.md)
 - [Technical architecture](docs/01_architecture/02_Finternet_Technical_Architecture.md)
+- [Local toolchain setup](docs/04_security-operations/16_Local_Toolchain_Setup.md)
 - [Developer backlog](docs/05_delivery/19_Backlog_and_Implementation_Tasks.md)
 - [End-to-end PoC execution plan](docs/05_delivery/20_End_to_End_PoC_Execution_Plan.md)
 

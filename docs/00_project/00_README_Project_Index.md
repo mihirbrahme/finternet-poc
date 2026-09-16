@@ -321,6 +321,7 @@ Read these companion documents before implementation:
 
 - `02_Aamhi_Rural_SWM_and_OBP_Context.md`
 - `03_Context_Availability_and_Simulation_Strategy.md`
+- `../04_security-operations/16_Local_Toolchain_Setup.md`
 - `../05_delivery/20_End_to_End_PoC_Execution_Plan.md`
 - `../superpowers/plans/2026-09-16-finternet-poc-end-to-end.md`
 
