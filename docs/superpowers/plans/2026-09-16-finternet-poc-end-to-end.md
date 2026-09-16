@@ -52,7 +52,7 @@ Rules:
 |---|---|---|---|
 | Packet 1 - Context Pack and Repository Harness | COMPLETE | 85545e9 | Reviewed; `docker compose config` and `git diff --check` passed. |
 | Packet 2 - Canonical Schemas and Golden Sample Data | COMPLETE | 694f8be | Reviewed; `npx pnpm@10.16.1 test:schema` and `git diff --check` passed. |
-| Packet 3 - Trusted Participant Slice | REVIEW |  | Implementation complete; TypeScript identity/schema tests passed; Foundry tests not run because `forge` is unavailable. |
+| Packet 3 - Trusted Participant Slice | COMPLETE | 0dbaceb | Reviewed; `test:identity`, `test:schema`, and `git diff --check` passed. Foundry tests created but not run because `forge` is not installed/on PATH. |
 | Packet 4 - Recovery Asset, Evidence and Verification Slice | NOT_STARTED |  |  |
 | Packet 5 - Tokenisation Slice | NOT_STARTED |  |  |
 | Packet 6 - Beckn Discovery Slice | NOT_STARTED |  |  |
