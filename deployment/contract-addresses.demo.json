@@ -1,0 +1,39 @@
+{
+  "environment": "demo",
+  "dependencyMode": "NOT_CONNECTED",
+  "chain": {
+    "name": "public-demo-testnet",
+    "chainId": null,
+    "rpcUrl": null
+  },
+  "contracts": {
+    "ParticipantRegistry": {
+      "address": null,
+      "deploymentStatus": "PENDING_PACKET_11"
+    },
+    "CredentialRegistry": {
+      "address": null,
+      "deploymentStatus": "PENDING_PACKET_11"
+    },
+    "RecoveryAsset": {
+      "address": null,
+      "deploymentStatus": "PENDING_PACKET_11"
+    },
+    "DemoINR": {
+      "address": null,
+      "deploymentStatus": "PENDING_PACKET_11"
+    },
+    "SettlementEngine": {
+      "address": null,
+      "deploymentStatus": "PENDING_PACKET_11"
+    },
+    "AttestationRegistry": {
+      "address": null,
+      "deploymentStatus": "PENDING_PACKET_11"
+    },
+    "ClaimRegistry": {
+      "address": null,
+      "deploymentStatus": "PENDING_PACKET_11"
+    }
+  }
+}

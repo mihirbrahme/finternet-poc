@@ -66,6 +66,12 @@ export class ClaimService {
       if (eligibleQuantity <= 0) {
         throw new Error("OBP-ready claim requires receipt or processing source attestation");
       }
+      const mismatchedEvidence = sourceAttestations.find((attestation) => attestation.evidenceHash !== asset.evidenceRoot);
+      if (mismatchedEvidence) {
+        throw new Error(
+          `Source attestation evidence hash does not match verified asset evidence root: ${mismatchedEvidence.attestationId}`
+        );
+      }
       if (input.quantity > Math.min(asset.quantity.verified, eligibleQuantity)) {
         throw new Error("Claim quantity exceeds eligible source attestation quantity");
       }

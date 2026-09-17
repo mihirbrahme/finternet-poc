@@ -1,0 +1,39 @@
+{
+  "environment": "local",
+  "dependencyMode": "LOCAL_MOCK",
+  "chain": {
+    "name": "anvil-local",
+    "chainId": 31337,
+    "rpcUrl": "http://127.0.0.1:8545"
+  },
+  "contracts": {
+    "ParticipantRegistry": {
+      "address": "0x0000000000000000000000000000000000001001",
+      "deploymentStatus": "LOCAL_MOCK"
+    },
+    "CredentialRegistry": {
+      "address": "0x0000000000000000000000000000000000001002",
+      "deploymentStatus": "LOCAL_MOCK"
+    },
+    "RecoveryAsset": {
+      "address": "0x0000000000000000000000000000000000001155",
+      "deploymentStatus": "LOCAL_MOCK"
+    },
+    "DemoINR": {
+      "address": "0x000000000000000000000000000000000000d1ee",
+      "deploymentStatus": "LOCAL_MOCK"
+    },
+    "SettlementEngine": {
+      "address": "0x000000000000000000000000000000000000d007",
+      "deploymentStatus": "LOCAL_MOCK"
+    },
+    "AttestationRegistry": {
+      "address": "0x000000000000000000000000000000000000a771",
+      "deploymentStatus": "LOCAL_MOCK"
+    },
+    "ClaimRegistry": {
+      "address": "0x000000000000000000000000000000000000c1a1",
+      "deploymentStatus": "LOCAL_MOCK"
+    }
+  }
+}

@@ -540,3 +540,63 @@ Before every major demo, provide a reset script that can:
 Avoid manually editing databases to create demo state.
 
 The reset itself should use supported service/admin operations so the environment remains auditable and reproducible.
+
+### Local Packet 9 reset
+
+For the local PoC harness, run:
+
+```bash
+npx pnpm@10.16.1 demo:reset
+```
+
+To also write the concise state summary:
+
+```bash
+npx pnpm@10.16.1 demo:reset -- --write
+```
+
+Default output path:
+
+```text
+deployment/demo-state.local.json
+```
+
+The reset uses local/mock service modules only. It creates the repeatable Aamhi state through the current participant, credential, asset, evidence, tokenisation, Beckn sandbox, settlement, attestation and claim services. It does not call external registries or manually patch databases.
+
+Expected local state:
+
+- Aamhi recovery lot: `RWA-RAI-2026-000001`
+- Seller: `ORG-AAMHI-001`
+- Buyer: `ORG-BUYER-001`
+- Processor: `ORG-PROCESSOR-001`
+- Settlement: `STL-000001`
+- Claim: `CLM-000001`
+- Claim type: `OBP_READY_RECOVERY_CLAIM`
+- `isOfficialCredit=false`
+
+### Acceptance tests
+
+Run the Packet 9 acceptance tests:
+
+```bash
+npx pnpm@10.16.1 test:golden-path
+npx pnpm@10.16.1 test:negative-paths
+```
+
+The golden path covers:
+
+```text
+onboard -> asset -> evidence -> verify -> mint -> publish -> discover -> select -> fund -> lock -> attest -> settle -> claim -> explore
+```
+
+The negative path suite covers revoked credential, stale catalogue, insufficient dINR, insufficient asset, unauthorized attestation, duplicate claim and altered evidence.
+
+### Aamhi / OBP boundary
+
+In every demo, describe the output as an OBP-ready evidence claim only. The PoC does not issue official OBP credits, EPR certificates or government claims unless a certified and authorised integration is connected later.
+
+Use this language:
+
+```text
+This is an evidence-backed, quantity-bounded OBP-ready recovery claim for PoC diligence and impact reporting. It is not official OBP credit issuance, an EPR certificate or a government claim.
+```
