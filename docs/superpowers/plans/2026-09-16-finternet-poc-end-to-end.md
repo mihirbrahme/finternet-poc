@@ -57,7 +57,7 @@ Rules:
 | Packet 5 - Tokenisation Slice | COMPLETE | 49afb48 | Reviewed; `forge test -vvv`, `test:asset-evidence`, `test:identity`, `test:schema`, `test:tokenisation`, and `git diff --check` passed. |
 | Packet 6 - Beckn Discovery Slice | COMPLETE | 2805e3f | Reviewed; `test:beckn-discovery`, `test:tokenisation`, `test:asset-evidence`, `test:identity`, `test:schema`, `forge test`, and `git diff --check` passed. |
 | Packet 7 - Programmable Settlement Slice | COMPLETE | 8ea6956 | Reviewed; `test:settlement`, `test:beckn-discovery`, `test:tokenisation`, `test:asset-evidence`, `test:identity`, `test:schema`, `forge test`, and `git diff --check` passed. |
-| Packet 8 - Attestation and Claims Slice | NOT_STARTED |  |  |
+| Packet 8 - Attestation and Claims Slice | COMPLETE | 0b8ef04 | Reviewed; `test:claims`, `test:settlement`, `test:beckn-discovery`, `test:tokenisation`, `test:asset-evidence`, `test:identity`, `test:schema`, `forge test -vvv`, and `git diff --check` passed. |
 | Packet 9 - Demo Harness and Acceptance Tests | NOT_STARTED |  |  |
 | Packet 10 - Bounded AI Agent Slice | NOT_STARTED |  |  |
 | Packet 11 - Public Testnet Demo Deployment | NOT_STARTED |  |  |
@@ -689,31 +689,31 @@ git commit -m "feat(settlement): add dinr escrow and atomic dvp"
 - Consumes: settlement state and evidence manifest.
 - Produces: signed receipt/processing attestations and bounded claims.
 
-- [ ] **Step 1: Test authorized receipt attestation**
+- [x] **Step 1: Test authorized receipt attestation**
 
 Credentialled processor can submit `RECEIPT_CONFIRMED`; uncredentialled account is rejected.
 
-- [ ] **Step 2: Implement `AttestationRegistry.sol`**
+- [x] **Step 2: Implement `AttestationRegistry.sol`**
 
 Record attestation hash, type, attestor, asset, settlement and quantity.
 
-- [ ] **Step 3: Test duplicate and excess claim rejection**
+- [x] **Step 3: Test duplicate and excess claim rejection**
 
 Reject `OBP_READY_RECOVERY_CLAIM` if quantity exceeds eligible asset quantity or overlaps an active exclusive claim.
 
-- [ ] **Step 4: Implement `ClaimRegistry.sol`**
+- [x] **Step 4: Implement `ClaimRegistry.sol`**
 
 Support claim creation, consumption, dispute/revoke status and quantity tracking.
 
-- [ ] **Step 5: Add processor UI**
+- [x] **Step 5: Add processor UI**
 
 Processor records received quantity, uploads evidence and signs receipt attestation.
 
-- [ ] **Step 6: Add OBP-ready claim UI**
+- [x] **Step 6: Add OBP-ready claim UI**
 
 Explorer shows `OBP_READY_RECOVERY_CLAIM` with `isOfficialCredit=false` and evidence references.
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add contracts services/core-api apps/processor-console apps/explorer
