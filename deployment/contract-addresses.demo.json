@@ -1,39 +1,124 @@
 {
   "environment": "demo",
+  "schemaVersion": "packet-11-demo-deployment-v1",
   "dependencyMode": "NOT_CONNECTED",
+  "deploymentStatus": "PENDING_LIVE_DEPLOYMENT",
+  "requiredEnv": [
+    "DEMO_RPC_URL",
+    "DEMO_DEPLOYER_PRIVATE_KEY"
+  ],
+  "optionalEnv": [
+    "DEMO_CHAIN_NAME",
+    "DEMO_CHAIN_ID",
+    "DEMO_DEPLOYER_ADDRESS",
+    "DEMO_API_BASE_URL"
+  ],
   "chain": {
     "name": "public-demo-testnet",
     "chainId": null,
-    "rpcUrl": null
+    "rpcUrlEnv": "DEMO_RPC_URL",
+    "explorerUrl": null
   },
+  "deployer": {
+    "address": null,
+    "privateKeyEnv": "DEMO_DEPLOYER_PRIVATE_KEY"
+  },
+  "deploymentOrder": [
+    "ParticipantRegistry",
+    "CredentialRegistry",
+    "RecoveryAsset",
+    "DemoINR",
+    "AttestationRegistry",
+    "ClaimRegistry",
+    "SettlementEngine"
+  ],
   "contracts": {
     "ParticipantRegistry": {
+      "source": "src/ParticipantRegistry.sol:ParticipantRegistry",
       "address": null,
-      "deploymentStatus": "PENDING_PACKET_11"
+      "deployTxHash": null,
+      "blockNumber": null,
+      "constructorArgs": [],
+      "deploymentStatus": "PENDING_LIVE_DEPLOYMENT"
     },
     "CredentialRegistry": {
+      "source": "src/CredentialRegistry.sol:CredentialRegistry",
       "address": null,
-      "deploymentStatus": "PENDING_PACKET_11"
+      "deployTxHash": null,
+      "blockNumber": null,
+      "constructorArgs": [
+        "<ParticipantRegistry.address>"
+      ],
+      "deploymentStatus": "PENDING_LIVE_DEPLOYMENT"
     },
     "RecoveryAsset": {
+      "source": "src/RecoveryAsset.sol:RecoveryAsset",
       "address": null,
-      "deploymentStatus": "PENDING_PACKET_11"
+      "deployTxHash": null,
+      "blockNumber": null,
+      "constructorArgs": [
+        "<CredentialRegistry.address>"
+      ],
+      "deploymentStatus": "PENDING_LIVE_DEPLOYMENT"
     },
     "DemoINR": {
+      "source": "src/DemoINR.sol:DemoINR",
       "address": null,
-      "deploymentStatus": "PENDING_PACKET_11"
-    },
-    "SettlementEngine": {
-      "address": null,
-      "deploymentStatus": "PENDING_PACKET_11"
+      "deployTxHash": null,
+      "blockNumber": null,
+      "constructorArgs": [
+        "<CredentialRegistry.address>"
+      ],
+      "deploymentStatus": "PENDING_LIVE_DEPLOYMENT"
     },
     "AttestationRegistry": {
+      "source": "src/AttestationRegistry.sol:AttestationRegistry",
       "address": null,
-      "deploymentStatus": "PENDING_PACKET_11"
+      "deployTxHash": null,
+      "blockNumber": null,
+      "constructorArgs": [
+        "<CredentialRegistry.address>"
+      ],
+      "deploymentStatus": "PENDING_LIVE_DEPLOYMENT"
     },
     "ClaimRegistry": {
+      "source": "src/ClaimRegistry.sol:ClaimRegistry",
       "address": null,
-      "deploymentStatus": "PENDING_PACKET_11"
+      "deployTxHash": null,
+      "blockNumber": null,
+      "constructorArgs": [
+        "<AttestationRegistry.address>"
+      ],
+      "deploymentStatus": "PENDING_LIVE_DEPLOYMENT"
+    },
+    "SettlementEngine": {
+      "source": "src/SettlementEngine.sol:SettlementEngine",
+      "address": null,
+      "deployTxHash": null,
+      "blockNumber": null,
+      "constructorArgs": [
+        "<DemoINR.address>",
+        "<RecoveryAsset.address>"
+      ],
+      "deploymentStatus": "PENDING_LIVE_DEPLOYMENT"
     }
-  }
+  },
+  "seeding": {
+    "script": "deployment/scripts/seed-demo.ts",
+    "defaultMode": "local-services",
+    "liveMode": "live-api",
+    "liveModeStatus": "PENDING_HOSTED_API_ADAPTERS",
+    "summaryOutput": "deployment/demo-seed.summary.json"
+  },
+  "boundaries": {
+    "dinr": "Sandbox programmable settlement value only; not legal tender, CBDC, bank money or regulated payment issuance.",
+    "obp": "OBP_READY_RECOVERY_CLAIM only; evidence-backed, quantity-bounded and isOfficialCredit=false.",
+    "epr": "Reference-only until an authorised EPR registry or certificate issuer is integrated.",
+    "governmentClaim": "No official government claim is issued by this PoC."
+  },
+  "notes": [
+    "No live public testnet deployment has been recorded in this file.",
+    "Use npx pnpm@10.16.1 deploy:demo for the safe dry-run manifest.",
+    "Use DEMO_DEPLOY_MODE=live only after real testnet RPC and deployer credentials are supplied."
+  ]
 }

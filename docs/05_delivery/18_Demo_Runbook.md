@@ -600,3 +600,119 @@ Use this language:
 ```text
 This is an evidence-backed, quantity-bounded OBP-ready recovery claim for PoC diligence and impact reporting. It is not official OBP credit issuance, an EPR certificate or a government claim.
 ```
+
+---
+
+## 9. Packet 11 Demo Deployment Procedure
+
+The Packet 11 demo package is ready for dry-run deployment planning. It is not a live public testnet deployment until real RPC and deployer credentials are supplied and the resulting addresses, transaction hashes and block numbers are recorded in `deployment/contract-addresses.demo.json`.
+
+### Deployment files
+
+Use:
+
+```text
+deployment/environments/demo/README.md
+deployment/scripts/deploy-contracts.ts
+deployment/scripts/seed-demo.ts
+deployment/contract-addresses.demo.json
+docs/05_delivery/21_Known_Limitations_and_Boundaries.md
+```
+
+### Dry-run deployment
+
+Dry-run is the default and does not submit transactions:
+
+```bash
+npx pnpm@10.16.1 deploy:demo
+npx pnpm@10.16.1 deploy:demo -- --write
+```
+
+The dry-run manifest shows the deployment order and constructor dependencies for:
+
+```text
+ParticipantRegistry
+CredentialRegistry
+RecoveryAsset
+DemoINR
+AttestationRegistry
+ClaimRegistry
+SettlementEngine
+```
+
+### Live public testnet deployment
+
+Live mode must fail unless the real public testnet values are present:
+
+```bash
+DEMO_DEPLOY_MODE=live \
+DEMO_CHAIN_NAME=selected-public-testnet \
+DEMO_RPC_URL=<https-rpc-url> \
+DEMO_DEPLOYER_PRIVATE_KEY=<private-key> \
+npx pnpm@10.16.1 deploy:demo -- --write
+```
+
+On Windows PowerShell:
+
+```powershell
+$env:DEMO_DEPLOY_MODE="live"
+$env:DEMO_CHAIN_NAME="selected-public-testnet"
+$env:DEMO_RPC_URL="<https-rpc-url>"
+$env:DEMO_DEPLOYER_PRIVATE_KEY="<private-key>"
+npx pnpm@10.16.1 deploy:demo -- --write
+```
+
+After a successful live deployment, copy the live contract addresses, deployment transaction hashes and block numbers into `deployment/contract-addresses.demo.json`. Do not place private keys or secret RPC URLs in the repository.
+
+### Demo seed
+
+Run the supported service-backed seed summary:
+
+```bash
+npx pnpm@10.16.1 seed:demo
+npx pnpm@10.16.1 seed:demo -- --write
+```
+
+The current script reuses the Packet 9 demo services and does not patch a database. When hosted demo APIs exist, replace the local service builder with authenticated API clients for participant, credential, asset, evidence, tokenisation, Beckn, settlement, attestation and claim operations:
+
+```bash
+DEMO_SEED_MODE=live-api DEMO_API_BASE_URL=<https-api-url> npx pnpm@10.16.1 seed:demo
+```
+
+`live-api` mode is intentionally blocked until the API adapters and credentials are available.
+
+### Validation commands
+
+Before a public demo rehearsal, run:
+
+```bash
+npx pnpm@10.16.1 demo:reset
+npx pnpm@10.16.1 deploy:demo
+npx pnpm@10.16.1 seed:demo
+npx pnpm@10.16.1 test:agent
+npx pnpm@10.16.1 test:golden-path
+npx pnpm@10.16.1 test:negative-paths
+npx pnpm@10.16.1 test:claims
+npx pnpm@10.16.1 test:settlement
+npx pnpm@10.16.1 test:beckn-discovery
+npx pnpm@10.16.1 test:tokenisation
+npx pnpm@10.16.1 test:asset-evidence
+npx pnpm@10.16.1 test:identity
+npx pnpm@10.16.1 test:schema
+```
+
+From `contracts/`, run:
+
+```bash
+forge test -vvv
+```
+
+Then run:
+
+```bash
+git diff --check
+```
+
+### Acceptance boundary
+
+The acceptance suite proves the local/demo PoC flow and guardrails. It does not prove official OBP credit issuance, official EPR certificate issuance, government recognition, legal title transfer or regulated money movement.

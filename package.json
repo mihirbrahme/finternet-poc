@@ -14,7 +14,9 @@
     "test:agent": "tsx agents/buyer-agent/tests/policy.test.ts && tsx agents/buyer-agent/tests/flow.test.ts",
     "test:golden-path": "tsx tests/end-to-end/golden-path.spec.ts",
     "test:negative-paths": "tsx tests/end-to-end/negative-paths.spec.ts",
-    "demo:reset": "tsx deployment/scripts/demo-reset.ts"
+    "demo:reset": "tsx deployment/scripts/demo-reset.ts",
+    "deploy:demo": "tsx deployment/scripts/deploy-contracts.ts",
+    "seed:demo": "tsx deployment/scripts/seed-demo.ts"
   },
   "devDependencies": {
     "ajv": "^8.17.1",
