@@ -11,6 +11,7 @@
     "test:beckn-discovery": "tsx tests/end-to-end/beckn-discovery.spec.ts",
     "test:settlement": "tsx tests/end-to-end/settlement.spec.ts",
     "test:claims": "tsx tests/end-to-end/claims.spec.ts",
+    "test:agent": "tsx agents/buyer-agent/tests/policy.test.ts && tsx agents/buyer-agent/tests/flow.test.ts",
     "test:golden-path": "tsx tests/end-to-end/golden-path.spec.ts",
     "test:negative-paths": "tsx tests/end-to-end/negative-paths.spec.ts",
     "demo:reset": "tsx deployment/scripts/demo-reset.ts"

@@ -2,10 +2,13 @@
 
 Independent buyer-facing scaffold for Packet 6.
 
-The console shows discovery intent, Beckn sandbox results, originator trust, indexed token state and the disabled selection placeholder. Discovery is intentionally routed through the Consumer Node and Discovery Sandbox, not through Aamhi or internal asset APIs.
+The console shows discovery intent, Beckn sandbox results, originator trust, indexed token state and settlement context. Discovery is intentionally routed through the Consumer Node and Discovery Sandbox, not through Aamhi or internal asset APIs.
+
+Packet 10 adds `agent/index.html`, a static bounded buyer-agent view that mirrors the local agent module output: interpreted constraints, candidate verification, transaction proposal, deterministic policy checks, approval state and audit trail.
 
 Dependency modes:
 
 - Beckn provider / consumer / discovery: `SANDBOX_ADAPTER`
 - Ethereum/indexed token state: `LOCAL_MOCK`
-- Settlement: `NOT_CONNECTED` until Packet 7
+- Settlement: `LOCAL_MOCK`
+- Buyer agent: `LOCAL_MOCK`

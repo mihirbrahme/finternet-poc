@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Finternet Buyer Agent</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="agent-shell">
+      <header class="agent-topbar">
+        <div>
+          <p class="eyebrow">Independent Buyer Console</p>
+          <h1>Bounded buyer agent</h1>
+        </div>
+        <div class="mode-list" aria-label="Dependency modes">
+          <span>Beckn: SANDBOX_ADAPTER</span>
+          <span>Agent: LOCAL_MOCK</span>
+        </div>
+      </header>
+
+      <section class="instruction-band">
+        <div class="instruction">
+          <p class="eyebrow">User intent</p>
+          <p class="instruction-text">
+            Find verified LDPE assets of at least 250 kg from eligible sellers under the configured price threshold.
+          </p>
+        </div>
+        <dl class="constraints">
+          <div><dt>Material</dt><dd>PLASTIC-LDPE only</dd></div>
+          <div><dt>Region</dt><dd>Raigad, Maharashtra</dd></div>
+          <div><dt>Price ceiling</dt><dd>22 dINR/kg</dd></div>
+          <div><dt>Max transaction</dt><dd>50,000 dINR</dd></div>
+          <div><dt>Seller rule</dt><dd>Active credentialled originator</dd></div>
+          <div><dt>Authority expiry</dt><dd>24 hours</dd></div>
+        </dl>
+      </section>
+
+      <section class="work-grid">
+        <article class="panel candidates-panel">
+          <div class="panel-title">
+            <div>
+              <p class="eyebrow">Candidate shortlist</p>
+              <h2>Beckn discovery and verification</h2>
+            </div>
+            <span class="pill success">1 eligible</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Asset</th>
+                  <th>Seller</th>
+                  <th>Live qty</th>
+                  <th>Price</th>
+                  <th>Credential</th>
+                  <th>Token</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <strong>RWA-RAI-2026-000001</strong>
+                    <span>Verified rural SWM LDPE lot</span>
+                  </td>
+                  <td>ORG-AAMHI-001</td>
+                  <td>1,000 kg</td>
+                  <td>20 dINR/kg</td>
+                  <td><span class="pill success">Valid</span></td>
+                  <td><span class="pill success">Matched</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="panel">
+          <p class="eyebrow">Verification results</p>
+          <dl class="stacked">
+            <div><dt>Participant status</dt><dd>ACTIVE</dd></div>
+            <div><dt>Credential</dt><dd>VC-ORIGINATOR-000001</dd></div>
+            <div><dt>Token state</dt><dd>ERC-1155 balance confirms available quantity</dd></div>
+            <div><dt>Evidence root</dt><dd>Matches indexed recovery asset metadata</dd></div>
+          </dl>
+        </article>
+
+        <article class="panel">
+          <p class="eyebrow">Transaction proposal</p>
+          <dl class="stacked">
+            <div><dt>Offer</dt><dd>OFR-000021</dd></div>
+            <div><dt>Contract</dt><dd>CTR-AGENT-000001</dd></div>
+            <div><dt>Settlement draft</dt><dd>STL-AGENT-000001</dd></div>
+            <div><dt>Quantity</dt><dd>250 kg</dd></div>
+            <div><dt>Total</dt><dd>5,000 dINR</dd></div>
+          </dl>
+        </article>
+
+        <article class="panel approval-card">
+          <div class="panel-title">
+            <div>
+              <p class="eyebrow">Human approval</p>
+              <h2>Approval required before execution</h2>
+            </div>
+            <span class="pill pending">Pending</span>
+          </div>
+          <dl class="stacked">
+            <div><dt>Approval</dt><dd>APR-000021</dd></div>
+            <div><dt>Action</dt><dd>Create settlement draft only</dd></div>
+            <div><dt>Final settlement</dt><dd>Not authorised without human approval</dd></div>
+            <div><dt>Boundary</dt><dd>dINR is sandbox programmable settlement value only</dd></div>
+          </dl>
+          <p class="boundary">
+            OBP output remains an evidence-backed, quantity-bounded `OBP_READY_RECOVERY_CLAIM` with
+            `isOfficialCredit=false`; this is not official OBP credit issuance, an EPR certificate or a government
+            claim.
+          </p>
+          <button type="button">Approve draft</button>
+        </article>
+
+        <article class="panel audit-panel">
+          <p class="eyebrow">Audit trail</p>
+          <ol>
+            <li>User instruction recorded</li>
+            <li>discoverAssets called through Beckn sandbox</li>
+            <li>Credential and token verification captured</li>
+            <li>Policy checks passed outside model reasoning</li>
+            <li>Settlement draft transaction reference stored</li>
+            <li>Human approval request recorded</li>
+          </ol>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
