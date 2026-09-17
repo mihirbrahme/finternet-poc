@@ -58,7 +58,7 @@ Rules:
 | Packet 6 - Beckn Discovery Slice | COMPLETE | 2805e3f | Reviewed; `test:beckn-discovery`, `test:tokenisation`, `test:asset-evidence`, `test:identity`, `test:schema`, `forge test`, and `git diff --check` passed. |
 | Packet 7 - Programmable Settlement Slice | COMPLETE | 8ea6956 | Reviewed; `test:settlement`, `test:beckn-discovery`, `test:tokenisation`, `test:asset-evidence`, `test:identity`, `test:schema`, `forge test`, and `git diff --check` passed. |
 | Packet 8 - Attestation and Claims Slice | COMPLETE | 0b8ef04 | Reviewed; `test:claims`, `test:settlement`, `test:beckn-discovery`, `test:tokenisation`, `test:asset-evidence`, `test:identity`, `test:schema`, `forge test -vvv`, and `git diff --check` passed. |
-| Packet 9 - Demo Harness and Acceptance Tests | NOT_STARTED |  |  |
+| Packet 9 - Demo Harness and Acceptance Tests | COMPLETE | 4238c22 | Reviewed; `demo:reset`, `test:golden-path`, `test:negative-paths`, `test:claims`, `test:settlement`, `test:beckn-discovery`, `test:tokenisation`, `test:asset-evidence`, `test:identity`, `test:schema`, `forge test -vvv`, and `git diff --check` passed. |
 | Packet 10 - Bounded AI Agent Slice | NOT_STARTED |  |  |
 | Packet 11 - Public Testnet Demo Deployment | NOT_STARTED |  |  |
 
@@ -736,11 +736,11 @@ git commit -m "feat(claims): add attestations and obp-ready claims"
 - Consumes: all prior APIs, contracts and apps.
 - Produces: repeatable demo state and acceptance proof.
 
-- [ ] **Step 1: Implement demo reset script**
+- [x] **Step 1: Implement demo reset script**
 
 Reset must create participants, issue credentials, fund dINR, create Aamhi asset, upload evidence, mint ERC-1155 and publish catalogue through supported APIs.
 
-- [ ] **Step 2: Implement golden-path E2E**
+- [x] **Step 2: Implement golden-path E2E**
 
 Automate:
 
@@ -748,7 +748,7 @@ Automate:
 onboard -> asset -> evidence -> verify -> mint -> publish -> discover -> select -> fund -> lock -> attest -> settle -> claim -> explore
 ```
 
-- [ ] **Step 3: Implement negative-path E2E**
+- [x] **Step 3: Implement negative-path E2E**
 
 Cover:
 
@@ -762,11 +762,11 @@ duplicate claim
 altered evidence
 ```
 
-- [ ] **Step 4: Update runbook with Aamhi/OBP context**
+- [x] **Step 4: Update runbook with Aamhi/OBP context**
 
 Add explicit language that OBP claims are OBP-ready evidence claims unless certified.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add deployment tests/end-to-end docs/05_delivery/18_Demo_Runbook.md
