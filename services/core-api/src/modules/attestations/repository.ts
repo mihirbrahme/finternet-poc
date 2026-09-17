@@ -1,18 +1,18 @@
-import type { AssetVerifiedAttestationRecord } from "./types.js";
+import type { AttestationRecord } from "./types.js";
 
 export class AttestationRepository {
-  private readonly attestations = new Map<string, AssetVerifiedAttestationRecord>();
+  private readonly attestations = new Map<string, AttestationRecord>();
 
-  save(attestation: AssetVerifiedAttestationRecord): AssetVerifiedAttestationRecord {
+  save<T extends AttestationRecord>(attestation: T): T {
     this.attestations.set(attestation.attestationId, attestation);
     return attestation;
   }
 
-  list(): AssetVerifiedAttestationRecord[] {
+  list(): AttestationRecord[] {
     return [...this.attestations.values()];
   }
 
-  get(attestationId: string): AssetVerifiedAttestationRecord | undefined {
+  get(attestationId: string): AttestationRecord | undefined {
     return this.attestations.get(attestationId);
   }
 }

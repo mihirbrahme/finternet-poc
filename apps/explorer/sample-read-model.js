@@ -51,5 +51,50 @@ window.finternetExplorerSample = {
         txHash: "0xdvp0...0001"
       }
     ]
-  }
+  },
+  attestations: [
+    {
+      attestationId: "ATT-000001",
+      type: "ASSET_VERIFIED",
+      participantId: "ORG-VERIFIER-001",
+      quantity: 1000,
+      unit: "kg",
+      evidenceManifestId: "EVM-000001",
+      evidenceHash: "0x9c64b54f3e55f81e2a2c8ea4f452a41e1ef35cc8ad7080e9ff0a4ec8a7da6bb4",
+      txHash: "0xatt0...0001"
+    },
+    {
+      attestationId: "ATT-000002",
+      type: "RECEIPT_CONFIRMED",
+      participantId: "ORG-PROCESSOR-001",
+      settlementId: "STL-000001",
+      quantity: 500,
+      unit: "kg",
+      evidenceManifestId: "EVM-000001",
+      evidenceHash: "0x9c64b54f3e55f81e2a2c8ea4f452a41e1ef35cc8ad7080e9ff0a4ec8a7da6bb4",
+      txHash: "0xatt0...0002"
+    }
+  ],
+  claims: [
+    {
+      claimId: "CLM-000001",
+      type: "OBP_READY_RECOVERY_CLAIM",
+      holderParticipantId: "ORG-BUYER-001",
+      issuerParticipantId: "ORG-AAMHI-001",
+      sourceAttestationIds: ["ATT-000002"],
+      quantity: 500,
+      unit: "kg",
+      isOfficialCredit: false,
+      evidenceReferences: [
+        {
+          evidenceManifestId: "EVM-000001",
+          evidenceHash: "0x9c64b54f3e55f81e2a2c8ea4f452a41e1ef35cc8ad7080e9ff0a4ec8a7da6bb4"
+        }
+      ],
+      boundaryStatement:
+        "OBP-ready recovery claim is evidence-backed for this PoC and is not official OBP credit issuance, an EPR certificate, or a government claim.",
+      status: "ACTIVE",
+      txHash: "0xclm0...0001"
+    }
+  ]
 };

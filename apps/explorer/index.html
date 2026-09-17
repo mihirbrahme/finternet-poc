@@ -79,6 +79,17 @@
           <ol id="timeline"></ol>
         </div>
       </section>
+
+      <section class="settlement-band" aria-label="Attestations and claims">
+        <div>
+          <h2>Attestations</h2>
+          <ol id="attestations"></ol>
+        </div>
+        <div>
+          <h2>Claims</h2>
+          <ol id="claims"></ol>
+        </div>
+      </section>
     </main>
 
     <script src="./sample-read-model.js"></script>
@@ -109,6 +120,20 @@
         const item = document.createElement("li");
         item.innerHTML = `<strong>${event.state}</strong><span>${event.summary}</span><code>${event.txHash}</code>`;
         timeline.appendChild(item);
+      });
+
+      const attestations = document.getElementById("attestations");
+      token.attestations.forEach((attestation) => {
+        const item = document.createElement("li");
+        item.innerHTML = `<strong>${attestation.type} - ${attestation.attestationId}</strong><span>${attestation.quantity.toLocaleString()} ${attestation.unit} by ${attestation.participantId}</span><code>${attestation.evidenceManifestId} - ${attestation.evidenceHash}</code>`;
+        attestations.appendChild(item);
+      });
+
+      const claims = document.getElementById("claims");
+      token.claims.forEach((claim) => {
+        const item = document.createElement("li");
+        item.innerHTML = `<strong>${claim.type} - ${claim.claimId}</strong><span>${claim.quantity.toLocaleString()} ${claim.unit}; official credit: ${String(claim.isOfficialCredit)}</span><span>${claim.boundaryStatement}</span><code>${claim.evidenceReferences[0].evidenceManifestId} - ${claim.evidenceReferences[0].evidenceHash}</code>`;
+        claims.appendChild(item);
       });
     </script>
   </body>

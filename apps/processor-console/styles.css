@@ -59,6 +59,10 @@ h2 {
   gap: 16px;
 }
 
+.follow-on {
+  margin-top: 16px;
+}
+
 .panel {
   background: #ffffff;
   border: 1px solid #d9dee7;
@@ -97,6 +101,7 @@ label {
 
 input,
 button {
+  width: 100%;
   min-height: 38px;
   border: 1px solid #c9d0da;
   border-radius: 6px;

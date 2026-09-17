@@ -10,12 +10,12 @@
     <main class="shell">
       <header class="topbar">
         <div>
-          <p class="eyebrow">Verifier Workflow</p>
+          <p class="eyebrow">Processor Workflow</p>
           <h1>Processor / Verifier Console</h1>
         </div>
         <div class="mode-grid" aria-label="Dependency modes">
           <span>VC proof: LOCAL_MOCK</span>
-          <span>Attestation registry: NOT_CONNECTED</span>
+          <span>Attestation registry: LOCAL_MOCK</span>
         </div>
       </header>
 
@@ -46,6 +46,40 @@
             <input value="1000 kg" />
           </label>
           <button type="button">Create Attestation</button>
+        </form>
+      </section>
+
+      <section class="review-layout follow-on">
+        <section class="panel" aria-label="Receipt evidence">
+          <h2>Receipt Evidence</h2>
+          <dl class="details">
+            <div><dt>Settlement</dt><dd>STL-000001</dd></div>
+            <div><dt>Token ID</dt><dd>13653181654073811839412956159143577174351971225610535796116340564408590798707</dd></div>
+            <div><dt>Evidence</dt><dd>EVM-000001 / PROCESSOR_RECEIPT</dd></div>
+            <div><dt>Received quantity</dt><dd>500 kg</dd></div>
+            <div><dt>Processor</dt><dd>ORG-PROCESSOR-001</dd></div>
+          </dl>
+        </section>
+
+        <form class="panel" aria-label="Create receipt attestation">
+          <h2>RECEIPT_CONFIRMED Attestation</h2>
+          <label>
+            Processor participant
+            <input value="ORG-PROCESSOR-001" />
+          </label>
+          <label>
+            Processor credential
+            <input value="VC-PROCESSOR-000001" />
+          </label>
+          <label>
+            Evidence hash
+            <input value="0x9c64b54f3e55f81e2a2c8ea4f452a41e1ef35cc8ad7080e9ff0a4ec8a7da6bb4" />
+          </label>
+          <label>
+            Received quantity
+            <input value="500 kg" />
+          </label>
+          <button type="button">Sign Receipt Attestation</button>
         </form>
       </section>
     </main>

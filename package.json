@@ -9,7 +9,8 @@
     "test:asset-evidence": "tsx tests/end-to-end/asset-evidence.spec.ts",
     "test:tokenisation": "tsx tests/end-to-end/tokenisation.spec.ts",
     "test:beckn-discovery": "tsx tests/end-to-end/beckn-discovery.spec.ts",
-    "test:settlement": "tsx tests/end-to-end/settlement.spec.ts"
+    "test:settlement": "tsx tests/end-to-end/settlement.spec.ts",
+    "test:claims": "tsx tests/end-to-end/claims.spec.ts"
   },
   "devDependencies": {
     "ajv": "^8.17.1",
