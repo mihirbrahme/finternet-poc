@@ -59,7 +59,7 @@ Rules:
 | Packet 7 - Programmable Settlement Slice | COMPLETE | 8ea6956 | Reviewed; `test:settlement`, `test:beckn-discovery`, `test:tokenisation`, `test:asset-evidence`, `test:identity`, `test:schema`, `forge test`, and `git diff --check` passed. |
 | Packet 8 - Attestation and Claims Slice | COMPLETE | 0b8ef04 | Reviewed; `test:claims`, `test:settlement`, `test:beckn-discovery`, `test:tokenisation`, `test:asset-evidence`, `test:identity`, `test:schema`, `forge test -vvv`, and `git diff --check` passed. |
 | Packet 9 - Demo Harness and Acceptance Tests | COMPLETE | 4238c22 | Reviewed; `demo:reset`, `test:golden-path`, `test:negative-paths`, `test:claims`, `test:settlement`, `test:beckn-discovery`, `test:tokenisation`, `test:asset-evidence`, `test:identity`, `test:schema`, `forge test -vvv`, and `git diff --check` passed. |
-| Packet 10 - Bounded AI Agent Slice | NOT_STARTED |  |  |
+| Packet 10 - Bounded AI Agent Slice | COMPLETE | 75656ba | Reviewed; `test:agent`, `test:golden-path`, `test:negative-paths`, `test:claims`, `test:settlement`, `test:beckn-discovery`, `test:tokenisation`, `test:asset-evidence`, `test:identity`, `test:schema`, `forge test -vvv`, and `git diff --check` passed. |
 | Packet 11 - Public Testnet Demo Deployment | NOT_STARTED |  |  |
 
 ### Resume Protocol
@@ -789,11 +789,11 @@ git commit -m "test: add repeatable demo acceptance harness"
 - Consumes: discovery, verification, token state, offers and settlements APIs.
 - Produces: audited AI transaction proposal and optional policy-bound execution.
 
-- [ ] **Step 1: Define policy tests**
+- [x] **Step 1: Define policy tests**
 
 Reject proposals above 50,000 dINR, wrong material, uncredentialled seller or expiry greater than 24 hours.
 
-- [ ] **Step 2: Implement agent tools**
+- [x] **Step 2: Implement agent tools**
 
 Tools:
 
@@ -808,19 +808,19 @@ prepareSettlement
 requestHumanApproval
 ```
 
-- [ ] **Step 3: Implement deterministic policy engine**
+- [x] **Step 3: Implement deterministic policy engine**
 
 Policy engine runs outside LLM reasoning and returns allow/deny with reasons.
 
-- [ ] **Step 4: Implement Agent UI**
+- [x] **Step 4: Implement Agent UI**
 
 Show intent, extracted constraints, candidate table, verification results, transaction proposal and approval card.
 
-- [ ] **Step 5: Implement audit log**
+- [x] **Step 5: Implement audit log**
 
 Store user instruction, tool calls, tool outputs, policy checks, approval and submitted transaction reference.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add agents apps/buyer-console services/core-api
