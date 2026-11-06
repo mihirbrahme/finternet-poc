@@ -1,4 +1,4 @@
-# v0.2.0-handover — release and transfer notes
+# v0.2.1-handover — release and transfer notes
 
 ## Scope
 
@@ -16,6 +16,8 @@ The original ERC-1155 material-sale and buyer-agent references remain included. 
 
 ## Validation and acceptance
 
+The initial `v0.2.0-handover` tag is retained as historical source. Its first remote workflow reached browser installation but failed because the moving `ubuntu-latest` runner selected Ubuntu 26.04, unsupported by Playwright 1.56.1. This patch release pins the runner to Ubuntu 24.04 without changing the product/contract behavior. The current validated package and transfer tag are `v0.2.1-handover`.
+
 The release target includes 30 Solidity tests across five suites and three browser scenarios, in addition to the original schema/domain/agent tests. Recorded validation must pass for the exact staged source tree before packaging. The generator rejects a different committed tree or dirty worktree. Use the package's captured `VALIDATION.md` as the current execution record; historical notes in the documentation retain their original scope/date.
 
 The receiving team should run from a clean checkout and complete the [handover checklist](07_Handover_Acceptance_Checklist.md). Aamhi/sponsor operating acceptance and independent security review are not implied by author tests.
@@ -23,7 +25,7 @@ The receiving team should run from a clean checkout and complete the [handover c
 ## Package structure
 
 ```text
-finternet-poc-v0.2.0-handover/
+finternet-poc-v0.2.1-handover/
   source/          Exact tagged repository; begin with HANDOVER.md
   MANIFEST.md      Commit, tree, inventory and source archive checksum
   VALIDATION.md    Captured checks for that source tree
@@ -43,7 +45,7 @@ npx --yes pnpm@10.16.1 handover:validate
 Commit the tested source and create the annotated handover tag. Then run from the clean checkout:
 
 ```powershell
-npx --yes pnpm@10.16.1 handover:package v0.2.0-handover
+npx --yes pnpm@10.16.1 handover:package v0.2.1-handover
 ```
 
 The generator writes a source ZIP and package metadata/evidence under ignored `releases/`. Expand the source ZIP into the generated package directory and compress that directory to create the complete transfer ZIP. Generate a SHA-256 sidecar for the final ZIP. These final archive operations do not alter tracked source. Package artifacts are distributed separately from the repository.

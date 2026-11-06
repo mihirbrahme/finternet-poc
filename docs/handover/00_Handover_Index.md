@@ -58,7 +58,7 @@ Where older documents assume that the sponsor buys material, receives official c
 
 ## Transfer expectations
 
-See the [root handover entry point](../../HANDOVER.md) and [v0.2.0-handover release notes](17_Handover_Release.md) for packaging, exact-source validation and transfer contents.
+See the [root handover entry point](../../HANDOVER.md) and [v0.2.1-handover release notes](17_Handover_Release.md) for packaging, exact-source validation and transfer contents.
 
 Run the demo and acceptance commands before transfer. Retain the validation record, walkthrough and gap register with the source. Local addresses and transaction hashes are generated per session; the committed public-demo manifest continues to show no recorded public deployment.
 

@@ -2,7 +2,7 @@
 
 ## Begin here
 
-This is the `v0.2.0-handover` baseline of the Aamhi sponsorship product and local executable reference. It connects a sponsor's funded purpose to evidence, facility receipt, verifier acceptance, automatic settlement and bounded outcome attribution.
+This is the `v0.2.1-handover` baseline of the Aamhi sponsorship product and local executable reference. It connects a sponsor's funded purpose to evidence, facility receipt, verifier acceptance, automatic settlement and bounded outcome attribution.
 
 The product also showcases reusable Finternet capabilities. The business/architecture foundation covers the broader platform, while the demo implements a focused programme profile. No public deployment, official credit, live financial instrument or external network certification is asserted.
 

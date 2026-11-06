@@ -8,8 +8,8 @@ function git(args: string[]) {
   if (result.status !== 0) throw new Error(result.stderr || result.error?.message || "Git operation failed");
   return result.stdout.trim();
 }
-const tag = process.argv.slice(2).find(arg=>!arg.startsWith("--")) ?? "v0.2.0-handover";
-if (!/^v\d+\.\d+\.\d+-handover$/.test(tag)) throw new Error("Use a versioned handover tag, for example v0.2.0-handover");
+const tag = process.argv.slice(2).find(arg=>!arg.startsWith("--")) ?? "v0.2.1-handover";
+if (!/^v\d+\.\d+\.\d+-handover$/.test(tag)) throw new Error("Use a versioned handover tag, for example v0.2.1-handover");
 if (git(["status", "--porcelain"])) throw new Error("Packaging requires a clean committed worktree");
 const commit = git(["rev-parse", `${tag}^{commit}`]);
 if (commit !== git(["rev-parse", "HEAD"])) throw new Error("The release tag must identify the current HEAD");
