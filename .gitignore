@@ -44,6 +44,10 @@ logs/
 storage/ipfs/
 storage/sample-evidence/private/
 database/local/
+deployment/local-demo/
+playwright-report/
+test-results/
+releases/
 
 # OS / editor
 .DS_Store

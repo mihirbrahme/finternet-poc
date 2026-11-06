@@ -6,6 +6,10 @@
 
 ---
 
+## Current handover direction
+
+The [handover package](../handover/00_Handover_Index.md) is the current authority for sponsorship: programme commitments, collection/facility-receipt verification, conditional payment and joint exceptions. This original index remains the material-sale reference design. Its Pack 1 status and future-tense implementation statements are historical, not the current repository inventory.
+
 ## 1. What this PoC is
 
 This PoC is an end-to-end Finternet capability demonstrator built around a real-world recovery asset.

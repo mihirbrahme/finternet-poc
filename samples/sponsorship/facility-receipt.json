@@ -1,0 +1,6 @@
+{
+  "sample": true,
+  "facilityId": "FACILITY-DEMO-001",
+  "documentType": "ILLUSTRATIVE_FACILITY_RECEIPT",
+  "notice": "No actual collection, weighing, recycling or facility endorsement is asserted. Live quantity is recorded by the facility demo account against the milestone evidence hash."
+}

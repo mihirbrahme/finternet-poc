@@ -2,6 +2,8 @@
 
 ## Purpose
 
+For the current sponsorship handover, also read the [handover gap register](../handover/03_Current_State_and_Gap_Register.md) and [local demo runbook](../handover/04_Local_Demo_Runbook.md). This document describes the earlier Packet 11 material-sale package. The new browser demo executes real local-chain sponsorship transactions but retains synthetic evidence, controlled roles and temporary state.
+
 This document states the limits of the Packet 11 Finternet PoC demo package so it is not mistaken for a production, regulatory or certified deployment.
 
 ## Current Demo Boundaries

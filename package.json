@@ -1,9 +1,19 @@
 {
   "name": "finternet-poc",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@10.16.1",
+  "engines": { "node": ">=22 <25" },
   "scripts": {
+    "demo:run": "tsx services/sponsorship-demo/server.ts",
+    "typecheck": "tsc --noEmit",
+    "test:acceptance": "tsx deployment/scripts/test-acceptance.ts",
+    "test:handover": "tsx deployment/scripts/test-handover.ts",
+    "handover:validate": "tsx deployment/scripts/test-handover.ts --record",
+    "handover:package": "tsx deployment/scripts/package-handover.ts",
+    "test:demo": "playwright test",
+    "check:docs": "tsx deployment/scripts/check-docs.ts",
     "test:schema": "tsx tests/schema/validate-samples.test.ts",
     "test:identity": "tsx tests/identity/participant-credential.test.ts",
     "test:asset-evidence": "tsx tests/end-to-end/asset-evidence.spec.ts",
@@ -19,9 +29,14 @@
     "seed:demo": "tsx deployment/scripts/seed-demo.ts"
   },
   "devDependencies": {
+    "@playwright/test": "1.56.1",
+    "@types/node": "^22.7.5",
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1",
     "tsx": "^4.20.5",
     "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "ethers": "6.16.0"
   }
 }

@@ -32,7 +32,7 @@ export class BuyerAgentGateway {
       constraints: input.constraints
     });
 
-    const discovery = this.callTool(input.agentRunId, input.now, "discoverAssets", input.constraints, () =>
+    const discovery = this.callTool(input.agentRunId, input.now, "discoverAssets", { ...input.constraints }, () =>
       this.tools.discoverAssets(input.constraints)
     );
 

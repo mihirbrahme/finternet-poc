@@ -343,7 +343,7 @@ export function createReceiptAttestation(
 
 export function settleDemoSettlement(
   services: DemoServices,
-  settlementId = demoIds.settlement
+  settlementId: string = demoIds.settlement
 ): SettlementRecord {
   services.settlementService.evaluateSettlement(settlementId, "2026-10-01T15:05:00Z");
   return services.settlementService.settle({
@@ -380,7 +380,7 @@ export function createObpReadyClaim(
   services: DemoServices,
   tokenised: TokeniseAssetResult,
   receiptAttestationId: string,
-  claimId = demoIds.claim
+  claimId: string = demoIds.claim
 ): ReturnType<ClaimService["createClaim"]> {
   return services.claimService.createClaim({
     claimId,
