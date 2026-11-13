@@ -281,3 +281,15 @@ button.hash { cursor: copy; }
   .topbar { padding: 0 16px; }
   .phone { width: 100%; }
 }
+
+/* ---------------------------------------------------------------- assistants (M7) */
+.danger-text { color: var(--status-danger); }
+.assistant-turn { display: flex; flex-direction: column; gap: 10px; padding-top: 14px; border-top: 1px solid var(--border-subtle); }
+.assistant-q { align-self: flex-end; max-width: 80%; padding: 8px 12px; background: var(--surface-sunken); border-radius: var(--radius-md); color: var(--text-strong); font-size: 14px; }
+.assistant-text { color: var(--text-body); font-size: 14px; line-height: 1.6; }
+.assistant-text p { margin: 0 0 10px; }
+.assistant-text ul, .assistant-text ol { margin: 0 0 10px; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+.assistant-text strong { color: var(--text-strong); }
+.assistant-draft { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; padding: 12px 14px; border: 1px dashed var(--status-warning); border-radius: var(--radius-md); background: var(--status-warning-soft); }
+.assistant-trace summary { cursor: pointer; }
+.assistant-trace .mono { word-break: break-all; }

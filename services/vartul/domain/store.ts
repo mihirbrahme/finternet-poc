@@ -154,7 +154,7 @@ export interface Store {
   statusList: { revoked: number[]; next: number };
   exceptions: Record<string, ExceptionMeta>;
   beckn: BecknLogEntry[];
-  assistant: { at: number; mode: string; prompt: string; tools: string[] }[];
+  assistant: { at: number; mode: string; prompt: string; tools: string[]; role?: string; actingAs?: string; calls?: unknown[]; drafts?: string[] }[];
   counters: Record<string, number>;
   scene?: string;
   /** Presenter progress and values carried between steps of a scene (e.g. a Beckn transaction id). */

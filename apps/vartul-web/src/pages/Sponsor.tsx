@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { bump, post, useApi } from "../lib/api";
 import { date, inr, kg, pct, policyLabels } from "../lib/format";
 import { Link, navigate, setQuery, useLocation } from "../lib/router";
 import { useDirectory } from "../lib/directory";
 import { Alert, Badge, Button, Card, ClaimStatus, ClaimType, ErrorNote, Field, Hash, KV, Loading, LotLink, PageHead, ProgrammeStatus, Progress, Stat, Table, Tabs, useToast } from "../components/ui";
 import { BecknMessages } from "../components/BecknMessages";
+import { AssistantPanel, type Draft } from "../components/Assistant";
 
 const SPONSORS = ["TIDEWELL", "NEELKANTH", "COASTLINE"];
 const MATERIALS = ["PET", "HDPE", "LDPE", "MLP", "NETS", "FOOTWEAR", "GLASS", "THERMOCOL"];
@@ -16,6 +17,7 @@ export default function Sponsor() {
   const { data: exceptions } = useApi<any[]>("/api/exceptions");
   const dir = useDirectory();
   const [tab, setTab] = useState(query.get("tab") ?? "discover");
+  const [draft, setDraft] = useState<Draft | null>(null);
   if (error) return <div className="page"><ErrorNote error={error} /></div>;
   if (!me) return <Loading />;
 
@@ -59,11 +61,26 @@ export default function Sponsor() {
         onChange={setTab}
         tabs={[
           { id: "discover", label: "Discover programmes" },
+          { id: "assistant", label: "Assistant" },
           { id: "portfolio", label: "Portfolio", count: me.programmes.length },
           { id: "claims", label: "Claims wallet", count: me.claims.length },
         ]}
       />
-      {tab === "discover" && <Discover sponsor={as} />}
+      {tab === "discover" && <Discover sponsor={as} draft={draft} />}
+      {tab === "assistant" && (
+        <AssistantPanel
+          key={as}
+          role="sponsor"
+          actingAs={as}
+          intro="Describe what you want to fund. The assistant searches the open network, compares programmes on their ledger record and drafts a commitment for you to review. It cannot sign or fund."
+          suggestions={[
+            "Find coastal plastic recovery programmes in Maharashtra we can fund with ₹3 lakh this quarter; we want at least a third reaching collectors and independent verification.",
+            "Which programmes recover fishing nets, and how have their providers performed?",
+            "Compare programmes with at least 40% to collectors for ₹1.5 lakh.",
+          ]}
+          onDraft={(d) => { setDraft(d); setTab("discover"); }}
+        />
+      )}
       {tab === "portfolio" && (
         <Card flush>
           <Table
@@ -106,7 +123,7 @@ export default function Sponsor() {
 }
 
 /** Beckn discovery and commitment: search → select → init → confirm, every message signed and logged. */
-function Discover({ sponsor }: { sponsor: string }) {
+function Discover({ sponsor, draft }: { sponsor: string; draft?: Draft | null }) {
   const dir = useDirectory();
   const toast = useToast();
   const [intent, setIntent] = useState({ materials: ["NETS", "FOOTWEAR", "PET", "MLP"], minShare: 30, budget: 300000 });
@@ -156,8 +173,31 @@ function Discover({ sponsor }: { sponsor: string }) {
     }
   };
 
+  /** An assistant draft opens here: search again on the network, select the drafted offer and request a quote. The sponsor decides the rest. */
+  useEffect(() => {
+    if (!draft || draft.kind !== "commitment") return;
+    (async () => {
+      setChosen(null); setQuote(null); setTerms(null); setOrder(null); setMessages([]);
+      setFunding(draft.prefill.fundingInr);
+      const r = await call("search", "/api/bap/sponsor/search", { materials: [], minCollectorShareBps: 0, budgetInr: draft.prefill.fundingInr });
+      if (!r) return;
+      setSearch(r);
+      const offer = r.offers.find((o: any) => o.item.id === draft.prefill.item);
+      if (!offer) return toast.show({ title: `${draft.prefill.item} is no longer offered`, body: "It may have been funded since the assistant drafted it.", error: true });
+      setChosen(offer);
+      const q = await call("select", "/api/bap/sponsor/select", { transactionId: r.transactionId, bpp: offer.bpp, item: offer.item.id, fundingInr: draft.prefill.fundingInr });
+      if (q) setQuote(q.response.order.quote);
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [draft]);
+
   return (
     <div className="stack" style={{ gap: 24 }}>
+      {draft?.kind === "commitment" && (
+        <Alert tone="info" title={`Assistant draft: ${draft.title}`}>
+          {draft.summary} The offer below has been selected and quoted. Request the exact terms and decide; nothing is funded until you confirm.
+        </Alert>
+      )}
       <Card title="What do you want to fund?" sub="Your intent is broadcast by the network gateway to every registered NGO provider. Nothing is sent to a single platform.">
         <div className="grid g3" style={{ alignItems: "end" }}>
           <Field label="Materials">

@@ -5,6 +5,7 @@ import { navigate, setQuery, useLocation } from "../lib/router";
 import { useDirectory } from "../lib/directory";
 import { Alert, Badge, Button, Card, ErrorNote, Field, Loading, LotLink, LotState, PageHead, Stat, Table, Tabs, useAction } from "../components/ui";
 import { RecordDrawer } from "../components/RecordDrawer";
+import { AssistantPanel, type Draft } from "../components/Assistant";
 
 const VERIFIERS = ["NIRIKSHAN", "DRISHTI"];
 
@@ -16,6 +17,7 @@ export default function Verifier() {
   const { data: clock } = useApi<{ now: number }>("/api/clock");
   const [tab, setTab] = useState("awaiting");
   const [selected, setSelected] = useState<string | null>(query.get("lot"));
+  const [draft, setDraft] = useState<Draft | null>(null);
   useEffect(() => {
     if (!selected && q?.awaiting?.length) setSelected(q.awaiting[0].code);
   }, [q, selected]);
@@ -44,6 +46,17 @@ export default function Verifier() {
         <Stat value={q.inWindow.length} label="Verified, challenge window open" detail="Anyone with standing may challenge" accent="var(--role-verifier)" />
         <Stat value={q.recent.length} label="Recently settled" accent="var(--role-verifier)" />
       </div>
+      <AssistantPanel
+        key={as}
+        role="verifier"
+        actingAs={as}
+        intro="Summarises proof chains and anomaly flags, suggests what to sample first and drafts exclusions. You decide and sign; it cannot accept or reject quantities."
+        suggestions={[
+          "Summarise the next lot awaiting my decision and what I should sample first.",
+          ...(selected ? [`Walk me through the proof chain for ${selected}.`] : []),
+        ]}
+        onDraft={(d) => { setDraft(d); setTab("awaiting"); setSelected(d.prefill.lot); }}
+      />
       <div className="grid g-wide" style={{ alignItems: "start" }}>
         <Card flush>
           <div style={{ padding: "0 20px" }}>
@@ -64,20 +77,20 @@ export default function Verifier() {
             rows={rows}
           />
         </Card>
-        {selected ? <Decision code={selected} verifier={as} /> : <Card><div className="empty">Select a lot to review its proof chain.</div></Card>}
+        {selected ? <Decision code={selected} verifier={as} draft={draft?.prefill.lot === selected ? draft : null} /> : <Card><div className="empty">Select a lot to review its proof chain.</div></Card>}
       </div>
     </div>
   );
 }
 
-function Decision({ code, verifier }: { code: string; verifier: string }) {
+function Decision({ code, verifier, draft }: { code: string; verifier: string; draft?: Draft | null }) {
   const { data: l } = useApi<any>(`/api/lots/${code}`);
   const dir = useDirectory();
   const { run, busy } = useAction();
   const [record, setRecord] = useState<string | null>(null);
   const flaggedBySaathi = useMemo(() => {
     const m = new Map<string, number>();
-    for (const r of l?.records ?? []) if (r.flags.some((f: string) => f !== "ODD_HOURS")) m.set(r.saathi, (m.get(r.saathi) ?? 0) + r.kg);
+    for (const r of l?.records ?? []) if (r.flags.some((f: any) => f.severity !== "low")) m.set(r.saathi, (m.get(r.saathi) ?? 0) + r.kg);
     return m;
   }, [l]);
   const [excl, setExcl] = useState<{ saathi: string; kg: string; reason: string }[]>([]);
@@ -86,6 +99,11 @@ function Decision({ code, verifier }: { code: string; verifier: string }) {
     setExcl([...flaggedBySaathi].map(([saathi, k]) => ({ saathi, kg: k.toFixed(1), reason: "Flagged records excluded: weight outlier, duplicate photo or off-route location" })));
     setNotes("");
   }, [flaggedBySaathi]);
+  useEffect(() => {
+    if (!draft) return;
+    setExcl(draft.prefill.excluded.map((e: any) => ({ saathi: e.saathi, kg: String(e.kg), reason: e.reason })));
+    setNotes(`Assistant draft reviewed: ${draft.summary}`);
+  }, [draft, flaggedBySaathi]);
   if (!l) return <Card><Loading /></Card>;
   const excludedKg = excl.reduce((s, e) => s + (Number(e.kg) || 0), 0);
   const eligible = Math.max(0, (l.receivedKg ?? 0) - excludedKg);
@@ -123,6 +141,7 @@ function Decision({ code, verifier }: { code: string; verifier: string }) {
       {canDecide ? (
         <Card title="Decision" sub="Eligible quantity can never exceed the recycler's received weight">
           <div className="stack">
+            {draft && <Alert tone="info" title="Loaded from an assistant draft">Check each exclusion against the evidence before signing. You can edit or remove any line.</Alert>}
             {excl.map((e, i) => (
               <div key={i} className="grid" style={{ gridTemplateColumns: "150px 100px minmax(0,1fr) auto", gap: 8, alignItems: "end" }}>
                 <Field label="Collector">

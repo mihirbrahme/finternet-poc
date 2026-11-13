@@ -5,9 +5,11 @@ import { becknRoutes } from "./beckn/network.js";
 import { scenes, sceneById } from "./seed/scenes.js";
 import { runSceneStep } from "./seed/seed.js";
 import { DomainError } from "./lib/util.js";
+import { Gateway, type Role } from "./assistant/gateway.js";
+import { Assistants, type Provider } from "./assistant/assistant.js";
 
 /** Route groups layered on the core API: Beckn sandbox (M4), scenes (M5), assistants (M7). */
-export async function extensions(router: Router, rt: Runtime, _core: ReturnType<typeof coreRoutes>, port = config.apiPort) {
+export async function extensions(router: Router, rt: Runtime, core: ReturnType<typeof coreRoutes>, port = config.apiPort, opts: { provider?: Provider | null } = {}) {
   const beckn = becknRoutes(router, rt, rt.vartul.baseUrl, `http://127.0.0.1:${port}`);
 
   const describe = (id: string) => {
@@ -44,5 +46,12 @@ export async function extensions(router: Router, rt: Runtime, _core: ReturnType<
       return { result, scene: describe(scene.id) };
     });
 
-  return { beckn };
+  // M7: assistants reach the system only through the gateway's read and draft tools.
+  const assistants = new Assistants(rt, new Gateway(rt, core.views, beckn), opts.provider === undefined ? undefined : opts.provider);
+  router
+    .get("/api/assistant/status", () => assistants.status())
+    .get("/api/assistant/log", () => rt.vartul.store.assistant.slice(-50).reverse())
+    .post("/api/assistant/:role", ({ params, body }) => assistants.ask(params.role as Role, String(body?.as ?? (params.role === "sponsor" ? "TIDEWELL" : "NIRIKSHAN")), body?.prompt));
+
+  return { beckn, assistants };
 }
