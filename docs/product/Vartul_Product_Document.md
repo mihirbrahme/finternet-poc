@@ -10,13 +10,13 @@
 | Version | 1.0 (first complete edition) |
 | Date | 13 November 2026 |
 | Partner context | Project Aamhi (rural and coastal solid-waste recovery, Konkan, Maharashtra) |
-| Product developer | Suma (Finternet programme team) |
+| Product developer | Suma — the product is presented as **Vartul by Suma** |
 | Supersedes | The v0.2.1 handover specifications and earlier sponsorship/material-sale specifications (archived in `archive/`, scheduled for deletion) |
 | Companion document | A separate implementation-status and handover document will be produced at the end of the build |
 
 **How to read this document.** This document describes the complete Vartul product: what it is, why it exists, who uses it, the rules it enforces, how it is built and governed, and the legal and regulatory conditions under which it can operate. It deliberately describes the full product rather than a phase plan. What is built, simulated or pending at any moment is recorded in the separate status document, not here. Section 19 defines the demonstration scope only so that a reader of this document alone is never misled about what a demonstration shows.
 
-**Fictional setting.** Project Aamhi is a real organisation and is named with its role as the anchor partner. All places, sponsors, recyclers, verifiers, other NGOs, Gram Panchayats and individuals used in examples are **fictional**, set in an invented coastal taluka of the Konkan. Any resemblance to real places, companies or people is coincidental. Quantities, rates and amounts in examples are illustrative design values, not operating data or valuations.
+**Setting and illustrative data.** Examples use the real places where Project Aamhi works: Murud taluka in Raigad district, on the Konkan coast of Maharashtra. Project Aamhi is named as the anchor partner. All other organisations (sponsors, recyclers, verifiers, peer NGOs, assessors) and all individuals are **fictional**. Quantities, rates, amounts and events attributed to real places, Gram Panchayats or Aamhi are illustrative design values, not operating data, valuations or statements about what any real body has done.
 
 **Not legal advice.** Section 15 identifies the laws and regulations that shape the product and the positions the product takes. It is a design analysis for counsel to confirm, not a legal opinion.
 
@@ -87,7 +87,7 @@ Vartul applies the Finternet design described by Agustín Carstens and Nandan Ni
 
 ### 1.5 The one-paragraph story
 
-A safai saathi in the fictional village of Ambeghar Bandar collects a 12 kg bag of mixed plastic and records it on the Vartul field app, offline, with a photo and a scale reading. At the Shingrewadi material recovery centre the batch is weighed and becomes recovery lot `VRL-KH-2026-0042`. A registered recycler confirms receipt, and an independent verifier samples and accepts 1,180 kg. That acceptance transaction releases the sponsor's escrowed funding: incentives to the eleven collectors who contributed, Aamhi's operating share, the verifier's fee, and an exclusive impact claim to the sponsor. The sponsor receives a signed impact certificate with a QR code. A journalist who scans the QR sees the complete proof chain: who collected, where, when, who received, who verified, and that no one else has claimed those kilograms.
+A safai saathi in Korlai collects a 12 kg bag of mixed plastic and records it on the Vartul field app, offline, with a photo and a scale reading. At Aamhi's Kashid material recovery centre the batch is weighed and becomes recovery lot `VRL-MRD-2026-0042`. A registered recycler confirms receipt, and an independent verifier samples and accepts 1,180 kg. That acceptance transaction releases the sponsor's escrowed funding: incentives to the eleven collectors who contributed, Aamhi's operating share, the verifier's fee, and an exclusive impact claim to the sponsor. The sponsor receives a signed impact certificate with a QR code. A journalist who scans the QR sees the complete proof chain: who collected, where, when, who received, who verified, and that no one else has claimed those kilograms.
 
 ---
 
@@ -230,23 +230,25 @@ A circular-economy network in which any community recovery organisation can make
 
 ## 5. The setting and the participants
 
-### 5.1 The fictional reference geography
+### 5.1 The reference geography
 
-All examples use an invented coastal taluka in the Konkan region of Maharashtra.
+Examples use the area where Project Aamhi works. Places are real; every organisation other than Aamhi, every person and all data are fictional or illustrative.
 
-| Element | Fictional name | Description |
+| Element | Name | Description |
 |---|---|---|
-| District | **Varunagiri** | A coastal district with fishing villages, beaches and tourist traffic |
-| Taluka | **Kharekinara** | Ten coastal and hinterland villages served by Aamhi |
-| Material recovery centre | **Shingrewadi MRC** | Aamhi's aggregation, sorting, baling and dispatch centre with a calibrated platform scale |
-| Coastal villages | Ambeghar Bandar, Tamarli, Nilwala, Sonkada, Undirwadi | High tourist and marine-debris load; beach clean-ups |
-| Hinterland villages | Pimpalkhar, Mograwadi, Kesarwadi, Dhavalpeth, Shingrewadi | Household door-to-door segregation routes |
-| Recycler | **Talvan Polymers Pvt Ltd** | Registered plastic-waste processor 140 km inland; operates a weighbridge |
+| District | **Raigad** (real) | Coastal district south of Mumbai with fishing villages, beaches and heavy weekend tourist traffic |
+| Taluka | **Murud** (real) | Where Aamhi organises village waste systems with Gram Panchayats and the Raigad Zilla Parishad |
+| Material recovery centre | **Kashid MRC** (real location) | Aamhi's sorting centre at Kashid; in Vartul, the aggregation, baling, weighing and dispatch point with a calibrated platform scale |
+| Villages (real) | Nandgaon, Kashid, Chikni, Sarva, Danda, Vihur, Mazgaon, Barshiv, Borli, Korlai | Household door-to-door segregation routes; Nandgaon is where Aamhi began |
+| Beaches (real) | Kashid beach, Korlai shore | High tourist and marine-debris load; beach clean-up routes |
+| Materials Aamhi handles (real) | PET, HDPE, LDPE and single-use plastic, multi-layer plastic, thermocol and foam, glass, footwear and marine footwear, fishing nets, rubber, textiles | Basis of the Vartul material taxonomy |
+| Field team (real model, illustrative data) | About 20 local women safai saathis | Basis of the demonstration's collector roster |
+| Recycler | **Talvan Polymers Pvt Ltd** | Fictional registered plastic-waste processor in an inland industrial area; operates a weighbridge |
 | Second recycler | **Ghatmatha Recyclers LLP** | Glass and rigid-plastic buyer used for multi-stream examples |
 | Verifier | **Nirikshan Assurance LLP** | Independent accredited verification firm |
 | Sponsors | **Tidewell Foods Ltd (CSR)**, **Neelkanth Bank Foundation**, **Coastline Giving Circle** | A packaged-food brand owner, a bank's foundation, and a pooled philanthropy circle |
 | Other NGOs on the network | **Sagar Swachh Sangh**, **Hirwai Collective** | Peer implementers publishing their own programmes |
-| Gram Panchayats | e.g., Ambeghar Bandar Gram Panchayat | One per village, as observers and co-attestors |
+| Gram Panchayats | e.g., Korlai Gram Panchayat, Nandgaon Gram Panchayat (real bodies; roles and data illustrative) | One per village, as observers and co-attestors |
 | Impact assessor | **Pratibimb Impact Assessors** | Social Impact Assessment organisation for SSE and CSR assessments |
 
 ### 5.2 Participants and roles
@@ -258,7 +260,7 @@ Every participant holds one or more **role credentials** (Section 14). The ledge
 | **Safai saathi (collector)** | Local field worker employed or engaged by the NGO | Capture collection records; view earnings; receive incentive payouts | Verify, receive, or claim |
 | **Collection supervisor** | Aamhi field lead | Assign routes; assisted capture; daily reconciliation; co-sign collections | Approve own team's verification |
 | **Originator / implementing agency** | Project Aamhi | Publish programmes; accept terms; aggregate, tokenise and dispatch lots; propose exceptions; authorise payout policy | Verify its own lots; claim sponsor attribution |
-| **MRC operator** | Aamhi staff at Shingrewadi MRC | Weigh aggregation batches; record sorting and contamination; prepare dispatch | Confirm receipt at the recycler |
+| **MRC operator** | Aamhi staff at Kashid MRC | Weigh aggregation batches; record sorting and contamination; prepare dispatch | Confirm receipt at the recycler |
 | **Receiving facility / recycler** | Talvan Polymers | Confirm receipt (weighbridge); optionally attest processing; purchase material lots | Verify eligibility for sponsor payment |
 | **Verifier** | Nirikshan Assurance | Review proof chains; perform sampling and site checks; accept eligible quantity; reject or flag | Hold any financial interest in the programme; approve exceptions |
 | **Sponsor** | Tidewell Foods CSR, Neelkanth Bank Foundation, Coastline Giving Circle | Discover and fund programmes; approve exceptions; receive claims and certificates | Change recorded quantities; release funds without conditions |
@@ -293,7 +295,7 @@ sequenceDiagram
   autonumber
   participant SS as Safai saathi
   participant FA as Field app
-  participant MRC as Shingrewadi MRC
+  participant MRC as Kashid MRC
   participant RL as Recovery Lot Registry
   participant RC as Talvan Polymers
   participant VF as Nirikshan Assurance
@@ -302,7 +304,7 @@ sequenceDiagram
   participant SP as Sponsor
   SS->>FA: Capture 12.4 kg mixed LDPE, photo, location, time (offline)
   FA-->>MRC: Sync signed collection record when connected
-  MRC->>RL: Weigh batch 1,212 kg; mint lot VRL-KH-2026-0042 with proof root
+  MRC->>RL: Weigh batch 1,212 kg; mint lot VRL-MRD-2026-0042 with proof root
   MRC->>RC: Dispatch with transport document hash
   RC->>RL: Attest receipt 1,196 kg (weighbridge slip hash)
   VF->>RL: Sample and accept 1,180 kg eligible
@@ -314,9 +316,9 @@ sequenceDiagram
 
 **Steps.**
 
-1. **Capture.** Sunanda (pseudonymous ID `SS-KH-0017`) collects mixed LDPE on the Ambeghar Bandar beach route. In the field app she selects the material, places the bag on the route scale, takes the photo the app prompts for, and confirms. The record is signed by her device key (bound to her collector credential), stores the scale reading, GPS fix, timestamp and photo fingerprint, and queues offline.
+1. **Capture.** Sunanda (pseudonymous ID `SS-MRD-0017`) collects mixed LDPE on the Korlai shore route. In the field app she selects the material, places the bag on the route scale, takes the photo the app prompts for, and confirms. The record is signed by her device key (bound to her collector credential), stores the scale reading, GPS fix, timestamp and photo fingerprint, and queues offline.
 2. **Supervisor reconciliation.** At day end, supervisor Rohan co-signs the route's 38 records. Sync uploads evidence to private storage and submits record fingerprints.
-3. **Aggregation and tokenisation.** At the MRC, the operator weighs the sorted, baled batch: 1,212 kg of LDPE assembled from 214 collection records totalling 1,296 kg captured weight, with 84 kg removed as contamination. The registry checks mass balance (output ≤ inputs − recorded contamination, within tolerance) and mints lot `VRL-KH-2026-0042` with quantity 1,212,000 g, material `PLASTIC-LDPE`, grade, programme eligibility window, and the Merkle root of the 214 record fingerprints.
+3. **Aggregation and tokenisation.** At the MRC, the operator weighs the sorted, baled batch: 1,212 kg of LDPE assembled from 214 collection records totalling 1,296 kg captured weight, with 84 kg removed as contamination. The registry checks mass balance (output ≤ inputs − recorded contamination, within tolerance) and mints lot `VRL-MRD-2026-0042` with quantity 1,212,000 g, material `PLASTIC-LDPE`, grade, programme eligibility window, and the Merkle root of the 214 record fingerprints.
 4. **Dispatch.** Aamhi dispatches the lot with a transport document fingerprint. The lot becomes `IN_TRANSIT`.
 5. **Receipt.** Talvan Polymers weighs on its weighbridge: 1,196 kg. It attests receipt with the weighbridge slip fingerprint and its CPCB registration credential. The 1.3% variance is inside the programme's 2% tolerance, so the lot becomes `RECEIVED`.
 6. **Verification.** Nirikshan's console shows the proof chain, the anomaly report (none material) and a sampling plan of 12 collection records to inspect. The verifier reviews them, checks the MRC log and receipt documents, and accepts 1,180 kg eligible, excluding 16 kg identified as non-eligible material. The lot becomes `VERIFIED` with eligible quantity 1,180,000 g.
@@ -330,13 +332,13 @@ sequenceDiagram
    Any failure reverts everything.
 8. **Payout.** Collector payouts are recorded on-chain against pseudonymous payout addresses. The payment adapter then executes UPI transfers off-chain and records the payout reference. Sunanda receives an SMS and sees the payout and the verified lot in her app.
 9. **Certificate.** Tidewell Foods receives a W3C Verifiable Credential impact certificate referencing the claim, lot, verifier, programme and settlement transaction, with a QR code. Its CSR team downloads a report aligned to its CSR-2 and impact-assessment needs.
-10. **Public verification.** Anyone scanning the QR sees: claim valid, 1,180 kg LDPE, Kharekinara taluka, collected 2–19 October 2026, received by a registered recycler, verified by an accredited verifier, 11 collectors paid, not claimed by any other party, and no personal data.
+10. **Public verification.** Anyone scanning the QR sees: claim valid, 1,180 kg LDPE, Murud taluka, collected 2–19 October 2026, received by a registered recycler, verified by an accredited verifier, 11 collectors paid, not claimed by any other party, and no personal data.
 
 ### 6.2 Journey B — Sponsor discovers and funds a programme
 
 1. Tidewell Foods' CSR lead opens the Vartul sponsor portal, a Beckn buyer application, and searches for recovery programmes: Maharashtra coast, plastics, at least 20 tonnes, budget up to ₹6 lakh, verification required, last-mile share at least 30%.
 2. The network returns programmes from Aamhi, Sagar Swachh Sangh and Hirwai Collective, each with geography, materials, targets, payment policy, verifier arrangements, track record (verified kg to date, from the claim registry, not self-reported) and credentials (CSR-1 registration, 12A/80G, NGO Darpan ID).
-3. The sponsor selects Aamhi's *Kharekinara Coastal Recovery 2026–27* programme. Through `select` and `init` the terms are quoted: 30 tonnes, ₹18/kg eligible, payment splits, verifier, eligibility window, exception and dispute rules, and deadline policy.
+3. The sponsor selects Aamhi's *Murud Coastal Recovery 2026–27* programme. Through `select` and `init` the terms are quoted: 30 tonnes, ₹18/kg eligible, payment splits, verifier, eligibility window, exception and dispute rules, and deadline policy.
 4. Both parties review the terms document. Its fingerprint is what each signs. Aamhi accepts; the sponsor confirms (`confirm`). The programme commitment is recorded on the ledger.
 5. The sponsor funds the first tranche into programme escrow, e.g., three milestones of ₹1.8 lakh each. Funding is visible as held, not paid.
 
@@ -370,11 +372,11 @@ Three months later an audit finds that a recycler's receipts for October were fa
 
 ### 6.7 Journey G — Recycler purchase and unbundled rights
 
-Talvan Polymers buys lot `VRL-KH-2026-0042`'s material at ₹14/kg. A delivery-versus-payment settlement transfers the lot's **material entitlement** to Talvan against payment to Aamhi atomically. The lot's **funded-outcome claim** remains with Tidewell Foods. The **EPR-eligibility marker** records that Talvan may use the documented supply in its own EPR reporting under the CPCB framework, subject to the claim-compatibility policy (Section 8.6). The worker incentives already paid remain linked. One physical lot now carries four separately governed rights, each held by the right party.
+Talvan Polymers buys lot `VRL-MRD-2026-0042`'s material at ₹14/kg. A delivery-versus-payment settlement transfers the lot's **material entitlement** to Talvan against payment to Aamhi atomically. The lot's **funded-outcome claim** remains with Tidewell Foods. The **EPR-eligibility marker** records that Talvan may use the documented supply in its own EPR reporting under the CPCB framework, subject to the claim-compatibility policy (Section 8.6). The worker incentives already paid remain linked. One physical lot now carries four separately governed rights, each held by the right party.
 
 ### 6.8 Journey H — Gram Panchayat oversight
 
-The sarpanch of Ambeghar Bandar opens the Panchayat view, in Marathi, on a tablet or printed weekly summary. It shows:
+The sarpanch of Nandgaon opens the Panchayat view, in Marathi, on a tablet or printed weekly summary. It shows:
 
 - kg recovered from the village by month and material;
 - collection points;
@@ -550,7 +552,7 @@ A **semi-fungible token**, implemented on the ERC-1155 multi-token standard with
 
 | Attribute | Description |
 |---|---|
-| `lotId` | Network-wide identifier, e.g., `VRL-KH-2026-0042`, registered in the Beckn network registry namespace of the originator |
+| `lotId` | Network-wide identifier, e.g., `VRL-MRD-2026-0042`, registered in the Beckn network registry namespace of the originator |
 | `originator` | Participant ID of the implementing agency |
 | `materialCategory`, `grade` | Taxonomy and grade |
 | `aggregatedGrams` | MRC weighed quantity |
@@ -657,9 +659,9 @@ Vartul uses a **settlement token** representing programme money inside the unifi
 | Object | Format | Example |
 |---|---|---|
 | Participant | `<type>-<region>-<seq>` with DID | `ORG-AAMHI-001`, `did:web:aamhi.example` |
-| Collector | Pseudonymous | `SS-KH-0017` |
+| Collector | Pseudonymous | `SS-MRD-0017` |
 | Programme | `PRG-<originator>-<year>-<seq>` | `PRG-AAMHI-2026-003` |
-| Lot | `VRL-<taluka>-<year>-<seq>` | `VRL-KH-2026-0042` |
+| Lot | `VRL-<taluka>-<year>-<seq>` | `VRL-MRD-2026-0042` |
 | Claim | `CLM-<type>-<seq>` | `CLM-FR-000913` |
 | Certificate | VC ID (URN) | `urn:vartul:cert:...` |
 
@@ -1240,10 +1242,10 @@ The figures below are illustrative design values for one programme cycle, not op
 
 | Item | Value |
 |---|---|
-| Programme | Kharekinara Coastal Recovery 2026–27, 30 tonnes target, mixed plastics |
+| Programme | Murud Coastal Recovery 2026–27, 30 tonnes target, mixed plastics |
 | Sponsor rate | ₹18 per verified kg (per-kg capped policy) |
 | Programme funding | ₹5,40,000 |
-| Collector incentive pool (40%) | ₹2,16,000 across ~40 collectors (≈ ₹5,400 each over the cycle, supplementary to their engagement) |
+| Collector incentive pool (40%) | ₹2,16,000 across ~20 safai saathis (≈ ₹10,800 each over the cycle, supplementary to their engagement) |
 | Aamhi operations (55%) | ₹2,97,000 for logistics, MRC operations, supervision and admin |
 | Verification (5%) | ₹27,000 (≈ ₹0.90 per verified kg) |
 | Network service fee (disclosed, illustrative 2.5%, charged to the sponsor on top) | ₹13,500 |
@@ -1331,7 +1333,7 @@ AI improves access and efficiency but never holds authority over money, claims o
 - Outputs cite the records they rely on.
 - Assistants are evaluated against test suites for factual accuracy, claim-language compliance and refusal of out-of-scope actions.
 
-The model provider is configurable. The current reference implementation uses Anthropic's Claude models through the official SDK.
+The model provider is configurable. The reference implementation calls models through an OpenRouter-compatible gateway, defaulting to an Anthropic Claude model, with a labelled scripted mode when no key is configured.
 
 ---
 
@@ -1341,7 +1343,7 @@ The demonstration is a working showcase of the complete product story. It execut
 
 ### 19.1 What the demonstration executes for real
 
-- All contract families in Section 11.2, deployed on a dedicated local EVM chain, with an optional public test-network deployment for certificate verification:
+- All contract families in Section 11.2, deployed on a dedicated local EVM chain. Public test-network deployment tooling is built; the demonstration simulates the public end state (public explorer references and open certificate verification) without deploying:
   - recovery lots with mass balance;
   - EIP-712 attestations with role checks;
   - generalised programme escrow with per-kg and fixed policies, deadlines, exceptions and disputes;
@@ -1366,13 +1368,13 @@ The demonstration is a working showcase of the complete product story. It execut
 | UPI payouts | Simulated payout adapter returning references |
 | Legal identity, KYC, CPCB registration checks | Fictional credentials issued by a demo issuer |
 | Evidence photos | Illustrative images, never real people |
-| Historical activity | Seeded history of about six months: 10 villages, ~40 collectors, 3 NGOs, 3 sponsors, 2 recyclers, 2 verifiers, several hundred lots, all executed as real transactions |
+| Historical activity | Seeded history of about six months: Aamhi's 10 Murud villages, ~20 safai saathis, 3 NGOs, 3 sponsors, 2 recyclers, 2 verifiers, several hundred lots, all executed as real transactions |
 
 Every simulated element carries an unobtrusive "simulated" label in the system-details view and in the network explorer.
 
 ### 19.3 Demonstration scenes
 
-1. **The network at a glance.** Programmes across the Konkan coast; verified kg; last-mile share; zero duplicate claims.
+1. **The network at a glance.** Programmes across the Raigad coast; verified kg; last-mile share; zero duplicate claims.
 2. **A sponsor discovers and commits.** Beckn search, comparison and the AI assistant; terms confirmed; escrow funded.
 3. **Follow one bag.** Field capture → MRC lot minting with mass balance → recycler receipt → verifier sampling → atomic settlement with worker payouts and claim allocation.
 4. **Sunanda gets paid.** The worker's app shows her verified kg and payout.
@@ -1381,7 +1383,7 @@ Every simulated element carries an unobtrusive "simulated" label in the system-d
 7. **When reality differs.** Shortfall exception with an exact-proposal joint approval.
 8. **Unbundled rights.** The recycler buys the lot; the sponsor keeps attribution; the EPR-ready supply claim is disclosed.
 9. **Revocation cascade.** A fraudulent receipt revoked; dependent lots and claims flip to under review; certificates update.
-10. **The Panchayat view.** The village summary in Marathi.
+10. **The Panchayat view.** The village summary (English in the demonstration; Marathi is a product requirement and is shown as "coming soon").
 11. **Under the hood.** The network explorer shows token managers, proof chains and the transactions behind every scene.
 
 ### 19.4 Demonstration acceptance criteria
@@ -1465,7 +1467,10 @@ Verified kg, anomaly rates and outcomes, verification SLA, payout success rate a
 | V12 | Network facilitator never holds live funds | Payments regulation |
 | V13 | Gram Panchayat is a first-class participant | Governance legitimacy and local accountability |
 | V14 | AI assistants have no keys and no decision authority | Safety and accountability |
-| V15 | Fictional Konkan geography in all materials; Aamhi named as real partner | Accuracy and consent |
+| V15 | Real Murud taluka places where Aamhi works; all other organisations, people and data fictional or illustrative | Credibility of the story without attributing invented facts to real bodies |
+| V17 | Demonstration interface in English; Marathi presented as forthcoming | Speed of build; Marathi remains a product requirement |
+| V18 | Public test-network deployment built but not executed; demonstration simulates the public end state | Showcase public verifiability without managing a funded public wallet |
+| V19 | Vartul presented as "Vartul by Suma" using the Suma design system | Product identity under the developer's brand |
 | V16 | This product document supersedes the earlier handover specifications | One authoritative reference |
 
 ### 21.3 Open questions

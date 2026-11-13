@@ -1,4 +1,4 @@
-# Vartul — Proof-of-Recovery network
+# Vartul by Suma — Proof-of-Recovery network
 
 > Every rupee linked to a verified kilo. Every kilo linked to the person who collected it. Every claim made only once.
 
@@ -29,8 +29,8 @@ npx --yes pnpm@10.16.1 test:demo         # browser tests (stop demo:run first)
 | `contracts/` | Solidity contracts and Foundry tests |
 | `services/`, `beckn/`, `agents/` | Application services, network adapters and agent components |
 | `apps/` | Browser application |
-| `schemas/`, `samples/`, `tests/` | Schemas, fictional sample data and tests |
+| `schemas/`, `samples/`, `tests/` | Schemas, illustrative sample data and tests |
 | `deployment/` | Acceptance scripts and the optional Docker workbench |
 | `archive/` | Superseded material, scheduled for deletion (see `archive/README.md`) |
 
-All places, organisations other than Project Aamhi, and people in sample data are fictional. dINR is a sandbox settlement token, not money.
+Sample data uses the real Murud taluka (Raigad) villages where Project Aamhi works; all other organisations, all people and all quantities are fictional or illustrative. dINR is a sandbox settlement token, not money.
