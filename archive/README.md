@@ -10,5 +10,6 @@ This folder holds material superseded by the [Vartul product document](../docs/p
 | `tests-walkthrough/` | Playwright script that captured those screenshots |
 | `reference/` | Original Aamhi recovery context from the first project pack |
 | `package-handover.ts` | Packaging script for the v0.2.1 handover release |
+| `v0.2.1-code/` | The v0.2.1 sponsorship application: services, browser app, Beckn adapters, buyer agent, contracts, schemas, samples, tests and the Docker workbench. Not built or tested |
 
 Nothing here is maintained, link-checked or authoritative.

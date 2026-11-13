@@ -72,6 +72,11 @@ export interface SentTx {
   logs: LogLike[];
 }
 
+const liveNodes = new Set<ChildProcess>();
+process.once("exit", () => {
+  for (const node of liveNodes) node.kill();
+});
+
 /** Owns an isolated local EVM chain (Anvil) and the deployed Vartul contracts. */
 export class Chain {
   readonly provider: JsonRpcProvider;
@@ -111,8 +116,9 @@ export class Chain {
     if (stateFile) args.push("--load-state", stateFile);
     this.proc = spawn("anvil", args, { stdio: "ignore", windowsHide: true });
     const child = this.proc;
-    // Never leave an orphaned node holding the port when this process exits.
-    process.once("exit", () => child.kill());
+    // Never leave an orphaned node holding the port when this process exits (one shared hook, not one per restart).
+    liveNodes.add(child);
+    child.once("exit", () => liveNodes.delete(child));
     let failure: Error | undefined;
     this.proc.on("error", (e) => (failure = e));
     for (let i = 0; i < 100; i++) {

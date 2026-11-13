@@ -1,0 +1,16 @@
+{
+  "base-sepolia": {
+    "name": "Base Sepolia",
+    "chainId": 84532,
+    "rpcEnv": "VARTUL_TESTNET_RPC_URL",
+    "explorer": "https://sepolia.basescan.org",
+    "faucetNote": "Fund the deployer with Base Sepolia ETH from a public faucet."
+  },
+  "polygon-amoy": {
+    "name": "Polygon Amoy",
+    "chainId": 80002,
+    "rpcEnv": "VARTUL_TESTNET_RPC_URL",
+    "explorer": "https://amoy.polygonscan.com",
+    "faucetNote": "Fund the deployer with Amoy POL from the Polygon faucet."
+  }
+}

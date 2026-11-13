@@ -34,8 +34,9 @@ export default function Explorer({ tx }: { tx?: string }) {
         title="Token managers, transactions and network messages"
         lead="Assets with proof chains, programmable settlement and an open network, all inspectable. Every number elsewhere in Vartul is derived from the events listed here."
       />
-      <Alert tone="sim" title={m.chain.name}>
-        {m.chain.publicEndState} Chain ID {m.chain.id}.
+      <Alert tone="sim" title={`${m.chain.name}, chain ID ${m.chain.id}`}>
+        Every transaction below runs on a dedicated local ledger.{" "}
+        {m.publicEndState ? `The same contracts are prepared for ${m.publicEndState.name}; the public end state is simulated below, without deploying.` : "Public test-network tooling: pnpm testnet plan | simulate."}
       </Alert>
       <div className="grid g4">
         {m.managers.map((x: any) => (
@@ -55,7 +56,8 @@ export default function Explorer({ tx }: { tx?: string }) {
           </div>
         ))}
       </div>
-      <Tabs value={tab} onChange={setTab} tabs={[{ id: "tx", label: "Transactions", count: txs?.length }, { id: "beckn", label: "Network messages", count: beckn?.length }]} />
+      <Tabs value={tab} onChange={setTab} tabs={[{ id: "tx", label: "Transactions", count: txs?.length }, { id: "beckn", label: "Network messages", count: beckn?.length }, ...(m.publicEndState ? [{ id: "public", label: "Public end state" }] : [])]} />
+      {tab === "public" && m.publicEndState && <PublicEndState p={m.publicEndState} />}
       {tab === "tx" && (
         <Card flush>
           {!txs ? <Loading /> : (
@@ -140,3 +142,32 @@ const fmtArg = (k: string, v: unknown) => {
   if (/grams/i.test(k) && /^\d+$/.test(s)) return `${(Number(s) / 1000).toLocaleString("en-IN")} kg`;
   return s.length > 46 ? `${s.slice(0, 22)}…${s.slice(-12)}` : s;
 };
+
+/** The simulated public test-network deployment (product document V18): where the contracts would live and how to check them. */
+function PublicEndState({ p }: { p: any }) {
+  return (
+    <Card
+      title={`${p.name} · chain ID ${p.chainId}`}
+      sub="Simulated: deployed to a local chain that uses this network's chain ID, wiring verified, nothing broadcast"
+      actions={<Badge tone="sim">Simulated, not deployed</Badge>}
+      flush
+    >
+      <Table
+        rowKey={(r: any) => r[0]}
+        columns={[
+          { key: "c", header: "Contract", render: (r: any) => <span className="strong">{r[0]}</span> },
+          { key: "a", header: "Address it would have", render: (r: any) => <span className="mono small">{r[1].address}</span> },
+          { key: "x", header: "Public explorer", render: (r: any) => <a href={r[1].explorerUrl} target="_blank" rel="noreferrer" className="small" title="Opens the public explorer; the page will be empty until a real deployment">{new URL(r[1].explorerUrl).host}</a> },
+        ]}
+        rows={Object.entries(p.contracts)}
+      />
+      <div style={{ padding: "16px 20px" }} className="stack">
+        <p className="small muted">{p.note}</p>
+        <p className="small">
+          {p.wiringChecks} wiring checks passed · {Number(p.gasUsed).toLocaleString("en-IN")} gas to deploy · bytecode SHA-256 <span className="mono">{String(p.bytecodeSha256).slice(0, 16)}…</span>
+        </p>
+        <p className="small">{p.certificateVerification}</p>
+      </div>
+    </Card>
+  );
+}

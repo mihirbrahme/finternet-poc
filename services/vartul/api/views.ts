@@ -3,6 +3,19 @@ import type { Vartul } from "../domain/vartul.js";
 import { DomainError, idOf, kg, merkle } from "../lib/util.js";
 import { verifyRecordSignature } from "../domain/evidence.js";
 import type { LotProjection } from "../domain/indexer.js";
+import { existsSync, readFileSync } from "node:fs";
+import { resolve } from "node:path";
+
+/** The simulated public test-network deployment written by `pnpm testnet simulate`, if present. */
+function publicEndState() {
+  const file = resolve(import.meta.dirname, "../../../deployment/testnet/base-sepolia.simulated.json");
+  if (!existsSync(file)) return null;
+  try {
+    return JSON.parse(readFileSync(file, "utf8"));
+  } catch {
+    return null;
+  }
+}
 
 const SIMULATED = {
   payouts: "UPI payouts are simulated by a sandbox payment adapter; references are not real UTRs.",
@@ -459,7 +472,8 @@ export class Views {
     const claims = [...this.ix.claims.values()];
     const count = (xs: string[]) => xs.reduce<Record<string, number>>((m, s) => ((m[s] = (m[s] ?? 0) + 1), m), {});
     return {
-      chain: { id: 31337, name: "Vartul local sandbox chain (Anvil)", publicEndState: "Public testnet deployment simulated; see the deployment tooling." },
+      chain: { id: 31337, name: "Vartul local sandbox chain (Anvil)" },
+      publicEndState: publicEndState(),
       managers: [
         { name: "Recovery lots", contract: "RecoveryLotRegistry", address: a.RecoveryLotRegistry, standard: "ERC-1155 (restricted transfer), grams", supply: kg(lots.reduce((s, l) => s + l.aggregatedGrams, 0)), unit: "kg", count: lots.length, states: count(lots.map((l) => l.state)) },
         { name: "Claims", contract: "VartulClaims", address: a.VartulClaims, standard: "Non-transferable exclusive claims", supply: kg(claims.reduce((s, c) => s + c.grams, 0)), unit: "kg", count: claims.length, states: count(claims.map((c) => c.status)), types: count(claims.map((c) => c.type)) },
