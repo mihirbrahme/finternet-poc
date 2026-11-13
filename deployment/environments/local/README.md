@@ -1,69 +1,24 @@
-# Local Environment
+# Optional integration workbench
 
-This environment is the Packet 1 workbench for the Finternet PoC. It starts only shared local dependencies needed by later packets. It does not create application services, contracts, schemas, UI apps, Beckn nodes or AI agents.
+The active sponsorship application runs with `pnpm demo:run`. It starts and owns its own Anvil chain on port 18545; it does not need Docker, PostgreSQL, MinIO, IPFS or a copied `.env` file.
 
-## Dependency Modes
+The root `docker-compose.yml` is retained as a future-integration workbench for persistent data, private evidence storage and public-metadata experiments. These containers are not connected to the current app.
 
-| Dependency | Local mode | Notes |
+| Service | Port | Intended integration |
 |---|---|---|
-| Ethereum | `LOCAL_MOCK` | Anvil local EVM on `http://localhost:8545`. |
-| PostgreSQL | `LOCAL_MOCK` | Local development database on `localhost:5432`. |
-| Object Storage | `LOCAL_MOCK` | MinIO S3-compatible storage on `http://localhost:9000`. |
-| IPFS | `LOCAL_MOCK` | Local Kubo node exposed as `mock-ipfs`; replaceable with a pinning provider later. |
-| Beckn | `SANDBOX_ADAPTER` | Not started in Packet 1. Packet 6 will add Beckn-shaped adapters. |
-| VC Issuer | `NOT_CONNECTED` | Demo issuer arrives in the trusted participant slice. |
-| Smart Account Provider | `NOT_CONNECTED` | Adapter boundary arrives in the trusted participant slice. |
-| OBP Registry | `NOT_CONNECTED` | The PoC records OBP-ready evidence claims only, not official credits. |
-| EPR/Government Reference | `NOT_CONNECTED` | Reference-only until an authorised integration exists. |
+| PostgreSQL | 5432 | Future persistent repositories and operation journal |
+| MinIO | 9000 / 9001 | Future private evidence storage and console |
+| Anvil | 8545 | Separate integration chain; not the application's chain |
+| Kubo IPFS | 5001 / 8080 | Optional non-sensitive metadata experiments |
 
-## Start
+From repository root:
 
-From the repository root:
-
-```bash
+```powershell
 docker compose up -d
-```
-
-## Check Status
-
-```bash
 docker compose ps
-```
-
-Optional checks when the related CLIs are installed:
-
-```bash
-docker compose exec postgres pg_isready -U finternet -d finternet_poc
-curl http://localhost:9000/minio/health/live
-cast chain-id --rpc-url http://localhost:8545
-curl http://localhost:5001/api/v0/version -X POST
-```
-
-Expected local endpoints:
-
-| Service | Endpoint |
-|---|---|
-| PostgreSQL | `localhost:5432` |
-| MinIO API | `http://localhost:9000` |
-| MinIO Console | `http://localhost:9001` |
-| Anvil RPC | `http://localhost:8545` |
-| IPFS API | `http://localhost:5001` |
-| IPFS Gateway | `http://localhost:8080` |
-
-## Stop
-
-```bash
 docker compose down
 ```
 
-To remove local Docker volumes as well:
+Optional `.env.example` workbench values can be copied and adjusted for local development. Do not use sample credentials for hosted services. `docker compose down` preserves volumes; no volume deletion is needed to stop the workbench.
 
-```bash
-docker compose down -v
-```
-
-## Notes
-
-- Named Docker volumes are used so local runtime data is not written into the repository.
-- The `.env.example` file documents the environment variables expected by later services. Packet 1 does not require a copied `.env` file.
-- OBP language must remain precise: this environment can support an OBP-ready evidence claim workflow later, but it does not connect to an official OBP certification registry.
+Use the [Vartul product document](../../../docs/product/Vartul_Product_Document.md) (architecture, operations and readiness gates) for the required adapters, migrations, authorisation and operations before claiming these dependencies are integrated.

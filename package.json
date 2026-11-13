@@ -11,7 +11,6 @@
     "test:acceptance": "tsx deployment/scripts/test-acceptance.ts",
     "test:handover": "tsx deployment/scripts/test-handover.ts",
     "handover:validate": "tsx deployment/scripts/test-handover.ts --record",
-    "handover:package": "tsx deployment/scripts/package-handover.ts",
     "test:demo": "playwright test",
     "check:docs": "tsx deployment/scripts/check-docs.ts",
     "test:schema": "tsx tests/schema/validate-samples.test.ts",
@@ -23,10 +22,7 @@
     "test:claims": "tsx tests/end-to-end/claims.spec.ts",
     "test:agent": "tsx agents/buyer-agent/tests/policy.test.ts && tsx agents/buyer-agent/tests/flow.test.ts",
     "test:golden-path": "tsx tests/end-to-end/golden-path.spec.ts",
-    "test:negative-paths": "tsx tests/end-to-end/negative-paths.spec.ts",
-    "demo:reset": "tsx deployment/scripts/demo-reset.ts",
-    "deploy:demo": "tsx deployment/scripts/deploy-contracts.ts",
-    "seed:demo": "tsx deployment/scripts/seed-demo.ts"
+    "test:negative-paths": "tsx tests/end-to-end/negative-paths.spec.ts"
   },
   "devDependencies": {
     "@playwright/test": "1.56.1",

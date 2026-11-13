@@ -6,7 +6,7 @@ function markdownFiles(path: string): string[] {
     return entry.isDirectory() ? markdownFiles(child) : entry.name.endsWith(".md") ? [child] : [];
   });
 }
-const files = ["README.md", "HANDOVER.md", ...["docs", "apps", "agents", "deployment", "samples"].flatMap(markdownFiles)];
+const files = ["README.md", ...["docs", "apps", "agents", "deployment", "samples"].flatMap(markdownFiles)];
 const broken: string[]=[];
 for (const file of files) {
   const prose = readFileSync(file,"utf8").replace(/^```[^\n]*\n[\s\S]*?^```[^\n]*$/gm, "");
