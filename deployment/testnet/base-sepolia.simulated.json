@@ -1,0 +1,55 @@
+{
+  "simulated": true,
+  "note": "Simulated public end state. These contracts were deployed to a local chain using this network's chain ID; nothing was broadcast to the public network. Explorer links show where they would appear.",
+  "network": "base-sepolia",
+  "name": "Base Sepolia",
+  "chainId": 84532,
+  "explorer": "https://sepolia.basescan.org",
+  "deployer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "bytecodeSha256": "cd0c23cec6675850fbebac4416e0852763bd3844c86cf5c619cce247cbebd518",
+  "gasUsed": "13626419",
+  "contracts": {
+    "VartulRegistry": {
+      "address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "deployTx": "0x5b71cb64f80d1496f38a3c01fe8acd78ada6ae0a97572bfbd505452e778ae6c4",
+      "explorerUrl": "https://sepolia.basescan.org/address/0x5FbDB2315678afecb367f032d93F642f64180aa3"
+    },
+    "VartulAttestations": {
+      "address": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+      "deployTx": "0x05d99c69d3ed371754edc3363e0c40646182608e70907efbf811df3a2495b4c1",
+      "explorerUrl": "https://sepolia.basescan.org/address/0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512"
+    },
+    "SandboxINR": {
+      "address": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+      "deployTx": "0x044c70c3a5ca118271fe487f743852b859e544530de99a228918f4d2a220d4df",
+      "explorerUrl": "https://sepolia.basescan.org/address/0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0"
+    },
+    "RecoveryLotRegistry": {
+      "address": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+      "deployTx": "0xae570bacb76a399b2e592c86d1b6d2dbc78ee56141217471b0b35f9be187201e",
+      "explorerUrl": "https://sepolia.basescan.org/address/0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9"
+    },
+    "ProgrammeEscrow": {
+      "address": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+      "deployTx": "0x53184d914229d0f481b7c3e811fa83738d78a60d1068e98ee982b738c30047c4",
+      "explorerUrl": "https://sepolia.basescan.org/address/0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9"
+    },
+    "PayoutRouter": {
+      "address": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+      "deployTx": "0xafabd1b2f3fa78bb9cba7ce7e1a0c957bc3bb90f0a90480b9bbf4aea8c3d18bc",
+      "explorerUrl": "https://sepolia.basescan.org/address/0x5FC8d32690cc91D4c39d9d3abcBD16989F875707"
+    },
+    "VartulClaims": {
+      "address": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+      "deployTx": "0x6ba5d676c27a28c5606d8e4206ef916de9145263ef2c08722128097e62939911",
+      "explorerUrl": "https://sepolia.basescan.org/address/0x0165878A594ca255338adfa4d48449f69242Eb8F"
+    },
+    "MaterialSettlement": {
+      "address": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+      "deployTx": "0xa0dfc46e91bf604c3c422ce89ffb0c84a384fdd51921ce19c978d69f115c142d",
+      "explorerUrl": "https://sepolia.basescan.org/address/0xa513E6E4b8f2a923D98304ec87F64353C4D5C853"
+    }
+  },
+  "wiringChecks": 17,
+  "certificateVerification": "Open: anyone can verify a Vartul certificate at /verify/<id> using the issuer's published DID document and the ledger."
+}

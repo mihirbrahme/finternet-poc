@@ -1,8 +1,11 @@
-name: Handover acceptance
+name: Vartul acceptance
 on: [push, pull_request]
 jobs:
   acceptance:
     runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      VARTUL_AI_DISABLE: "1"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -17,6 +20,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm typecheck
       - run: pnpm check:docs
+      # Contracts, service suites (seeds the six-month history and scene snapshots on first run), testnet simulation
       - run: pnpm test:acceptance
       - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm test:demo

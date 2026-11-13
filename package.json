@@ -1,42 +1,44 @@
 {
   "name": "finternet-poc",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "private": true,
   "type": "module",
   "packageManager": "pnpm@10.16.1",
-  "engines": { "node": ">=22 <25" },
+  "engines": {
+    "node": ">=22 <25"
+  },
   "scripts": {
-    "demo:run": "tsx services/sponsorship-demo/server.ts",
-    "typecheck": "tsc --noEmit",
-    "test:acceptance": "tsx deployment/scripts/test-acceptance.ts",
-    "test:handover": "tsx deployment/scripts/test-handover.ts",
-    "handover:validate": "tsx deployment/scripts/test-handover.ts --record",
-    "handover:package": "tsx deployment/scripts/package-handover.ts",
-    "test:demo": "playwright test",
+    "demo": "vite build --config apps/vartul-web/vite.config.ts && tsx services/vartul/server.ts",
+    "vartul:start": "tsx services/vartul/server.ts",
+    "vartul:seed": "tsx services/vartul/seed/seed.ts",
+    "web:dev": "vite --config apps/vartul-web/vite.config.ts",
+    "web:build": "vite build --config apps/vartul-web/vite.config.ts",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p apps/vartul-web",
     "check:docs": "tsx deployment/scripts/check-docs.ts",
-    "test:schema": "tsx tests/schema/validate-samples.test.ts",
-    "test:identity": "tsx tests/identity/participant-credential.test.ts",
-    "test:asset-evidence": "tsx tests/end-to-end/asset-evidence.spec.ts",
-    "test:tokenisation": "tsx tests/end-to-end/tokenisation.spec.ts",
-    "test:beckn-discovery": "tsx tests/end-to-end/beckn-discovery.spec.ts",
-    "test:settlement": "tsx tests/end-to-end/settlement.spec.ts",
-    "test:claims": "tsx tests/end-to-end/claims.spec.ts",
-    "test:agent": "tsx agents/buyer-agent/tests/policy.test.ts && tsx agents/buyer-agent/tests/flow.test.ts",
-    "test:golden-path": "tsx tests/end-to-end/golden-path.spec.ts",
-    "test:negative-paths": "tsx tests/end-to-end/negative-paths.spec.ts",
-    "demo:reset": "tsx deployment/scripts/demo-reset.ts",
-    "deploy:demo": "tsx deployment/scripts/deploy-contracts.ts",
-    "seed:demo": "tsx deployment/scripts/seed-demo.ts"
+    "test:contracts": "forge test --root contracts",
+    "test:vartul": "tsx tests/vartul/domain-smoke.test.ts && tsx tests/vartul/api.test.ts && tsx tests/vartul/beckn.test.ts && tsx tests/vartul/scenes.test.ts && tsx tests/vartul/assistant.test.ts",
+    "test:acceptance": "tsx deployment/scripts/test-acceptance.ts",
+    "test:demo": "playwright test",
+    "testnet": "tsx deployment/scripts/testnet.ts",
+    "video": "node tools/walkthrough/record.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.56.1",
     "@types/node": "^22.7.5",
-    "ajv": "^8.17.1",
-    "ajv-formats": "^3.0.1",
+    "@types/qrcode": "1.5.5",
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
+    "@vitejs/plugin-react": "4.4.1",
     "tsx": "^4.20.5",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "vite": "6.3.5"
   },
   "dependencies": {
-    "ethers": "6.16.0"
+    "@anthropic-ai/sdk": "^1.8.0",
+    "ethers": "6.16.0",
+    "jose": "5.9.6",
+    "qrcode": "1.5.4",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   }
 }

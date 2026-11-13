@@ -1,94 +1,49 @@
-# Aamhi Finternet PoC
+# Vartul by Suma — Proof-of-Recovery network
 
-## Current handover baseline
+> Every rupee linked to a verified kilo. Every kilo linked to the person who collected it. Every claim made only once.
 
-For transfer to an implementation team, begin with [HANDOVER.md](HANDOVER.md) and the [versioned release notes](docs/handover/17_Handover_Release.md).
+Vartul turns recovered waste into a verifiable digital asset and connects it to the sponsor funding that paid for its recovery. It is built with Project Aamhi as the anchor partner and showcases Finternet and DPI capabilities: tokenised attested assets, proof chains, programmable settlement, conditional benefit transfer to field workers, exclusive impact claims and open-network (Beckn) discovery.
 
-Start with the [handover index](docs/handover/00_Handover_Index.md), [business and product blueprint](docs/handover/01_Business_Use_Case_and_Pilot_Blueprint.md), [technology architecture](docs/handover/02_Technology_Architecture_and_Engineering_Blueprint.md), and [current-state/gap register](docs/handover/03_Current_State_and_Gap_Register.md).
+**Start here: [Vartul product document](docs/product/Vartul_Product_Document.md)**, the authoritative business, product, policy, legal, technical and governance reference. The seeded demonstration data is described in the [demo dataset](docs/product/Vartul_Demo_Dataset.md). **What is built, how to present it and what comes next: [handover and status](docs/Vartul_Handover.md).**
 
-The primary demonstration is sponsored recovery: discover a programme, agree terms, deposit sandbox funding, submit evidence, confirm facility receipt, verify the outcome and release payment. Exceptions require sponsor and Aamhi approval. The original material-sale reference implementation remains available and tested.
+## Run the demonstration
 
-The redesigned interface includes a programme overview, guided role tasks, evidence review, a downloadable sponsor report and a separate technical-proof view. **Presentation chapters** can prepare a funded programme, exception review or completed outcome using actual local-chain transactions.
-
-Participant themes identify sponsor, Aamhi, facility and verifier. A visible ledger flow shows the commitment, held funding, verified outcome and automatic settlement. Qualifying verification or the final required exception approval releases payment and records attribution in the same contract transaction; no administrator release is needed.
-
-The handover package also includes comprehensive [foundational context](docs/handover/08_Context_and_Finternet_Foundations.md), [product requirements](docs/handover/09_Product_Requirements_and_Operating_Model.md), [policy and rights](docs/handover/10_Policy_and_Rights_Specification.md), [domain model](docs/handover/11_Domain_Model_and_Data_Dictionary.md), [target architecture](docs/handover/12_Target_Architecture_and_Integration_Contracts.md) and [requirement-to-test traceability](docs/handover/14_Requirements_Traceability_and_Test_Strategy.md).
-
-Prerequisites: Node 24.11.1, Foundry 1.8.3 (`forge` and `anvil`) on PATH; pnpm 10.16.1 and Solidity 0.8.24. No Docker, external RPC or API keys are required for this demonstration.
+Prerequisites: Node 24.11.1, Foundry 1.8.3 (`forge`, `anvil`) on PATH, pnpm 10.16.1 (`corepack enable` or `npx --yes pnpm@10.16.1`).
 
 ```powershell
-npx --yes pnpm@10.16.1 install --frozen-lockfile
-npx --yes pnpm@10.16.1 demo:run
+pnpm install --frozen-lockfile
+pnpm demo                # builds the web app and serves http://127.0.0.1:4300
 ```
 
-Open **http://127.0.0.1:4300** and follow the [local walkthrough](docs/handover/04_Local_Demo_Runbook.md). The launcher starts its own chain on 18545 and catalogue endpoint on 4301. Ctrl+C stops it; relaunch starts fresh.
+The first start compiles the contracts and seeds six months of Murud history plus eleven scene snapshots (about two minutes). Later starts load the saved snapshots in seconds. Open **Presenter** in the top bar to step through the eleven demonstration scenes; each scene resets the ledger to its starting state and runs its steps live.
+
+AI assistants (sponsor and verifier) run in a labelled scripted mode by default. To use a live Claude model, set `OPENROUTER_API_KEY` (and `VARTUL_AI_MODEL` to your gateway's model slug) or `ANTHROPIC_API_KEY` before starting; see [`.env.example`](.env.example).
+
+## Test
 
 ```powershell
-npx --yes pnpm@10.16.1 typecheck
-npx --yes pnpm@10.16.1 check:docs
-npx --yes pnpm@10.16.1 test:acceptance
-npx --yes pnpm@10.16.1 exec playwright install chromium
-npx --yes pnpm@10.16.1 test:demo
+pnpm typecheck
+pnpm check:docs
+pnpm test:acceptance     # contracts (unit, lifecycle, fuzz, invariants), service suites, testnet simulation
+pnpm test:demo           # browser: all eleven scenes through the presenter, every role surface
 ```
 
-Stop an interactive demo before browser acceptance. See the [roadmap](docs/handover/05_Engineering_Roadmap.md), [decision register](docs/handover/06_Decisions_Risks_and_Open_Questions.md) and [handover checklist](docs/handover/07_Handover_Acceptance_Checklist.md).
+## Public test network
 
-After Chromium is installed, `npx --yes pnpm@10.16.1 test:handover` runs all validation stages above as one command.
+The contracts are ready for a public test network, but the demonstration does not deploy them (product document, V18). `pnpm testnet plan` shows the deployment; `pnpm testnet simulate` deploys to a local chain that uses Base Sepolia's chain ID, checks the wiring and writes [the simulated public end state](deployment/testnet/base-sepolia.simulated.json), which the ledger explorer displays. `pnpm testnet deploy --network base-sepolia --confirm-public` performs a real deployment with `VARTUL_TESTNET_RPC_URL` and `VARTUL_DEPLOYER_KEY`.
 
-The new browser/API executes actual local-chain transactions with controlled accounts and sample evidence. Discovery is an HTTP Beckn sandbox, not network-certified interoperability. State is temporary with an ignored inspection snapshot. Database persistence, real authentication, secured evidence, hosted deployment and external payment adapters remain pilot work. Sponsorship records are non-transferable contract entries; the separate original flow demonstrates ERC-1155 material entitlements.
+## Repository map
 
-The sections below describe the original material-sale reference baseline. This handover package governs the sponsorship scope where earlier designs differ.
+| Directory | Contents |
+|---|---|
+| `docs/` | Handover and status; `docs/product/`: product document and demo dataset specification |
+| `contracts/src/vartul/`, `contracts/test/vartul/` | Solidity contracts and Foundry tests |
+| `services/vartul/` | Ledger runtime, domain API, indexer, anomaly engine, credentials, Beckn sandbox, assistants, seeder |
+| `apps/vartul-web/` | The web application: every role surface and the scene presenter |
+| `tests/vartul/`, `tests/browser/` | Service and browser acceptance tests |
+| `deployment/` | Acceptance, documentation and public test-network scripts |
+| `tools/walkthrough/` | Narrated walkthrough video recorder (handover section 3.1) |
 
-Documentation baseline for the Suma Finternet PoC: a tokenised recovery asset demonstrator using verifiable identity, ERC-1155 assets, Beckn discovery, programmable settlement, attestations, claims, and bounded AI-agent participation.
+Earlier versions (the v0.2 sponsorship demonstration) are preserved only in git history, at the `v0.2.0-handover` and `v0.2.1-handover` tags.
 
-## Current State
-
-This workspace contains implemented domain services, tested Solidity contracts, the functional sponsorship browser demo, original static console prototypes, schemas and acceptance tests. Consult the handover gap register for precise implementation and simulation boundaries.
-
-## Start Here
-
-- [Project index](docs/00_project/00_README_Project_Index.md)
-- [Project build plan](docs/00_project/01_Project_Build_Plan.md)
-- [Aamhi rural SWM and OBP context](docs/00_project/02_Aamhi_Rural_SWM_and_OBP_Context.md)
-- [Context availability and simulation strategy](docs/00_project/03_Context_Availability_and_Simulation_Strategy.md)
-- [Technical architecture](docs/01_architecture/02_Finternet_Technical_Architecture.md)
-- [Local toolchain setup](docs/04_security-operations/16_Local_Toolchain_Setup.md)
-- [Local environment harness](deployment/environments/local/README.md)
-- [Aamhi demo sample context](samples/aamhi-demo/README.md)
-- [Developer backlog](docs/05_delivery/19_Backlog_and_Implementation_Tasks.md)
-- [End-to-end PoC execution plan](docs/05_delivery/20_End_to_End_PoC_Execution_Plan.md)
-
-## Documentation Map
-
-```text
-docs/
-  00_project/              Project index and build plan
-  01_architecture/         Technical architecture, data placement, transaction sequence
-  02_finternet-core/       Identity, assets, dINR, contracts, claims, Beckn
-  03_software-design/      APIs, data models, wallets, AI agent design
-  04_security-operations/  Security, access, DevOps, environments
-  05_delivery/             Test plan, demo runbook, implementation backlog
-  superpowers/plans/       Agent-ready implementation plans
-deployment/
-  environments/local/      Local dependency harness
-samples/
-  aamhi-demo/              Golden demo scenario and sample data
-```
-
-## PoC Baseline
-
-- Public programmable ledger: Ethereum public testnet
-- Smart contracts: Solidity
-- Recovery asset token: ERC-1155
-- Settlement token: permissioned ERC-20-style demo INR (`dINR`)
-- Organisational identity: `did:web`
-- Credentials: W3C Verifiable Credentials Data Model 2.0
-- Discovery and contracting: Beckn Protocol v2.0
-- Off-chain state: PostgreSQL, IPFS metadata, private object storage for evidence
-- Observability: OpenTelemetry, Prometheus, Grafana
-
-## Boundary Notes
-
-`dINR` is a sandbox settlement token only. It is not legal tender, RBI CBDC, a bank deposit, a regulated stablecoin, redeemable INR, or an investment product.
-
-ERC-1155 ownership in this PoC represents a digital contractual/economic entitlement associated with a verified recovery lot. It should not be described as automatically determining legal title under property law.
+Sample data uses the real Murud taluka (Raigad) villages where Project Aamhi works; all other organisations, all people and all quantities are fictional or illustrative. dINR is a sandbox settlement token, not money.

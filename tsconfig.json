@@ -9,5 +9,5 @@
     "noEmit": true,
     "types": ["node"]
   },
-  "include": ["services/**/*.ts", "beckn/**/*.ts", "agents/**/*.ts", "deployment/**/*.ts", "tests/**/*.ts", "playwright.config.ts"]
+  "include": ["services/**/*.ts", "deployment/**/*.ts", "tests/**/*.ts", "playwright.config.ts"]
 }
