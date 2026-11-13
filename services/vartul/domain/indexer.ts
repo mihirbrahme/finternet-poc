@@ -131,6 +131,39 @@ export class Indexer {
     this.blockTimes.clear();
   }
 
+  /** Serialise the projections so a snapshot can restore them without replaying every log. */
+  serialize(): string {
+    return JSON.stringify(
+      {
+        events: this.events,
+        lots: [...this.lots],
+        programmes: [...this.programmes],
+        claims: [...this.claims],
+        attestations: [...this.attestations],
+        balances: [...this.balances],
+        totalSupply: this.totalSupply,
+        lastBlock: this.lastBlock,
+        blockTimes: [...this.blockTimes],
+        kindNames: [...this.kindNames],
+      },
+      (_k, v) => (typeof v === "bigint" ? { $big: v.toString() } : v),
+    );
+  }
+
+  restore(json: string) {
+    const d = JSON.parse(json, (_k, v) => (v && typeof v === "object" && typeof v.$big === "string" ? BigInt(v.$big) : v));
+    this.events = d.events;
+    this.lots = new Map(d.lots);
+    this.programmes = new Map(d.programmes);
+    this.claims = new Map(d.claims);
+    this.attestations = new Map(d.attestations);
+    this.balances = new Map(d.balances);
+    this.totalSupply = d.totalSupply;
+    this.lastBlock = d.lastBlock;
+    this.blockTimes = new Map(d.blockTimes);
+    this.kindNames = new Map(d.kindNames);
+  }
+
   lotCode(id: string) {
     const meta = Object.values(this.store().lots).find((l) => l.id === id);
     return meta?.code ?? id.slice(0, 10);

@@ -93,11 +93,11 @@ export class AnomalyEngine {
       });
     }
     const net = lot.inputGrams - lot.contaminationGrams;
-    if (net > 0 && lot.aggregatedGrams / net > 0.995) {
+    if (net > 0 && lot.aggregatedGrams > net) {
       out.push({
         code: "MASS_BALANCE_NEAR_LIMIT",
         severity: "medium",
-        explanation: `Weighed lot is ${((lot.aggregatedGrams / net) * 100).toFixed(1)}% of captured inputs net of contamination (limit 101%).`,
+        explanation: `Weighed lot is ${((lot.aggregatedGrams / net) * 100).toFixed(2)}% of captured inputs net of contamination: above inputs, inside the 1% scale tolerance.`,
       });
     }
     if (receivedGrams && lot.aggregatedGrams) {

@@ -1,5 +1,7 @@
 import { spawn, spawnSync, type ChildProcess } from "node:child_process";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { gunzipSync } from "node:zlib";
 import { resolve } from "node:path";
 import {
   Contract,
@@ -94,7 +96,7 @@ export class Chain {
     this.errorInterfaces = Object.values(this.interfaces);
   }
 
-  async start(genesisTimestamp?: number) {
+  async start(genesisTimestamp?: number, stateFile?: string) {
     try {
       await fetch(`http://127.0.0.1:${this.port}`, { signal: AbortSignal.timeout(400) });
       throw new DomainError(`Port ${this.port} is already in use; stop the other process first.`, 500);
@@ -106,6 +108,7 @@ export class Chain {
       "--block-base-fee-per-gas", "0", "--gas-limit", "60000000", "--code-size-limit", "49152",
     ];
     if (genesisTimestamp) args.push("--timestamp", String(genesisTimestamp));
+    if (stateFile) args.push("--load-state", stateFile);
     this.proc = spawn("anvil", args, { stdio: "ignore", windowsHide: true });
     let failure: Error | undefined;
     this.proc.on("error", (e) => (failure = e));
@@ -122,10 +125,12 @@ export class Chain {
   }
 
   async stop() {
-    if (!this.proc) return;
-    this.proc.kill();
-    await new Promise((r) => setTimeout(r, 200));
+    const proc = this.proc;
+    if (!proc) return;
     this.proc = undefined;
+    const exited = new Promise((r) => proc.once("exit", r));
+    proc.kill();
+    await Promise.race([exited, new Promise((r) => setTimeout(r, 3000))]);
   }
 
   private rpcId = 0;
@@ -299,11 +304,22 @@ export class Chain {
     return this.rpc<string>("anvil_dumpState", []);
   }
 
+  /**
+   * Restore a dumped state. Small states load over RPC; a full demonstration history is larger
+   * than Anvil accepts in one request, so the node restarts from a decompressed state file.
+   */
   async loadState(hex: string) {
-    await this.rpc("anvil_reset", []);
-    await this.rpc("anvil_loadState", [hex]);
     this.nonces.clear();
     this.lastTimestamp = undefined;
+    if (hex.length < 2_000_000) {
+      await this.rpc("anvil_reset", []);
+      await this.rpc("anvil_loadState", [hex]);
+      return;
+    }
+    const file = resolve(tmpdir(), `vartul-anvil-${this.port}.json`);
+    writeFileSync(file, gunzipSync(Buffer.from(hex.slice(2), "hex")));
+    await this.stop();
+    await this.start(undefined, file);
   }
 
   async getLogs(fromBlock: number, toBlock: number) {

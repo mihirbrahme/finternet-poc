@@ -88,6 +88,8 @@ export class Runtime {
     store.sceneTime = sceneTime;
     writeFileSync(resolve(snapshotDir, `${name}.chain.hex`), await this.chain.dumpState());
     writeFileSync(resolve(snapshotDir, `${name}.store.json`), JSON.stringify(store));
+    await this.vartul.sync();
+    writeFileSync(resolve(snapshotDir, `${name}.index.json`), this.vartul.indexer.serialize());
   }
 
   /** Restore an exact ledger and off-ledger state, pin the clock, and rebuild projections from logs. */
@@ -101,6 +103,8 @@ export class Runtime {
     this.vartul.scene = store.scene;
     await this.chain.setTime(store.sceneTime);
     this.vartul.indexer.reset();
+    const index = resolve(snapshotDir, `${name}.index.json`);
+    if (existsSync(index)) this.vartul.indexer.restore(readFileSync(index, "utf8"));
     await this.vartul.sync();
     this.current = name;
   }

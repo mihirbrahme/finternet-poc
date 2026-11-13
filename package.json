@@ -26,6 +26,7 @@
     "test:golden-path": "tsx tests/end-to-end/golden-path.spec.ts",
     "test:negative-paths": "tsx tests/end-to-end/negative-paths.spec.ts",
     "vartul:seed": "tsx services/vartul/seed/seed.ts",
+    "test:vartul": "tsx tests/vartul/domain-smoke.test.ts && tsx tests/vartul/api.test.ts && tsx tests/vartul/beckn.test.ts && tsx tests/vartul/scenes.test.ts",
     "vartul:start": "tsx services/vartul/server.ts",
     "web:dev": "vite --config apps/vartul-web/vite.config.ts",
     "web:build": "vite build --config apps/vartul-web/vite.config.ts",

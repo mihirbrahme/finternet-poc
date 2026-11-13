@@ -9,6 +9,7 @@ import {
   villages,
   sites,
   receivers,
+  otherAreas,
   type Material,
   type ProgrammeSpec,
 } from "../dataset/murud.js";
@@ -292,8 +293,8 @@ export class Vartul {
     const at = input.at ?? (await this.now());
     const villageCode = input.village ?? s.villages[0];
     const village = villages.find((v) => v.code === villageCode);
-    const route = input.route ?? (village ? `${village.name} door-to-door route` : `${villageCode} route`);
-    const anchor = route.includes("Korlai shore") ? sites.beaches[1] : route.includes("Kashid beach") ? sites.beaches[0] : village;
+    const route = input.route ?? (village ? `${village.name} door-to-door route` : `${otherAreas[villageCode]?.name ?? villageCode} collection route`);
+    const anchor = route.includes("Korlai shore") ? sites.beaches[1] : route.includes("Kashid beach") ? sites.beaches[0] : village ?? otherAreas[villageCode];
     this.store.counters.record = (this.store.counters.record ?? 0) + 1;
     const n = this.store.counters.record;
     const jitter = rng(n * 7919);

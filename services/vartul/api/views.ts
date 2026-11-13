@@ -375,7 +375,7 @@ export class Views {
       { code: "DUPLICATE_PHOTO", rule: "Photo fingerprint seen on an earlier record" },
       { code: "GPS_OFF_ROUTE", rule: "Location fix more than 1.5 km from the assigned route" },
       { code: "ODD_HOURS", rule: "Captured outside 06:00–21:00 IST" },
-      { code: "MASS_BALANCE_NEAR_LIMIT", rule: "Weighed lot above 99.5% of net captured inputs" },
+      { code: "MASS_BALANCE_NEAR_LIMIT", rule: "Weighed lot exceeds net captured inputs (allowed only within the 1% tolerance)" },
       { code: "RECEIPT_VARIANCE", rule: "Weighbridge differs from MRC weight by more than 1.5%" },
     ] };
   }

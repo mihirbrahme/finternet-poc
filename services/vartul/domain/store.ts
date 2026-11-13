@@ -157,6 +157,9 @@ export interface Store {
   assistant: { at: number; mode: string; prompt: string; tools: string[] }[];
   counters: Record<string, number>;
   scene?: string;
+  /** Presenter progress and values carried between steps of a scene (e.g. a Beckn transaction id). */
+  sceneProgress: Record<string, number>;
+  sceneState: Record<string, any>;
 }
 
 export const emptyStore = (): Store => ({
@@ -174,4 +177,6 @@ export const emptyStore = (): Store => ({
   beckn: [],
   assistant: [],
   counters: {},
+  sceneProgress: {},
+  sceneState: {},
 });

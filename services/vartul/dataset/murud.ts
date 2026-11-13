@@ -56,6 +56,12 @@ export const sites = {
   ],
 };
 
+/** Collection areas of the two peer NGOs (approximate town centres). */
+export const otherAreas: Record<string, { name: string; lat: number; lng: number }> = {
+  ALIBAG: { name: "Alibag", lat: 18.6414, lng: 72.8722 },
+  SHRIVARDHAN: { name: "Shrivardhan", lat: 18.0444, lng: 73.0167 },
+};
+
 export type ParticipantKind = "network" | "ngo" | "sponsor" | "recycler" | "verifier" | "assessor" | "panchayat" | "payments";
 
 export interface Participant {
@@ -187,7 +193,8 @@ export const saathis: Saathi[] = [
     id: `SS-MRD-${String(i + 1).padStart(4, "0")}`,
     name,
     org: "AAMHI",
-    villages: [villages[i % 10].code],
+    // Sunanda (SS-MRD-0017) works the Korlai shore route, as in Journey A of the product document.
+    villages: [i === 16 ? "KRL" : villages[i % 10].code],
     tripKg: 7 + ((i * 7) % 6),
   })),
   ...["Pratibha", "Smita", "Varsha", "Kalpana", "Anita", "Vidya", "Neeta", "Sushma"].map((name, i) => ({

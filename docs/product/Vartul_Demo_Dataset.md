@@ -58,7 +58,7 @@ Sites: Kashid MRC (aggregation and weighing), Kashid beach and Korlai shore (bea
 | Programme | Originator | Sponsors (₹) | Policy | Verifier | Seeded state |
 |---|---|---|---|---|---|
 | Murud Coastal Recovery 2026–27 (`PRG-MRD-COASTAL-2026`) | Aamhi | Tidewell 5,40,000 | ₹18/kg, capped; 40/55/5 split | Nirikshan | Lots `VRL-MRD-2026-0001`–`0041` settled; the hero lot `0042` is minted live |
-| Kashid & Korlai Shoreline Milestone 2026 (`PRG-MRD-BEACH-2026`) | Aamhi | Neelkanth 1,20,000 + Coastline 80,000 | Fixed ₹2,00,000 at 10,000 kg | Nirikshan | About 9,000 kg verified and pending; the target is missed because of the monsoon (scene 7) |
+| Kashid & Korlai Shoreline Milestone 2026 (`PRG-MRD-BEACH-2026`) | Aamhi | Neelkanth 1,20,000 + Coastline 80,000 | Fixed ₹2,00,000 at 10,000 kg | Nirikshan | About 9,300 kg verified and pending (92.9% of target); the monsoon caused the shortfall. In scene 7 the sponsors approve a pro-rata ₹1,85,700 and ₹14,300 is refunded |
 | Alibag & Revdanda Shoreline Plastics (`PRG-ALB-SHORE-2026`) | Sagar Swachh Sangh | Neelkanth 3,00,000 | ₹16/kg, capped | Drishti | About 110 small lots settled |
 | Shrivardhan Village Dry-Waste Programme (`PRG-SVD-VILLAGE-2026`) | Hirwai | Tidewell 2,40,000 | ₹15/kg, capped | Drishti | About 100 small lots settled |
 
@@ -74,7 +74,7 @@ Three more offerings are published on the open network but not yet funded (scene
 
 | Case | Where | Purpose |
 |---|---|---|
-| Fraud pattern | Live lot in scene 6: `SS-MRD-0009` records with a 46 kg trip, a duplicate photo of an earlier record by another collector, and a GPS fix about 2 km off the Danda route | Anomaly flags, exclusion and payout exclusion |
+| Fraud pattern | Live lot in scene 6: `SS-MRD-0009` records with a 46 kg trip, a duplicate photo of an earlier record by another collector, and a GPS fix about 2 km off the Borli route | Anomaly flags, exclusion and payout exclusion |
 | Fabricated receipts | Ghatmatha Recyclers' October receipts | Revocation cascade (scene 9) |
 | Challenge | One seeded lot challenged by a Gram Panchayat and resolved with an adjusted quantity | Challenge-window history |
 | Material sales | Selected settled lots bought by Talvan or Ghatmatha | Unbundled rights and EPR-ready supply claims |
