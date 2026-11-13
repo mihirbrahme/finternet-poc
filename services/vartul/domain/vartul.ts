@@ -516,20 +516,37 @@ export class Vartul {
     return sent;
   }
 
-  async sellLot(code: string, buyer: string, priceInr?: number) {
+  /** Seller side: the originator offers a verified lot's material entitlement to a buyer. */
+  async offerLot(code: string, buyer: string, priceInr?: number) {
     const lot = this.lot(code);
-    const price = priceInr ?? Math.round(kg(lot.verification?.eligibleGrams ?? lot.aggregatedGrams) * materials[lot.material].pricePerKg);
+    const price = priceInr ?? this.lotPrice(code);
     const seller = this.actors.account(lot.originator, "ORIGINATOR");
     const buyerActor = this.actors.account(buyer, "BUYER");
     const expires = (await this.now()) + 7 * 86400;
-    const offerSent = await this.tx(seller, "MaterialSettlement", "createOffer", [BigInt(lot.id), buyerActor.address, wei(price), expires], `Offer ${code} material to ${this.actors.participantName(buyer)} at ₹${price.toLocaleString("en-IN")}`, code);
-    const offerLog = offerSent.logs.map((l) => this.chain.decodeLog(l)).find((d) => d?.event === "OfferCreated");
-    const offerId = Number(offerLog!.args.offerId);
+    const sent = await this.tx(seller, "MaterialSettlement", "createOffer", [BigInt(lot.id), buyerActor.address, wei(price), expires], `Offer ${code} material to ${this.actors.participantName(buyer)} at ₹${price.toLocaleString("en-IN")}`, code);
+    const offerLog = sent.logs.map((l) => this.chain.decodeLog(l)).find((d) => d?.event === "OfferCreated");
+    return { sent, offerId: Number(offerLog!.args.offerId), price };
+  }
+
+  /** Buyer side: pay and receive the entitlement atomically (delivery versus payment). */
+  async buyOffer(code: string, buyer: string, offerId: number, price: number) {
+    const lot = this.lot(code);
+    const buyerActor = this.actors.account(buyer, "BUYER");
     await this.tx(buyerActor, "SandboxINR", "approve", [this.chain.addresses!.MaterialSettlement, wei(price)], `Approve ₹${price.toLocaleString("en-IN")} for delivery-versus-payment`, code);
     const sent = await this.tx(buyerActor, "MaterialSettlement", "acceptOffer", [offerId], `Delivery versus payment: ${this.actors.participantName(buyer)} buys ${code}`, code);
     lot.sale = { buyer, priceInr: price, offerId };
     await this.afterSettlement(sent);
     return sent;
+  }
+
+  async sellLot(code: string, buyer: string, priceInr?: number) {
+    const { offerId, price } = await this.offerLot(code, buyer, priceInr);
+    return this.buyOffer(code, buyer, offerId, price);
+  }
+
+  lotPrice(code: string) {
+    const lot = this.lot(code);
+    return Math.round(kg(lot.verification?.eligibleGrams ?? lot.aggregatedGrams) * materials[lot.material].pricePerKg);
   }
 
   async recordProcessing(code: string, grams: number) {

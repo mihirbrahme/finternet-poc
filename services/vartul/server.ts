@@ -39,7 +39,7 @@ export async function startServer(opts: { port?: number; chainPort?: number; sna
 
   const router = new Router();
   const core = coreRoutes(router, rt);
-  await extensions(router, rt, core);
+  await extensions(router, rt, core, opts.port ?? config.apiPort);
 
   const server: Server = createServer(async (req, res) => {
     const url = new URL(req.url ?? "/", "http://localhost");

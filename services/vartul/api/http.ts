@@ -10,6 +10,7 @@ export type Handler = (ctx: {
 }) => Promise<unknown> | unknown;
 
 interface Route {
+  raw?: boolean;
   method: string;
   pattern: RegExp;
   keys: string[];
@@ -20,7 +21,7 @@ interface Route {
 export class Router {
   private routes: Route[] = [];
 
-  on(method: string, path: string, handler: Handler) {
+  on(method: string, path: string, handler: Handler, raw = false) {
     const keys: string[] = [];
     const pattern = new RegExp(
       `^${path.replace(/:([a-zA-Z]+)/g, (_, k) => {
@@ -28,9 +29,12 @@ export class Router {
         return "([^/]+)";
       })}$`,
     );
-    this.routes.push({ method, pattern, keys, handler });
+    this.routes.push({ method, pattern, keys, handler, raw });
     return this;
   }
+
+  /** POST route whose handler reads the raw body itself (signed Beckn messages). */
+  rawPost = (path: string, h: Handler) => this.on("POST", path, h, true);
 
   get = (path: string, h: Handler) => this.on("GET", path, h);
   post = (path: string, h: Handler) => this.on("POST", path, h);
@@ -44,7 +48,7 @@ export class Router {
       const params: Record<string, string> = {};
       r.keys.forEach((k, i) => (params[k] = decodeURIComponent(m[i + 1])));
       try {
-        const body = req.method === "POST" ? await readJson(req) : undefined;
+        const body = req.method === "POST" && !r.raw ? await readJson(req) : undefined;
         const result = await r.handler({ req, res, params, query: url.searchParams, body });
         if (!res.headersSent && result !== undefined) send(res, 200, result);
       } catch (error) {
