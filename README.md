@@ -42,6 +42,7 @@ The contracts are ready for a public test network, but the demonstration does no
 | `apps/vartul-web/` | The web application: every role surface and the scene presenter |
 | `tests/vartul/`, `tests/browser/` | Service and browser acceptance tests |
 | `deployment/` | Acceptance, documentation and public test-network scripts |
+| `tools/walkthrough/` | Narrated walkthrough video recorder (handover section 3.1) |
 
 Earlier versions (the v0.2 sponsorship demonstration) are preserved only in git history, at the `v0.2.0-handover` and `v0.2.1-handover` tags.
 

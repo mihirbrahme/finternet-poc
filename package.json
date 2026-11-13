@@ -19,7 +19,8 @@
     "test:vartul": "tsx tests/vartul/domain-smoke.test.ts && tsx tests/vartul/api.test.ts && tsx tests/vartul/beckn.test.ts && tsx tests/vartul/scenes.test.ts && tsx tests/vartul/assistant.test.ts",
     "test:acceptance": "tsx deployment/scripts/test-acceptance.ts",
     "test:demo": "playwright test",
-    "testnet": "tsx deployment/scripts/testnet.ts"
+    "testnet": "tsx deployment/scripts/testnet.ts",
+    "video": "node tools/walkthrough/record.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.56.1",

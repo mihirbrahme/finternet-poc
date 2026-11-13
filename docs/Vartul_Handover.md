@@ -114,6 +114,22 @@ The demo clock is fixed: the seeded history runs from 1 May to 13 November 2026,
 - programme and lot pages
 - ledger explorer
 
+### 3.1 Walkthrough video
+
+`tools/walkthrough` produces a narrated walkthrough of about 12 minutes from the running demo. It has introduction slides on the problem, Finternet, Beckn and W3C, then all eleven scenes with topic captions, then a close on what is real and what is simulated.
+
+- **Voice:** the offline Windows OneCore voice "Heera", via `tts.ps1`. No cloud service is used.
+- **Screen:** recorded with Playwright through the Chrome screencast at 1080p.
+- **Assembly:** ffmpeg combines the frames and narration into an MP4 and writes a sidecar `.srt` of the narration.
+
+```bash
+corepack pnpm demo                        # in one terminal; port 4300 (set VARTUL_AI_DISABLE=1 for scripted assistants)
+corepack pnpm video                       # writes .vartul/video/Vartul_Walkthrough.mp4 and .en.srt
+node tools/walkthrough/record.mjs --assemble   # rebuild the MP4 from the last recording
+```
+
+To change the narration, captions or on-screen actions, edit `script.mjs`. Slides and overlays are in `overlay.mjs`. The recorder needs Windows (for the voice) and ffmpeg 8 or later. The demo state advances during recording, so reset it with scene 1 before running again; the script also does this at the start of the scenes.
+
 ---
 
 ## 4. What is in the build
