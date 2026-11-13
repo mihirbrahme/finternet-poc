@@ -11,7 +11,7 @@
 | Date | 13 November 2026 |
 | Partner context | Project Aamhi (rural and coastal solid-waste recovery, Konkan, Maharashtra) |
 | Product developer | Suma — the product is presented as **Vartul by Suma** |
-| Supersedes | The v0.2.1 handover specifications and earlier sponsorship/material-sale specifications (archived in `archive/`, scheduled for deletion) |
+| Supersedes | The v0.2.1 handover specifications and earlier sponsorship/material-sale specifications (preserved in git history at the `v0.2.1-handover` tag) |
 | Companion document | A separate implementation-status and handover document will be produced at the end of the build |
 
 **How to read this document.** This document describes the complete Vartul product: what it is, why it exists, who uses it, the rules it enforces, how it is built and governed, and the legal and regulatory conditions under which it can operate. It deliberately describes the full product rather than a phase plan. What is built, simulated or pending at any moment is recorded in the separate status document, not here. Section 19 defines the demonstration scope only so that a reader of this document alone is never misled about what a demonstration shows.
