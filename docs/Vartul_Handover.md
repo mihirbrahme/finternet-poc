@@ -300,5 +300,7 @@ The pilot itself (§20.2) is scoped as one taluka, one NGO, two sponsors, one re
 | M7 | `545c937` | Sponsor and verifier assistants behind a policy gateway |
 | M8 | `ceb192b` | Browser acceptance per scene, CI, testnet tooling |
 | Cleanup | `bbac77e` | Repository reduced to the Vartul build; previously untracked `lib/` folders committed |
+| Handover | `eb532c3`, `ae9a5a0` | This document; `pnpm demo` runs without pnpm on PATH |
+| Walkthrough | `a431f04` | Narrated walkthrough video recorder (section 3.1) |
 
 Earlier work, the v0.2 sponsorship demonstration, is preserved only in git history at the `v0.2.0-handover` and `v0.2.1-handover` tags.
