@@ -334,11 +334,12 @@ export class Vartul {
     return Object.values(this.store.records).filter((r) => r.org === org && !r.lot && (!material || r.material === material));
   }
 
+  /** Next free lot code for a programme stream. Numbers are only consumed by successful mints. */
   nextLotCode(programme: string) {
     const prefix = lotPrefix[programme] ?? "GEN";
-    const key = `lot:${prefix}`;
-    this.store.counters[key] = (this.store.counters[key] ?? 0) + 1;
-    return `VRL-${prefix}-2026-${String(this.store.counters[key]).padStart(4, "0")}`;
+    let n = (this.store.counters[`lot:${prefix}`] ?? 0) + 1;
+    while (this.store.lots[`VRL-${prefix}-2026-${String(n).padStart(4, "0")}`]) n++;
+    return `VRL-${prefix}-2026-${String(n).padStart(4, "0")}`;
   }
 
   // ---------------------------------------------------------------- lot lifecycle
@@ -395,6 +396,9 @@ export class Vartul {
     const sent = await this.tx(this.actors.relayer, "RecoveryLotRegistry", "mintLot", [m, a, signature],
       `Weigh ${kg(input.aggregatedGrams).toLocaleString("en-IN")} kg ${materials[input.material].label} at MRC and mint ${code}`, code);
     for (const r of records) r.lot = code;
+    const prefix = lotPrefix[input.programme] ?? "GEN";
+    const n = Number(code.slice(-4));
+    if (code.startsWith(`VRL-${prefix}-`) && n > (this.store.counters[`lot:${prefix}`] ?? 0)) this.store.counters[`lot:${prefix}`] = n;
     this.store.lots[code] = {
       code,
       id,
