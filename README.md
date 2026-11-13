@@ -4,7 +4,7 @@
 
 Vartul turns recovered waste into a verifiable digital asset and connects it to the sponsor funding that paid for its recovery. It is built with Project Aamhi as the anchor partner and showcases Finternet and DPI capabilities: tokenised attested assets, proof chains, programmable settlement, conditional benefit transfer to field workers, exclusive impact claims and open-network (Beckn) discovery.
 
-**Start here: [Vartul product document](docs/product/Vartul_Product_Document.md)**, the authoritative business, product, policy, legal, technical and governance reference. The seeded demonstration data is described in the [demo dataset](docs/product/Vartul_Demo_Dataset.md).
+**Start here: [Vartul product document](docs/product/Vartul_Product_Document.md)**, the authoritative business, product, policy, legal, technical and governance reference. The seeded demonstration data is described in the [demo dataset](docs/product/Vartul_Demo_Dataset.md). **What is built, how to present it and what comes next: [handover and status](docs/Vartul_Handover.md).**
 
 ## Run the demonstration
 
@@ -36,7 +36,7 @@ The contracts are ready for a public test network, but the demonstration does no
 
 | Directory | Contents |
 |---|---|
-| `docs/product/` | Product document and demo dataset specification |
+| `docs/` | Handover and status; `docs/product/`: product document and demo dataset specification |
 | `contracts/src/vartul/`, `contracts/test/vartul/` | Solidity contracts and Foundry tests |
 | `services/vartul/` | Ledger runtime, domain API, indexer, anomaly engine, credentials, Beckn sandbox, assistants, seeder |
 | `apps/vartul-web/` | The web application: every role surface and the scene presenter |
