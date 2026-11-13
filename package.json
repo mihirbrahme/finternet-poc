@@ -8,7 +8,7 @@
     "node": ">=22 <25"
   },
   "scripts": {
-    "demo": "pnpm web:build && tsx services/vartul/server.ts",
+    "demo": "vite build --config apps/vartul-web/vite.config.ts && tsx services/vartul/server.ts",
     "vartul:start": "tsx services/vartul/server.ts",
     "vartul:seed": "tsx services/vartul/seed/seed.ts",
     "web:dev": "vite --config apps/vartul-web/vite.config.ts",
