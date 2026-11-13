@@ -56,3 +56,6 @@ Thumbs.db
 .vscode/
 *.swp
 *.swo
+
+# Vartul local runtime (snapshots, evidence)
+.vartul/
