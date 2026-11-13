@@ -110,6 +110,9 @@ export class Chain {
     if (genesisTimestamp) args.push("--timestamp", String(genesisTimestamp));
     if (stateFile) args.push("--load-state", stateFile);
     this.proc = spawn("anvil", args, { stdio: "ignore", windowsHide: true });
+    const child = this.proc;
+    // Never leave an orphaned node holding the port when this process exits.
+    process.once("exit", () => child.kill());
     let failure: Error | undefined;
     this.proc.on("error", (e) => (failure = e));
     for (let i = 0; i < 100; i++) {

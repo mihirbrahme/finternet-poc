@@ -66,10 +66,20 @@ export class Views {
       }
       for (const g of sums.values()) if (g > l.eligibleGrams) overClaimed++;
     }
+    // Where released money went, summed from the escrow's own settlement events.
+    const split = { collectorsInr: 0, originatorsInr: 0, verifiersInr: 0 };
+    const toInr = (v: unknown) => Number(BigInt(String(v)) / 10n ** 14n) / 10_000;
+    for (const e of this.ix.events) {
+      if (e.contract !== "ProgrammeEscrow" || e.event !== "ProgrammeSettled") continue;
+      split.collectorsInr += toInr(e.args.collectorAmount);
+      split.originatorsInr += toInr(e.args.originatorAmount);
+      split.verifiersInr += toInr(e.args.verifierAmount);
+    }
     return {
       totals: { ...totals, overClaimedLots: overClaimed, saathisPaid: new Set(this.v.store.payouts.map((p) => p.saathi)).size },
+      split,
       monthly: [...byMonth.values()].sort((a, b) => a.month.localeCompare(b.month)),
-      materials: [...byMaterial.entries()].map(([m, value]) => ({ material: m, label: materials[m as keyof typeof materials]?.label ?? m, kg: value })),
+      materials: [...byMaterial.entries()].map(([m, value]) => ({ material: m, label: materials[m as keyof typeof materials]?.label ?? m, kg: value })).sort((a, b) => b.kg - a.kg),
       programmes: this.programmes(),
       organisations: participants.filter((p) => p.kind !== "panchayat").map((p) => ({ code: p.code, name: p.name, kind: p.kind, real: p.real, place: p.place })),
       simulated: SIMULATED,
@@ -397,7 +407,7 @@ export class Views {
       inbound: lots.filter((l) => l.state === "IN_TRANSIT").map((l) => this.lotSummary(l)),
       received: lots.filter((l) => l.state !== "IN_TRANSIT").sort((a, b) => b.mintedAt - a.mintedAt).slice(0, 40).map((l) => this.lotSummary(l)),
       available: forSale.slice(0, 40).map((l) => this.lotSummary(l)),
-      purchased: Object.values(this.v.store.lots).filter((l) => l.sale?.buyer === code).map((l) => ({ code: l.code, priceInr: l.sale!.priceInr, material: l.material })),
+      purchased: Object.values(this.v.store.lots).filter((l) => l.sale?.buyer === code).map((l) => ({ code: l.code, priceInr: l.sale!.priceInr, material: l.material, processed: (this.ix.lots.get(l.id)?.processedGrams ?? 0) > 0 })),
     };
   }
 

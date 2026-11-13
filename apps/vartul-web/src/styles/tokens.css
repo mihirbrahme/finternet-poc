@@ -1,0 +1,198 @@
+:root{
+  /* ---- Brand: the mark's four planes, sampled from the logo artwork ---- */
+  --suma-cyan-300:#4AC3E4;   /* lightest diamond */
+  --suma-cyan-400:#3AA0C1;   /* upper-left plane */
+  --suma-teal-500:#21829A;   /* overlap plane */
+  --suma-teal-600:#006A82;   /* upper-right plane */
+  --suma-navy-700:#004A61;   /* darkest plane */
+  --suma-navy-800:#00364A;   /* extended: section grounds */
+  --suma-navy-900:#00212E;   /* extended: deepest ground */
+  --suma-graphite:#58595B;   /* wordmark grey */
+
+  /* ---- Neutrals: cool-leaning, paper to ink ---- */
+  --neutral-0:#FFFFFF;
+  --neutral-25:#FAFBFC;
+  --neutral-50:#F4F6F8;
+  --neutral-100:#EAEDF0;
+  --neutral-200:#DCE1E6;
+  --neutral-300:#C2CAD2;
+  --neutral-400:#9BA5AF;
+  --neutral-500:#76818C;
+  --neutral-600:#58616B;
+  --neutral-700:#3F464E;
+  --neutral-800:#282D33;
+  --neutral-900:#14181C;
+
+  /* ---- Accent: used sparingly, for emphasis and data only ---- */
+  --accent-amber:#C8862B;
+  --accent-amber-soft:#F6EBD9;
+
+  /* ---- Status ---- */
+  --status-success:#1F7A5C;
+  --status-success-soft:#E3F1EC;
+  --status-warning:#B2740F;
+  --status-warning-soft:#FBF0DD;
+  --status-danger:#B03024;
+  --status-danger-soft:#FBE7E5;
+  --status-info:var(--suma-teal-600);
+  --status-info-soft:#E2F1F5;
+
+  /* ---- Semantic aliases: use these in product code ---- */
+  --brand-primary:var(--suma-teal-600);
+  --brand-primary-hover:var(--suma-navy-700);
+  --brand-primary-active:var(--suma-navy-800);
+  --brand-secondary:var(--suma-cyan-300);
+  --brand-ink:var(--suma-navy-900);
+
+  --text-strong:var(--neutral-900);
+  --text-body:var(--neutral-700);
+  --text-muted:var(--neutral-500);
+  --text-inverse:var(--neutral-0);
+  --text-inverse-muted:#A8BFC8;
+  --text-link:var(--suma-teal-600);
+  --text-link-hover:var(--suma-navy-800);
+  --text-on-brand:var(--neutral-0);
+
+  --surface-page:var(--neutral-0);
+  --surface-sunken:var(--neutral-50);
+  --surface-card:var(--neutral-0);
+  --surface-raised:var(--neutral-0);
+  --surface-inverse:var(--suma-navy-900);
+  --surface-brand:var(--suma-teal-600);
+  --surface-brand-soft:#EBF4F7;
+  --surface-hover:var(--neutral-50);
+  --surface-active:var(--neutral-100);
+
+  --border-subtle:var(--neutral-200);
+  --border-default:var(--neutral-300);
+  --border-strong:var(--neutral-400);
+  --border-brand:var(--suma-teal-600);
+  --border-inverse:#1B4759;
+
+  --focus-ring:var(--suma-cyan-400);
+
+  /* ---- Data visualisation: ordered categorical ramp ---- */
+  --data-1:var(--suma-navy-700);
+  --data-2:var(--suma-teal-600);
+  --data-3:var(--suma-teal-500);
+  --data-4:var(--suma-cyan-400);
+  --data-5:var(--suma-cyan-300);
+  --data-6:var(--accent-amber);
+  --data-neutral:var(--neutral-300);
+}
+:root{
+  --font-display:"Spectral",Georgia,"Times New Roman",serif;
+  --font-sans:"Archivo","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+
+  /* Type scale — 1.25 major third, tuned at the display end */
+  --text-display-1:clamp(44px,5.2vw,72px);
+  --text-display-2:clamp(36px,4vw,56px);
+  --text-h1:40px;
+  --text-h2:32px;
+  --text-h3:24px;
+  --text-h4:20px;
+  --text-lead:19px;
+  --text-body-lg:17px;
+  --text-body:15px;
+  --text-body-sm:13px;
+  --text-caption:12px;
+  --text-eyebrow:11px;
+
+  --leading-tight:1.08;
+  --leading-snug:1.22;
+  --leading-normal:1.5;
+  --leading-relaxed:1.65;
+
+  --weight-regular:400;
+  --weight-medium:500;
+  --weight-semibold:600;
+  --weight-bold:700;
+
+  --tracking-display:-0.02em;
+  --tracking-heading:-0.01em;
+  --tracking-body:0;
+  --tracking-eyebrow:0.14em;
+
+  /* Semantic roles */
+  --type-display:var(--weight-regular) var(--text-display-1)/var(--leading-tight) var(--font-display);
+  --type-h1:var(--weight-regular) var(--text-h1)/var(--leading-snug) var(--font-display);
+  --type-h2:var(--weight-regular) var(--text-h2)/var(--leading-snug) var(--font-display);
+  --type-h3:var(--weight-semibold) var(--text-h3)/1.3 var(--font-sans);
+  --type-h4:var(--weight-semibold) var(--text-h4)/1.35 var(--font-sans);
+  --type-lead:var(--weight-regular) var(--text-lead)/var(--leading-relaxed) var(--font-sans);
+  --type-body:var(--weight-regular) var(--text-body)/var(--leading-normal) var(--font-sans);
+  --type-label:var(--weight-medium) var(--text-body-sm)/1.4 var(--font-sans);
+  --type-eyebrow:var(--weight-semibold) var(--text-eyebrow)/1.2 var(--font-sans);
+  --type-mono:var(--weight-regular) var(--text-body-sm)/1.5 var(--font-mono);
+}
+:root{
+  /* 4px base grid */
+  --space-0:0px;
+  --space-1:4px;
+  --space-2:8px;
+  --space-3:12px;
+  --space-4:16px;
+  --space-5:20px;
+  --space-6:24px;
+  --space-8:32px;
+  --space-10:40px;
+  --space-12:48px;
+  --space-16:64px;
+  --space-20:80px;
+  --space-24:96px;
+  --space-32:128px;
+
+  /* Semantic */
+  --gap-inline:var(--space-2);
+  --gap-stack:var(--space-4);
+  --pad-control:var(--space-3);
+  --pad-card:var(--space-6);
+  --pad-section:var(--space-24);
+  --pad-section-tight:var(--space-16);
+
+  /* Layout */
+  --container-max:1240px;
+  --container-narrow:760px;
+  --gutter:var(--space-6);
+  --grid-columns:12; /* @kind other */
+}
+:root{
+  /* Suma geometry is squared-off. The mark is built from hard 90° diamonds;
+     product surfaces echo that with near-square corners. */
+  --radius-none:0px;
+  --radius-xs:2px;
+  --radius-sm:3px;
+  --radius-md:4px;
+  --radius-lg:6px;
+  --radius-pill:999px;
+  --radius-control:var(--radius-sm);
+  --radius-card:var(--radius-md);
+  --radius-surface:var(--radius-lg);
+}
+:root{
+  /* Shadows are cool-tinted and shallow. Elevation is earned, not decorative:
+     most cards sit on a 1px border with no shadow at rest. */
+  --shadow-none:none;
+  --shadow-xs:0 1px 2px rgba(0,54,74,.06);
+  --shadow-sm:0 1px 3px rgba(0,54,74,.08),0 1px 2px rgba(0,54,74,.04);
+  --shadow-md:0 4px 12px rgba(0,54,74,.10);
+  --shadow-lg:0 12px 32px rgba(0,54,74,.14);
+  --shadow-overlay:0 24px 64px rgba(0,33,46,.24);
+  --shadow-focus:0 0 0 3px rgba(58,160,193,.35);
+  --border-hairline:1px solid var(--border-subtle);
+}
+:root{
+  --duration-instant:80ms; /* @kind other */
+  --duration-fast:140ms; /* @kind other */
+  --duration-base:200ms; /* @kind other */
+  --duration-slow:320ms; /* @kind other */
+  --duration-reveal:520ms; /* @kind other */
+
+  /* No bounce, no overshoot. Motion is confident and brief. */
+  --ease-standard:cubic-bezier(.2,0,.2,1); /* @kind other */
+  --ease-out:cubic-bezier(0,0,.2,1); /* @kind other */
+  --ease-in:cubic-bezier(.4,0,1,1); /* @kind other */
+
+  --transition-control:background-color var(--duration-fast) var(--ease-standard),border-color var(--duration-fast) var(--ease-standard),color var(--duration-fast) var(--ease-standard),box-shadow var(--duration-fast) var(--ease-standard);
+}

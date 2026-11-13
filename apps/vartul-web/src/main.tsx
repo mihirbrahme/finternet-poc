@@ -1,3 +1,6 @@
 import { createRoot } from "react-dom/client";
+import "./styles/tokens.css";
+import "./styles/app.css";
+import { App } from "./App";
 
-createRoot(document.getElementById("root")!).render(<p>Vartul by Suma — frontend arrives in milestone 6.</p>);
+createRoot(document.getElementById("root")!).render(<App />);

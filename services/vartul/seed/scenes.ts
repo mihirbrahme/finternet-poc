@@ -128,7 +128,7 @@ export const scenes: Scene[] = [
     question: "Can a bag of plastic on Korlai shore become a trusted, fundable asset?",
     narrative:
       "Sunanda captures a 12.4 kg bag of LDPE film on the Korlai shore route, signed on her device. At Kashid MRC, 214 records totalling 1,296 kg are sorted: 84 kg of contamination out, 1,212 kg baled and weighed. The ledger checks mass balance and mints lot VRL-MRD-2026-0042 with the Merkle root of every record. Talvan Polymers' weighbridge reads 1,196 kg. Nirikshan Assurance samples the records and accepts 1,180 kg, excluding 16 kg. After the challenge window, one transaction releases ₹21,240: ₹8,496 to eleven collectors, ₹11,682 to Aamhi, ₹1,062 to the verifier, and an exclusive 1,180 kg claim to Tidewell Foods.",
-    surface: () => `/lots/${heroLot}`,
+    surface: () => `/field?saathi=${heroSaathi}`,
     steps: [
       {
         id: "capture",
